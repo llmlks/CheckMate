@@ -11,4 +11,4 @@
 * nappulan siirto
   * onnistuu, jos valittu siirto sääntöjen mukainen
 
-![luokkakaavio](dokumentaatio/checkmate_luokat.png)
+![luokkakaavio](/dokumentaatio/checkmate_luokat.png)
