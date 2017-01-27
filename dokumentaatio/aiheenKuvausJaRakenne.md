@@ -10,3 +10,5 @@
 * pelin aloitus
 * nappulan siirto
   * onnistuu, jos valittu siirto sääntöjen mukainen
+
+![luokkakaavio](dokumentaatio/checkmate_luokat.png)
