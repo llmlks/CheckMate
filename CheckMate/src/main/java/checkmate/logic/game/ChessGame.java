@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package checkmate.logic;
+package checkmate.logic.game;
 
 /**
  *
@@ -12,6 +12,7 @@ package checkmate.logic;
 public class ChessGame {
 
     private ChessBoard board;
+    private Player[] players;
 
     public ChessGame() {
         this.board = new ChessBoard();
@@ -19,5 +20,12 @@ public class ChessGame {
 
     public ChessBoard getBoard() {
         return this.board;
+    }
+    
+    public void start() {
+        this.board.initSquares();
+        board.initPieces();
+        
+        players = new Player[]{new Player(0), new Player(1)};
     }
 }

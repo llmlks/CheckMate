@@ -1,4 +1,4 @@
-package checkmate.logic;
+package checkmate.logic.game;
 
 /**
  *
