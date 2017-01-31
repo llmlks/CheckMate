@@ -17,15 +17,23 @@ public class ChessGame {
     public ChessGame() {
         this.board = new ChessBoard();
     }
+    
+    public void setBoard(ChessBoard b) {
+        this.board = b;
+    }
 
     public ChessBoard getBoard() {
         return this.board;
+    }
+    
+    public Player[] getPlayers() {
+        return this.players;
     }
     
     public void start() {
         this.board.initSquares();
         board.initPieces();
         
-        players = new Player[]{new Player(0), new Player(1)};
+        players = new Player[]{new Player(), new Player()};
     }
 }

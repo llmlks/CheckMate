@@ -35,16 +35,31 @@ public class ChessBoard {
     }
     
     public void initPieces() {
+        String white = "w";
+        String black = "b";
+        initPiecesByColour(white);
+        initPiecesByColour(black);
+    }
+    
+    public void initPiecesByColour(String colour) {
         
     }
     
     public boolean isValidMove(Piece p, Square to) {
+        if (piecesBetween(p.getSquare(), to) && !p.getType().equals("knight")) {
+            return false;
+        }
+        if (to.isOccupied()) {
+            if (to.getPiece().getColour() == p.getColour()) {
+                return false;
+            }
+        }
         if (p.getSquare().equals(to)) {
             return false;
         }
         return false;
     }
-    
+
     public boolean piecesBetween(Square from, Square to) {
         for (int i = from.getX(); i < to.getX(); i++) {
             for (int j = from.getY(); j < from.getY(); j++) {

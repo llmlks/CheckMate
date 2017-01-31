@@ -10,6 +10,7 @@ public class Knight extends Piece {
 
     public Knight(Square s, String c) {
         super(s, c);
+        this.type = "knight";
     }
 
     @Override

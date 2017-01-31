@@ -10,10 +10,12 @@ public abstract class Piece {
     
     Square square;
     String colour;
+    String type;
     
     public Piece(Square s, String c) {
         this.square = s;
         this.colour = c;
+        this.type = "";
     }
 
     public abstract boolean isValidMove(Square s);
@@ -29,5 +31,9 @@ public abstract class Piece {
     
     public String getColour() {
         return this.colour;
+    }
+    
+    public String getType() {
+        return this.type;
     }
 }

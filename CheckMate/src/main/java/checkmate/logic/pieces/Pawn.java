@@ -15,10 +15,18 @@ public class Pawn extends Piece {
         super(s, c);
         initSquare = s;
         if (c.equals("w")) {
-            direction = -1;
-        } else {
             direction = 1;
+        } else {
+            direction = -1;
         }
+    }
+    
+    public int getDirection() {
+        return this.direction;
+    }
+    
+    public Square getInitSquare() {
+        return this.initSquare;
     }
 
     @Override
