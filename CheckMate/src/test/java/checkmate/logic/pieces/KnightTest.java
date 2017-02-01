@@ -15,81 +15,68 @@ import static org.junit.Assert.*;
  * @author llmlks
  */
 public class KnightTest {
-    
+
     Knight piece;
-    
+    Square square;
+
     public KnightTest() {
     }
-    
+
     @Before
     public void setUp() {
-        piece = new Knight(new Square(5, 5), "w");
+        square = new Square(5, 5);
+        piece = new Knight(square, "w");
     }
 
     @Test
     public void constructorSetsSquare() {
-        assertEquals(piece.square, new Square(5, 5));
+        assertEquals(piece.getSquare(), new Square(5, 5));
     }
 
     @Test
     public void constructorSetsColour() {
-        assertEquals(piece.colour, "w");
+        assertEquals(piece.getColour(), "w");
     }
 
     @Test
     public void constructorSetsType() {
-        assertEquals(piece.type, "knight");
-    }
-
-    @Test
-    public void testGetSquare() {
-        assertEquals(piece.square, piece.getSquare());
-    }
-
-    @Test
-    public void testGetType() {
-        assertEquals(piece.type, piece.getType());
-    }
-
-    @Test
-    public void testGetColour() {
-        assertEquals(piece.colour, piece.getColour());
+        assertEquals(piece.getType(), "knight");
     }
 
     @Test
     public void testMove() {
-        Square square = new Square(4, 3);
-        piece.move(square);
-        assertEquals(square, piece.square);
+        Square square2 = new Square(4, 3);
+        piece.move(square2);
+        assertEquals(square2, piece.getSquare());
     }
 
     @Test
     public void testIsValidMove() {
-        Square square = new Square(4, 3);
-        assertTrue(piece.isValidMove(square));
+        Square square2 = new Square(4, 3);
+        assertTrue(piece.isValidMove(square2));
     }
 
     @Test
     public void testIsValidMove2() {
-        Square square = new Square(7, 6);
-        assertTrue(piece.isValidMove(square));
+        Square square2 = new Square(7, 6);
+        assertTrue(piece.isValidMove(square2));
     }
 
     @Test
     public void testIsValidMove3() {
-        Square square = new Square(6, 3);
-        assertTrue(piece.isValidMove(square));
+        Square square2 = new Square(6, 3);
+        assertTrue(piece.isValidMove(square2));
     }
 
     @Test
     public void testIsValidMove4() {
-        Square square = new Square(1, 2);
-        assertFalse(piece.isValidMove(square));
+        Square square2 = new Square(1, 2);
+        assertFalse(piece.isValidMove(square2));
     }
 
     @Test
     public void testIsValidMove5() {
-        Square square = new Square(5, 5);
-        assertFalse(piece.isValidMove(square));
+        Square square2 = new Square(5, 5);
+        assertFalse(piece.isValidMove(square2));
     }
 }

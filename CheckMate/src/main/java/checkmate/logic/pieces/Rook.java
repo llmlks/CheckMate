@@ -8,15 +8,25 @@ import checkmate.logic.game.Square;
  */
 public class Rook extends Piece {
 
-    public Rook(Square s, String c) {
+    /**
+     * Calls constructor of parent class Piece.
+     *
+     * @param s Square
+     * @param c String
+     */
+    public Rook(final Square s, final String c) {
         super(s, c);
     }
 
+    /**
+     * Checks whether the move to square s from this.square is valid for rook.
+     *
+     * @param s Square
+     * @return boolean
+     */
     @Override
-    public boolean isValidMove(Square s) {
-        if (s.isSameFile(square) || s.isSameRank(square)) {
-            return true;
-        }
-        return false;
+    public final boolean isValidMove(final Square s) {
+        Square square = this.getSquare();
+        return s.isSameFile(square) || s.isSameRank(square);
     }
 }

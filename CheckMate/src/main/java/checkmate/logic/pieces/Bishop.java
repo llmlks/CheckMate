@@ -1,7 +1,6 @@
 package checkmate.logic.pieces;
 
 import checkmate.logic.game.Square;
-import checkmate.logic.pieces.Piece;
 
 /**
  *
@@ -9,13 +8,25 @@ import checkmate.logic.pieces.Piece;
  */
 public class Bishop extends Piece {
 
-    public Bishop(Square s, String c) {
+    /**
+     * Calls constructor of parent class Piece.
+     *
+     * @param s Square
+     * @param c String
+     */
+    public Bishop(final Square s, final String c) {
         super(s, c);
     }
 
+    /**
+     * Checks whether the move to square s from this.square is valid for bishop.
+     *
+     * @param s Square
+     * @return boolean
+     */
     @Override
-    public boolean isValidMove(Square s) {
+    public final boolean isValidMove(final Square s) {
+        Square square = this.getSquare();
         return square.isDiagonal(s);
     }
 }
-

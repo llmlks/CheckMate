@@ -18,35 +18,37 @@ public class PawnTest {
 
     Pawn white;
     Pawn black;
+    Square square;
 
     public PawnTest() {
     }
 
     @Before
     public void setUp() {
-        white = new Pawn(new Square(5, 5), "w");
-        black = new Pawn(new Square(5, 5), "b");
+        square = new Square(5, 5);
+        white = new Pawn(square, "w");
+        black = new Pawn(square, "b");
     }
 
     @Test
     public void constructorSetsSquare() {
-        assertEquals(white.square, new Square(5, 5));
+        assertEquals(white.getSquare(), new Square(5, 5));
     }
 
     @Test
     public void constructorSetsColour() {
-        assertEquals(white.colour, "w");
-        assertEquals(black.colour, "b");
+        assertEquals(white.getColour(), "w");
+        assertEquals(black.getColour(), "b");
     }
 
     @Test
     public void constructorSetsType() {
-        assertEquals(white.type, "");
+        assertEquals(white.getType(), "");
     }
 
     @Test
     public void constructorSetsInitSquare() {
-        assertTrue(white.getInitSquare().equals(white.square));
+        assertTrue(white.getInitSquare().equals(white.getSquare()));
     }
 
     @Test
@@ -60,96 +62,81 @@ public class PawnTest {
     }
 
     @Test
-    public void testGetSquare() {
-        assertEquals(white.square, white.getSquare());
-    }
-
-    @Test
-    public void testGetType() {
-        assertEquals(white.type, white.getType());
-    }
-
-    @Test
-    public void testGetColour() {
-        assertEquals(white.colour, white.getColour());
-    }
-
-    @Test
     public void testMove() {
-        Square square = new Square(2, 1);
-        white.move(square);
-        assertEquals(square, white.square);
+        Square square2 = new Square(2, 1);
+        white.move(square2);
+        assertEquals(square2, white.getSquare());
     }
 
     @Test
     public void testIsValidMoveWhite() {
-        Square square = new Square(5, 4);
-        assertTrue(white.isValidMove(square));
+        Square square2 = new Square(5, 4);
+        assertTrue(white.isValidMove(square2));
     }
 
     @Test
     public void testIsValidMoveWhite2() {
-        Square square = new Square(5, 3);
-        assertTrue(white.isValidMove(square));
+        Square square2 = new Square(5, 3);
+        assertTrue(white.isValidMove(square2));
     }
 
     @Test
     public void testIsValidMoveWhite3() {
-        Square square = new Square(4, 4);
-        assertFalse(white.isValidMove(square));
+        Square square2 = new Square(4, 4);
+        assertFalse(white.isValidMove(square2));
     }
 
     @Test
     public void testIsValidMoveWhite4() {
-        Square square = new Square(5, 2);
-        assertFalse(white.isValidMove(square));
+        Square square2 = new Square(5, 2);
+        assertFalse(white.isValidMove(square2));
     }
 
     @Test
     public void testIsValidMoveWhite5() {
-        Square square = new Square(5, 6);
-        assertFalse(white.isValidMove(square));
+        Square square2 = new Square(5, 6);
+        assertFalse(white.isValidMove(square2));
     }
 
     @Test
     public void testIsValidMoveWhite6() {
-        Square square = new Square(5, 5);
-        assertFalse(white.isValidMove(square));
+        Square square2 = new Square(5, 5);
+        assertFalse(white.isValidMove(square2));
     }
 
     @Test
     public void testIsValidMoveBlack() {
-        Square square = new Square(5, 6);
-        assertTrue(black.isValidMove(square));
+        Square square2 = new Square(5, 6);
+        assertTrue(black.isValidMove(square2));
     }
 
     @Test
     public void testIsValidMoveBlack2() {
-        Square square = new Square(5, 7);
-        assertTrue(black.isValidMove(square));
+        Square square2 = new Square(5, 7);
+        assertTrue(black.isValidMove(square2));
     }
 
     @Test
     public void testIsValidMoveBlack3() {
-        Square square = new Square(4, 6);
-        assertFalse(black.isValidMove(square));
+        Square square2 = new Square(4, 6);
+        assertFalse(black.isValidMove(square2));
     }
 
     @Test
     public void testIsValidMoveBlack4() {
-        Square square = new Square(5, 8);
-        assertFalse(black.isValidMove(square));
+        Square square2 = new Square(5, 8);
+        assertFalse(black.isValidMove(square2));
     }
 
     @Test
     public void testIsValidMoveBlack5() {
-        Square square = new Square(5, 4);
-        assertFalse(black.isValidMove(square));
+        Square square2 = new Square(5, 4);
+        assertFalse(black.isValidMove(square2));
     }
 
     @Test
     public void testIsValidMoveBlack6() {
-        Square square = new Square(5, 5);
-        assertFalse(black.isValidMove(square));
+        Square square2 = new Square(5, 5);
+        assertFalse(black.isValidMove(square2));
     }
 }

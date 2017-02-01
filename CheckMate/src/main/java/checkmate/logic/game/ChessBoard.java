@@ -1,6 +1,6 @@
 package checkmate.logic.game;
 
-import checkmate.logic.pieces.*;
+import checkmate.logic.pieces.Piece;
 import java.util.ArrayList;
 
 /**
@@ -9,63 +9,72 @@ import java.util.ArrayList;
  */
 public class ChessBoard {
 
-    private ArrayList<Square> squares;
-    private ArrayList<Piece> pieces;
+    /**
+     * ArrayList for type Square.
+     */
+    private final ArrayList<Square> squares;
+    /**
+     * ArrayList for type Piece.
+     */
+    private final ArrayList<Piece> pieces;
+    /**
+     * Integer value for size of one side of the board (8 * 8 squares).
+     */
     private final int size = 8;
 
+    /**
+     * Constructor generates empty ArrayLists for pieces and squares.
+     */
     public ChessBoard() {
         this.squares = new ArrayList<>();
         this.pieces = new ArrayList<>();
     }
 
-    public ArrayList<Square> getSquares() {
+    /**
+     *
+     * @return ArrayList for squares
+     */
+    public final ArrayList<Square> getSquares() {
         return this.squares;
     }
 
-    public ArrayList<Piece> getPieces() {
+    /**
+     *
+     * @return ArrayList pieces
+     */
+    public final ArrayList<Piece> getPieces() {
         return this.pieces;
     }
 
-    public void initSquares() {
+    /**
+     * Initialises squares; creates 64 squares and adds them to squares.
+     */
+    public final void initSquares() {
         for (int i = 1; i <= size; i++) {
             for (int j = 1; j <= size; j++) {
-                squares.add(new Square(i, j));
+                Square square = new Square(i, j);
+                square.setSize(size);
+                squares.add(square);
             }
-        }        
+        }
     }
-    
-    public void initPieces() {
+
+    /**
+     * Calls initPiecesByColour to initialise pieces.
+     */
+    public final void initPieces() {
         String white = "w";
         String black = "b";
         initPiecesByColour(white);
         initPiecesByColour(black);
     }
-    
-    public void initPiecesByColour(String colour) {
-        
-    }
-    
-    public boolean isValidMove(Piece p, Square to) {
-        if (piecesBetween(p.getSquare(), to) && !p.getType().equals("knight")) {
-            return false;
-        }
-        if (to.isOccupied()) {
-            if (to.getPiece().getColour() == p.getColour()) {
-                return false;
-            }
-        }
-        if (p.getSquare().equals(to)) {
-            return false;
-        }
-        return false;
-    }
 
-    public boolean piecesBetween(Square from, Square to) {
-        for (int i = from.getX(); i < to.getX(); i++) {
-            for (int j = from.getY(); j < from.getY(); j++) {
-                
-            }
-        }
-        return false;
+    /**
+     * Initialises pieces by colour.
+     *
+     * @param colour String
+     */
+    public void initPiecesByColour(final String colour) {
+
     }
 }

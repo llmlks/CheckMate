@@ -7,33 +7,80 @@ import checkmate.logic.game.Square;
  * @author llmlks
  */
 public abstract class Piece {
-    
-    Square square;
-    String colour;
-    String type;
-    
-    public Piece(Square s, String c) {
+
+    /**
+     * Private variable Square to hold square which this occupies.
+     */
+    private Square square;
+    /**
+     * Private variable String to hold colour of this.
+     */
+    private final String colour;
+    /**
+     * Private variable String to hold type of this.
+     */
+    private String type;
+
+    /**
+     * Constructor sets this.square to s, this.colour to c and this.type to "".
+     *
+     * @param s Square
+     * @param c String
+     */
+    public Piece(final Square s, final String c) {
         this.square = s;
         this.colour = c;
         this.type = "";
     }
 
-    public abstract boolean isValidMove(Square s);
+    /**
+     * Abstract method to check whether move to Square s is valid.
+     *
+     * @param s Square
+     * @return boolean
+     */
+    public abstract boolean isValidMove(final Square s);
 
-    public void move(Square s) {
+    /**
+     * Calls setPiece(this) for s, and sets this.square to s.
+     *
+     * @param s Square
+     */
+    public final void move(final Square s) {
         s.setPiece(this);
         this.square = s;
     }
-    
-    public Square getSquare() {
+
+    /**
+     *
+     * @return this.square Square
+     */
+    public final Square getSquare() {
         return this.square;
     }
-    
-    public String getColour() {
+
+    /**
+     *
+     * @return this.colour String
+     */
+    public final String getColour() {
         return this.colour;
     }
-    
-    public String getType() {
+
+    /**
+     *
+     * @return this.type String
+     */
+    public final String getType() {
         return this.type;
+    }
+
+    /**
+     * Sets this.type to t.
+     *
+     * @param t String
+     */
+    public final void setType(final String t) {
+        this.type = t;
     }
 }

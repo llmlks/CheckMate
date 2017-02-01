@@ -8,21 +8,31 @@ import checkmate.logic.game.Square;
  */
 public class Knight extends Piece {
 
-    public Knight(Square s, String c) {
+    /**
+     * Calls constructor of parent class Piece and sets this.type to "knight".
+     *
+     * @param s Square
+     * @param c String
+     */
+    public Knight(final Square s, final String c) {
         super(s, c);
-        this.type = "knight";
+        this.setType("knight");
     }
 
+    /**
+     * Checks whether the move to square s from this.square is valid for knight.
+     *
+     * @param s Square
+     * @return boolean
+     */
     @Override
-    public boolean isValidMove(Square s) {
-        if (Math.abs(s.getX() - square.getX()) == 2 && Math.abs(s.getY() - 
-                square.getY()) == 1) {
+    public final boolean isValidMove(final Square s) {
+        Square square = this.getSquare();
+        if (Math.abs(s.getX() - square.getX()) == 2 && Math.abs(s.getY()
+                - square.getY()) == 1) {
             return true;
         }
-        if (Math.abs(s.getX() - square.getX()) == 1 && Math.abs(s.getY() - 
-                square.getY()) == 2) {
-            return true;
-        }        
-        return false;
+        return Math.abs(s.getX() - square.getX()) == 1 && Math.abs(s.getY()
+                - square.getY()) == 2;
     }
 }

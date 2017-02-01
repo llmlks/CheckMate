@@ -14,14 +14,23 @@ import static org.junit.Assert.*;
  * @author llmlks
  */
 public class ValidatorTest {
-    
+
     Validator val;
-    
+
     public ValidatorTest() {
     }
-    
+
     @Before
     public void setUp() {
         val = new Validator(new ChessGame());
     }
+
+    @Test
+    public void testIsValidMove() {
+    }
+
+    @Test
+    public void testPiecesBetween() {
+    }
+
 }

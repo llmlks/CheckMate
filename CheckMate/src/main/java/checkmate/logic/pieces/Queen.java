@@ -7,16 +7,27 @@ import checkmate.logic.game.Square;
  * @author llmlks
  */
 public class Queen extends Piece {
-    
-    public Queen(Square s, String c) {
+
+    /**
+     * Calls constructor of parent class Piece.
+     *
+     * @param s Square
+     * @param c String
+     */
+    public Queen(final Square s, final String c) {
         super(s, c);
     }
-    
+
+    /**
+     * Checks if move to Square s is valid for queen.
+     *
+     * @param s Square
+     * @return boolean
+     */
     @Override
-    public boolean isValidMove(Square s) {
-        if (s.isDiagonal(square) || s.isSameFile(square) || s.isSameRank(square)) {
-            return true;
-        }
-        return false;
+    public final boolean isValidMove(final Square s) {
+        Square square = this.getSquare();
+        return s.isDiagonal(square) || s.isSameFile(square)
+                || s.isSameRank(square);
     }
 }

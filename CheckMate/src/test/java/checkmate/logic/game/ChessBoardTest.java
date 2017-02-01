@@ -14,17 +14,17 @@ import static org.junit.Assert.*;
  * @author llmlks
  */
 public class ChessBoardTest {
-    
+
     ChessBoard board;
-    
+
     public ChessBoardTest() {
     }
-    
+
     @Before
     public void setUp() {
         board = new ChessBoard();
     }
-    
+
     @Test
     public void constructorCreatesPiecesList() {
         assertFalse(board.getPieces() == null);
@@ -39,7 +39,7 @@ public class ChessBoardTest {
     public void constructorCreatesSquaresList() {
         assertTrue(board.getSquares() != null);
     }
-    
+
     @Test
     public void squaresListIsEmptyAtStart() {
         assertTrue(board.getSquares().isEmpty());
@@ -59,12 +59,4 @@ public class ChessBoardTest {
     public void testInitPiecesByColour() {
     }
 
-    @Test
-    public void testIsValidMove() {
-    }
-
-    @Test
-    public void testPiecesBetween() {
-    }
-    
 }

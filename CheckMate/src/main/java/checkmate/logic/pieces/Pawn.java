@@ -8,10 +8,24 @@ import checkmate.logic.game.Square;
  */
 public class Pawn extends Piece {
 
-    private Square initSquare;
-    private int direction;
-    
-    public Pawn(Square s, String c) {
+    /**
+     * Private variable to hold inital Square.
+     */
+    private final Square initSquare;
+    /**
+     * Private variable for integer direction (different for balcks and whites).
+     */
+    private final int direction;
+
+    /**
+     * Calls constructor of parent class Piece, sets initSquare to s and sets
+     * direction based on colour to 1 or -1, for whites and blacks,
+     * respectively.
+     *
+     * @param s Square
+     * @param c String
+     */
+    public Pawn(final Square s, final String c) {
         super(s, c);
         initSquare = s;
         if (c.equals("w")) {
@@ -20,22 +34,32 @@ public class Pawn extends Piece {
             direction = -1;
         }
     }
-    
-    public int getDirection() {
+
+    /**
+     * @return this.direction int
+     */
+    public final int getDirection() {
         return this.direction;
     }
-    
-    public Square getInitSquare() {
+
+    /**
+     * @return this.initSquare Square
+     */
+    public final Square getInitSquare() {
         return this.initSquare;
     }
 
+    /**
+     * Checks whether the move to square s from this.square is valid for pawn.
+     *
+     * @param s Square
+     * @return boolean
+     */
     @Override
-    public boolean isValidMove(Square s) {
-        if (s.isSameFile(square) && (square.getY() - s.getY() == 1*direction || 
-                (square.equals(initSquare) && square.getY() - s.getY() == 2*direction))) {
-            return true;
-        }
-        return false;
+    public final boolean isValidMove(final Square s) {
+        Square square = this.getSquare();
+        return s.isSameFile(square) && (square.getY() - s.getY()
+                == 1 * direction || (square.equals(initSquare) && square.getY()
+                - s.getY() == 2 * direction));
     }
 }
-

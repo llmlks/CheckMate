@@ -1,8 +1,3 @@
-/*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
- */
 package checkmate.logic.game;
 
 import checkmate.logic.pieces.Piece;
@@ -13,32 +8,81 @@ import checkmate.logic.pieces.Piece;
  */
 public class Square {
 
-    private int x;
-    private int y;
+    /**
+     * Private variable integer for x coordinate.
+     */
+    private final int x;
+    /**
+     * Private variable integer for y coordinate.
+     */
+    private final int y;
+    /**
+     * Private variable Piece to hold piece occupying this square.
+     */
     private Piece piece;
+    /**
+     * Private variable int to hold the size of the chessboard.
+     */
+    private int size;
 
-    public Square(int x, int y) {
-        this.x = x;
-        this.y = y;
+    /**
+     * Assigns parameter values x and y to variables x and y respectively, and
+     * boardSize to variable size.
+     *
+     * @param xCoordinate int
+     * @param yCoordinate int
+     */
+    public Square(final int xCoordinate, final int yCoordinate) {
+        this.x = xCoordinate;
+        this.y = yCoordinate;
     }
 
-    public int getX() {
+    /**
+     * Sets this.size.
+     *
+     * @param s int
+     */
+    public final void setSize(final int s) {
+        this.size = s;
+    }
+
+    /**
+     * @return this.x int
+     */
+    public final int getX() {
         return this.x;
     }
 
-    public int getY() {
+    /**
+     * @return this.y int
+     */
+    public final int getY() {
         return this.y;
     }
 
-    public Piece getPiece() {
+    /**
+     * @return this.piece Piece
+     */
+    public final Piece getPiece() {
         return piece;
     }
 
-    public void setPiece(Piece p) {
+    /**
+     * Sets p to this.piece.
+     *
+     * @param p Piece
+     */
+    public final void setPiece(final Piece p) {
         this.piece = p;
     }
 
-    public boolean isNextTo(Square s) {
+    /**
+     * Checks whether square s is next to this.
+     *
+     * @param s Square
+     * @return boolean
+     */
+    public final boolean isNextTo(final Square s) {
         if (s.x == this.x && s.y == this.y) {
             return false;
         }
@@ -52,33 +96,48 @@ public class Square {
         return false;
     }
 
-    public boolean isSameRank(Square s) {
-        if (s.y == this.y && !s.equals(this)) {
-            return true;
-        }
-        return false;
+    /**
+     * Checks if Square s is in the same rank (line horizontally) as this.
+     *
+     * @param s Square
+     * @return boolean
+     */
+    public final boolean isSameRank(final Square s) {
+        return s.y == this.y && !s.equals(this);
     }
 
-    public boolean isSameFile(Square s) {
-        if (s.x == this.x && !s.equals(this)) {
-            return true;
-        }
-        return false;
+    /**
+     * Checks whether Square s is in the same file (line vertically) as this.
+     *
+     * @param s Square
+     * @return boolean
+     */
+    public final boolean isSameFile(final Square s) {
+        return s.x == this.x && !s.equals(this);
     }
 
-    public boolean isDiagonal(Square s) {
-        if (Math.abs(s.x - this.x) == Math.abs(s.y - this.y) && !s.equals(this)) {
-            return true;
-        }
-        return false;
+    /**
+     * Checks if Square s is located diagonally from this.
+     *
+     * @param s Square
+     * @return boolean
+     */
+    public final boolean isDiagonal(final Square s) {
+        return Math.abs(s.x - this.x) == Math.abs(s.y - this.y)
+                && !s.equals(this);
     }
 
-    public boolean isOccupied() {
+    /**
+     * Checks if this is occupied, returns false if this.piece is null.
+     *
+     * @return boolean
+     */
+    public final boolean isOccupied() {
         return this.piece != null;
     }
 
     @Override
-    public boolean equals(Object o) {
+    public final boolean equals(final Object o) {
         if (o == null || !Square.class.isAssignableFrom(o.getClass())) {
             return false;
         }
@@ -87,10 +146,8 @@ public class Square {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 67 * hash + this.x;
-        hash = 67 * hash + this.y;
+    public final int hashCode() {
+        int hash = this.x + (this.y - 1) * size;
         return hash;
     }
 }

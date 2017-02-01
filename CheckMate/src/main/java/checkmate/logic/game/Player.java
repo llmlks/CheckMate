@@ -6,6 +6,9 @@ package checkmate.logic.game;
  */
 public class Player {
 
+    /**
+     * Empty constructor.
+     */
     public Player() {
     }
 }
