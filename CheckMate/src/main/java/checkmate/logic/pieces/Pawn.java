@@ -33,6 +33,7 @@ public class Pawn extends Piece {
         } else {
             direction = -1;
         }
+        this.setType("pawn");
     }
 
     /**
@@ -58,6 +59,11 @@ public class Pawn extends Piece {
     @Override
     public final boolean isValidMove(final Square s) {
         Square square = this.getSquare();
+        if (s.isOccupied() && s.isNextTo(square) && s.isDiagonal(square) && 
+                !s.getPiece().getColour().equals(this.getColour())) {
+            s.getPiece().setAvailable(false);
+            return true;
+        }
         return s.isSameFile(square) && (square.getY() - s.getY()
                 == 1 * direction || (square.equals(initSquare) && square.getY()
                 - s.getY() == 2 * direction));

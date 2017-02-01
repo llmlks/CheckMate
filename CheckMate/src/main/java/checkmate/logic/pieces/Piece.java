@@ -20,9 +20,15 @@ public abstract class Piece {
      * Private variable String to hold type of this.
      */
     private String type;
+    /**
+     * Private variable boolean to keep track of whether this piece is
+     * available, aka not captured.
+     */
+    private boolean available;
 
     /**
-     * Constructor sets this.square to s, this.colour to c and this.type to "".
+     * Constructor sets this.square to s, this.colour to c, this.type to "" and
+     * this.available to boolean.
      *
      * @param s Square
      * @param c String
@@ -31,6 +37,7 @@ public abstract class Piece {
         this.square = s;
         this.colour = c;
         this.type = "";
+        this.available = true;
     }
 
     /**
@@ -82,5 +89,21 @@ public abstract class Piece {
      */
     public final void setType(final String t) {
         this.type = t;
+    }
+
+    /**
+     * @return boolean
+     */
+    public final boolean getAvailable() {
+        return this.available;
+    }
+
+    /**
+     * Sets variable available to b
+     *
+     * @param b boolean
+     */
+    public final void setAvailable(boolean b) {
+        this.available = b;
     }
 }

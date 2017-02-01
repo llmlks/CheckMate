@@ -1,6 +1,12 @@
 package checkmate.logic.game;
 
+import checkmate.logic.pieces.Bishop;
+import checkmate.logic.pieces.King;
+import checkmate.logic.pieces.Knight;
+import checkmate.logic.pieces.Pawn;
 import checkmate.logic.pieces.Piece;
+import checkmate.logic.pieces.Queen;
+import checkmate.logic.pieces.Rook;
 import java.util.ArrayList;
 
 /**
@@ -60,21 +66,53 @@ public class ChessBoard {
     }
 
     /**
-     * Calls initPiecesByColour to initialise pieces.
+     * Calls appropriate methods to initialise pieces.
      */
     public final void initPieces() {
-        String white = "w";
-        String black = "b";
-        initPiecesByColour(white);
-        initPiecesByColour(black);
+        initPawns();
+        initPiecesExclPawns();
     }
 
     /**
-     * Initialises pieces by colour.
-     *
-     * @param colour String
+     * Initialises pawns.
      */
-    public void initPiecesByColour(final String colour) {
-
+    private void initPawns() {
+        int[] rows = new int[]{2, size - 1};
+        for (int row : rows) {
+            String colour = "b";
+            if (row == 2) {
+                colour = "w";
+            }
+            for (int i = 1; i <= size; i++) {
+                pieces.add(new Pawn(new Square(i, row), colour));
+            }
+        }
     }
+
+    /**
+     * Initialises pieces other than pawns.
+     */
+    private void initPiecesExclPawns() {
+        int[] rows = new int[]{1, size};
+        for (int row : rows) {
+            String colour = "b";
+            if (row == 1) {
+                colour = "w";
+            }
+            for (int j = 1; j <= size; j++) {
+                if (j == 1 || j == 8) {
+                    pieces.add(new Rook(new Square(j, row), colour));
+                } else if (j == 2 || j == 7) {
+                    pieces.add(new Knight(new Square(j, row), colour));                    
+                } else if (j == 3 || j == 6) {
+                    pieces.add(new Bishop(new Square(j, row), colour));
+                } else if (j == 4) {
+                    pieces.add(new Queen(new Square(j, row), colour));
+                } else {
+                    pieces.add(new King(new Square(j, row), colour));
+                }
+            }
+        }
+    }
+    
 }

@@ -48,19 +48,21 @@ public class Validator {
      * @return boolean
      */
     public final boolean isValidMove(final Piece p, final Square to) {
+        if (!p.isValidMove(to) || p.getSquare().equals(to)) {
+            return false;
+        }
         if (piecesBetween(p.getSquare(), to) && !p.getType().equals("knight")) {
             return false;
         }
-        if (to.isOccupied()) {
-            if (to.getPiece().getColour().equals(p.getColour())) {
-                return false;
-            }
+        if (p.getType().equals("pawn")) {
+            return p.isValidMove(to);
+        }
+        if (to.isOccupied() && 
+                !to.getPiece().getColour().equals(p.getColour())) {
+            to.getPiece().setAvailable(false);
             return true;
         }
-        if (p.getSquare().equals(to)) {
-            return false;
-        }
-        return false;
+        return true;
     }
 
     /**
@@ -96,7 +98,9 @@ public class Validator {
      */
     public final boolean piecesBetweenHorizontally(final Square from,
             final Square to) {
-        for (int i = from.getX() + 1; i < to.getX(); i++) {
+        int help = Math.max(from.getX(), to.getX());
+        int help2 = Math.min(from.getX(), to.getX());
+        for (int i = help2 + 1; i < help; i++) {
             if (occupiedSquares.contains(new Square(i, from.getY()))) {
                 return true;
             }
@@ -114,7 +118,9 @@ public class Validator {
      */
     public final boolean piecesBetweenVertically(final Square from,
             final Square to) {
-        for (int i = from.getY() + 1; i < to.getY(); i++) {
+        int help = Math.max(from.getY(), to.getY());
+        int help2 = Math.min(from.getY(), to.getY());
+        for (int i = help + 1; i < help2; i++) {
             if (occupiedSquares.contains(new Square(from.getX(), i))) {
                 return true;
             }
