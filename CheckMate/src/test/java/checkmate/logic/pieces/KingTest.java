@@ -40,7 +40,7 @@ public class KingTest {
 
     @Test
     public void constructorSetsType() {
-        assertEquals(piece.getType(), "");
+        assertEquals(piece.getType(), "king");
     }
 
     @Test
@@ -78,5 +78,20 @@ public class KingTest {
     public void testIsValidMove5() {
         Square square2 = new Square(5, 5);
         assertFalse(piece.isValidMove(square2));
+    }
+    
+    @Test
+    public void testGetInitSquare() {
+        assertEquals(square, piece.getInitSquare());
+    }
+    
+    @Test
+    public void testPossibleMoves() {
+        assertFalse(piece.possibleMoves() == null);
+    }
+    
+    @Test
+    public void testPossibleMoves2() {
+        assertTrue(piece.possibleMoves().isEmpty());
     }
 }

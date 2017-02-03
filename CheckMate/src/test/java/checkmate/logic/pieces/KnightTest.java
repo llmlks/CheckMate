@@ -79,4 +79,14 @@ public class KnightTest {
         Square square2 = new Square(5, 5);
         assertFalse(piece.isValidMove(square2));
     }
+
+    @Test
+    public void testPossibleMoves() {
+        assertFalse(piece.possibleMoves() == null);
+    }
+
+    @Test
+    public void testPossibleMoves2() {
+        assertTrue(piece.possibleMoves().isEmpty());
+    }
 }

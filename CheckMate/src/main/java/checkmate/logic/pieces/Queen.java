@@ -1,6 +1,7 @@
 package checkmate.logic.pieces;
 
 import checkmate.logic.game.Square;
+import java.util.ArrayList;
 
 /**
  *
@@ -29,5 +30,11 @@ public class Queen extends Piece {
         Square square = this.getSquare();
         return s.isDiagonal(square) || s.isSameFile(square)
                 || s.isSameRank(square);
+    }
+
+    @Override
+    public final ArrayList<Square> possibleMoves() {
+        ArrayList<Square> possible = new ArrayList<>();
+        return possible;
     }
 }

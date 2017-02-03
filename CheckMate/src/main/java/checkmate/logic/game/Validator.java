@@ -1,6 +1,8 @@
 package checkmate.logic.game;
 
+import checkmate.logic.pieces.King;
 import checkmate.logic.pieces.Piece;
+import checkmate.logic.pieces.Rook;
 import java.util.ArrayList;
 
 /**
@@ -9,10 +11,6 @@ import java.util.ArrayList;
  */
 public class Validator {
 
-    /**
-     * Private variable for ChessGame.
-     */
-    private final ChessGame game;
     /**
      * Private variable for ChessBoard.
      */
@@ -23,20 +21,35 @@ public class Validator {
     private final ArrayList<Square> occupiedSquares;
 
     /**
-     * Assigns ChessGame g to this.game, g.getBoard() to board and goes through
-     * each square on the board to check which ones are occupied, then adds the
-     * ones that are to occupiedSquares.
+     * Assigns ChessBoard to board and initialises occupiedSquares.
      *
-     * @param g ChessGame
+     * @param chessboard ChessBoard
      */
-    public Validator(final ChessGame g) {
-        this.game = g;
-        this.board = g.getBoard();
+    public Validator(final ChessBoard chessboard) {
+        this.board = chessboard;
         occupiedSquares = new ArrayList<>();
-        for (Square square : this.board.getSquares()) {
-            if (square.isOccupied()) {
-                occupiedSquares.add(square);
-            }
+    }
+
+    /**
+     * @return this.board
+     */
+    public final ChessBoard getBoard() {
+        return board;
+    }
+
+    /**
+     * @return this.occupiedSquares
+     */
+    public final ArrayList<Square> getOccupiedSquares() {
+        return occupiedSquares;
+    }
+
+    /**
+     * Adds all occupied squares to this.occupiedSquares.
+     */
+    public final void setOccupiedSquares() {
+        for (Piece piece : this.board.getPieces()) {
+            occupiedSquares.add(piece.getSquare());
         }
     }
 
@@ -57,8 +70,8 @@ public class Validator {
         if (p.getType().equals("pawn")) {
             return p.isValidMove(to);
         }
-        if (to.isOccupied() && 
-                !to.getPiece().getColour().equals(p.getColour())) {
+        if (occupiedSquares.contains(to)
+                && !to.getPiece().getColour().equals(p.getColour())) {
             to.getPiece().setAvailable(false);
             return true;
         }
@@ -120,7 +133,7 @@ public class Validator {
             final Square to) {
         int help = Math.max(from.getY(), to.getY());
         int help2 = Math.min(from.getY(), to.getY());
-        for (int i = help + 1; i < help2; i++) {
+        for (int i = help2 + 1; i < help; i++) {
             if (occupiedSquares.contains(new Square(from.getX(), i))) {
                 return true;
             }
@@ -138,9 +151,78 @@ public class Validator {
      */
     public final boolean piecesBetweenDiagonally(final Square from,
             final Square to) {
-        for (int i = from.getX() + 1; i < to.getX(); i++) {
-            if (occupiedSquares.contains(new Square(i, from.getY()))) {
+        int factorY = (to.getY() - from.getY()) / Math.abs(to.getY()
+                - from.getY());
+        int factorX = (to.getX() - from.getX()) / Math.abs(to.getX()
+                - from.getX());
+        for (int i = 1; i < Math.abs(to.getY() - from.getY()); i++) {
+            if (occupiedSquares.contains(new Square(from.getX() + factorX * i,
+                    from.getY() + factorY * i))) {
                 return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Checks whether piece given as parameter can be captured by any of
+     * opponent's pieces.
+     *
+     * @param p Piece
+     * @return boolean
+     */
+    public final boolean canBeCaptured(final Piece p) {
+        for (Piece piece : board.getPieces()) {
+            if (!piece.getColour().equals(p.getColour())) {
+                if (isValidMove(piece, p.getSquare())) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Checks whether player's king is in check.
+     *
+     * @param colour String
+     * @return boolean
+     */
+    public final boolean isChecked(final String colour) {
+        for (Piece piece : board.getPieces()) {
+            if (piece.getColour().equals(colour)
+                    && piece.getType().equals("king")) {
+                return canBeCaptured(piece);
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Checks whether player can castle using a chosen rook.
+     *
+     * @param king King
+     * @param rook Rook
+     * @return boolean
+     */
+    public final boolean canCastle(final King king, final Rook rook) {
+        return king.getInitSquare().equals(king.getSquare())
+                && rook.getInitSquare().equals(rook.getSquare())
+                && !piecesBetween(king.getSquare(), rook.getSquare());
+    }
+
+    /**
+     * Checks whether player has any valid moves left.
+     *
+     * @param player Player
+     * @return boolean
+     */
+    public final boolean hasValidMoves(final Player player) {
+        for (Piece piece : player.getPieces()) {
+            for (Square square : this.board.getSquares()) {
+                if (isValidMove(piece, square)) {
+                    return true;
+                }
             }
         }
         return false;

@@ -5,6 +5,7 @@
  */
 package checkmate.logic.game;
 
+import checkmate.logic.pieces.Piece;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -52,11 +53,28 @@ public class ChessBoardTest {
     }
 
     @Test
-    public void testInitPieces() {
+    public void testInitSquares2() {
+        board.initSquares();
+        assertTrue(board.getSquares().get(0).getSize() == 8);
     }
 
     @Test
-    public void testInitPiecesByColour() {
+    public void testInitPieces() {
+        board.initPieces();
+        assertEquals(board.getPieces().size(), 32);
     }
 
+    @Test
+    public void testInitPawns() {
+        board.initPawns();
+        Piece pawn = board.getPieces().get(0);
+        assertTrue((pawn.getColour().equals("w") && pawn.getSquare().getY() == 2) || (pawn.getColour().equals("b") && pawn.getSquare().getY() == 7));
+    }
+    
+    @Test
+    public void testInitPiecesExclPawns() {
+        board.initPiecesExclPawns();
+        Piece piece = board.getPieces().get(0);
+        assertTrue((piece.getColour().equals("w") && piece.getSquare().getY() == 1) || (piece.getColour().equals("b") && piece.getSquare().getY() == 8));
+    }
 }

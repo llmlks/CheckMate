@@ -1,6 +1,7 @@
 package checkmate.logic.pieces;
 
 import checkmate.logic.game.Square;
+import java.util.ArrayList;
 
 /**
  *
@@ -47,6 +48,13 @@ public abstract class Piece {
      * @return boolean
      */
     public abstract boolean isValidMove(final Square s);
+
+    /**
+     * Returns a list of possible moves.
+     *
+     * @return ArrayList
+     */
+    public abstract ArrayList<Square> possibleMoves();
 
     /**
      * Calls setPiece(this) for s, and sets this.square to s.
@@ -99,11 +107,11 @@ public abstract class Piece {
     }
 
     /**
-     * Sets variable available to b
+     * Sets variable available to b.
      *
      * @param b boolean
      */
-    public final void setAvailable(boolean b) {
+    public final void setAvailable(final boolean b) {
         this.available = b;
     }
 }

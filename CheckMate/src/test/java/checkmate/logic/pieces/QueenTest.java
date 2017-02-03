@@ -49,6 +49,13 @@ public class QueenTest {
         piece.move(square2);
         assertEquals(square2, piece.getSquare());
     }
+    
+    @Test
+    public void testMove2() {
+        Square square2 = new Square(2, 1);
+        piece.move(square2);
+        assertEquals(square2.getPiece(), piece);        
+    }
 
     @Test
     public void testIsValidMove() {
@@ -78,5 +85,15 @@ public class QueenTest {
     public void testIsValidMove5() {
         Square square2 = new Square(5, 5);
         assertFalse(piece.isValidMove(square2));
+    }
+    
+    @Test
+    public void testPossibleMoves() {
+        assertFalse(piece.possibleMoves() == null);
+    }
+    
+    @Test
+    public void testPossibleMoves2() {
+        assertTrue(piece.possibleMoves().isEmpty());
     }
 }

@@ -1,6 +1,7 @@
 package checkmate.logic.pieces;
 
 import checkmate.logic.game.Square;
+import java.util.ArrayList;
 
 /**
  *
@@ -28,5 +29,11 @@ public class Bishop extends Piece {
     public final boolean isValidMove(final Square s) {
         Square square = this.getSquare();
         return square.isDiagonal(s);
+    }
+
+    @Override
+    public final ArrayList<Square> possibleMoves() {
+        ArrayList<Square> possible = new ArrayList<>();
+        return possible;
     }
 }

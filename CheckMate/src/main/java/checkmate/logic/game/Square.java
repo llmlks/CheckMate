@@ -47,6 +47,13 @@ public class Square {
     }
 
     /**
+     * @return s int
+     */
+    public final int getSize() {
+        return this.size;
+    }
+
+    /**
      * @return this.x int
      */
     public final int getX() {

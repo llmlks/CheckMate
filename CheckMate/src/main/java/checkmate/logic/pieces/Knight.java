@@ -1,6 +1,7 @@
 package checkmate.logic.pieces;
 
 import checkmate.logic.game.Square;
+import java.util.ArrayList;
 
 /**
  *
@@ -34,5 +35,11 @@ public class Knight extends Piece {
         }
         return Math.abs(s.getX() - square.getX()) == 1 && Math.abs(s.getY()
                 - square.getY()) == 2;
+    }
+
+    @Override
+    public final ArrayList<Square> possibleMoves() {
+        ArrayList<Square> possible = new ArrayList<>();
+        return possible;
     }
 }

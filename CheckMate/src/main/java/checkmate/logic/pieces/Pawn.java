@@ -1,6 +1,7 @@
 package checkmate.logic.pieces;
 
 import checkmate.logic.game.Square;
+import java.util.ArrayList;
 
 /**
  *
@@ -59,13 +60,19 @@ public class Pawn extends Piece {
     @Override
     public final boolean isValidMove(final Square s) {
         Square square = this.getSquare();
-        if (s.isOccupied() && s.isNextTo(square) && s.isDiagonal(square) && 
-                !s.getPiece().getColour().equals(this.getColour())) {
+        if (s.isOccupied() && s.isNextTo(square) && s.isDiagonal(square)
+                && !s.getPiece().getColour().equals(this.getColour())) {
             s.getPiece().setAvailable(false);
             return true;
         }
         return s.isSameFile(square) && (square.getY() - s.getY()
-                == 1 * direction || (square.equals(initSquare) && square.getY()
-                - s.getY() == 2 * direction));
+                == direction * 1 || (square.equals(initSquare) && square.getY()
+                - s.getY() == direction * 2));
+    }
+
+    @Override
+    public final ArrayList<Square> possibleMoves() {
+        ArrayList<Square> possible = new ArrayList<>();
+        return possible;
     }
 }

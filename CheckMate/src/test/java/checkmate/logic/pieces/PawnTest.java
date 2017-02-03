@@ -43,7 +43,7 @@ public class PawnTest {
 
     @Test
     public void constructorSetsType() {
-        assertEquals(white.getType(), "");
+        assertEquals(white.getType(), "pawn");
     }
 
     @Test
@@ -138,5 +138,26 @@ public class PawnTest {
     public void testIsValidMoveBlack6() {
         Square square2 = new Square(5, 5);
         assertFalse(black.isValidMove(square2));
+    }
+
+    @Test
+    public void testPossibleMoves() {
+        assertFalse(white.possibleMoves() == null);
+    }
+    
+    @Test
+    public void testPossibleMoves2() {
+        assertTrue(black.possibleMoves().isEmpty());
+    }
+    
+    @Test
+    public void constructorSetsAvailable() {
+        assertTrue(white.getAvailable());
+    }
+    
+    @Test
+    public void testSetAvailable() {
+        black.setAvailable(false);
+        assertFalse(black.getAvailable());
     }
 }

@@ -14,14 +14,35 @@ import static org.junit.Assert.*;
  * @author llmlks
  */
 public class PlayerTest {
-    
+
     Player player;
-    
+
     public PlayerTest() {
     }
-    
+
     @Before
     public void setUp() {
-        player = new Player();
+        player = new Player("w");
+    }
+
+    @Test
+    public void constructorCreatesArrayList() {
+        assertFalse(player.getPieces() == null);
+    }
+
+    @Test
+    public void testGetPieces() {
+        assertTrue(player.getPieces().isEmpty());
+    }
+
+    @Test
+    public void testGetColour() {
+        assertTrue(player.getColour().equals("w"));
+    }
+
+    @Test
+    public void testGetColour2() {
+        Player player2 = new Player("b");
+        assertTrue(player2.getColour().equals("b"));
     }
 }

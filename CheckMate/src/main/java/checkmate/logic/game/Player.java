@@ -1,5 +1,8 @@
 package checkmate.logic.game;
 
+import checkmate.logic.pieces.Piece;
+import java.util.ArrayList;
+
 /**
  *
  * @author llmlks
@@ -7,8 +10,50 @@ package checkmate.logic.game;
 public class Player {
 
     /**
-     * Empty constructor.
+     * Private variable ArrayList to hold pieces.
      */
-    public Player() {
+    private final ArrayList<Piece> pieces;
+
+    /**
+     * Private variable String colour.
+     */
+    private final String colour;
+
+    /**
+     * Constructor generates empty ArrayList for pieces and assigns value c to
+     * colour.
+     *
+     * @param c String
+     */
+    public Player(final String c) {
+        this.colour = c;
+        this.pieces = new ArrayList<>();
+    }
+
+    /**
+     * Returns players pieces as an ArrayList.
+     *
+     * @return ArrayList
+     */
+    public final ArrayList<Piece> getPieces() {
+        return this.pieces;
+    }
+
+    /**
+     * Returns players colour as a String.
+     *
+     * @return String
+     */
+    public final String getColour() {
+        return this.colour;
+    }
+
+    /**
+     * Adds a piece to players ArrayList pieces.
+     *
+     * @param p Piece
+     */
+    public final void addPiece(final Piece p) {
+        this.pieces.add(p);
     }
 }

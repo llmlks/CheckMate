@@ -6,4 +6,5 @@ Päivä | Tunnit | Kuvaus
 26.01.2017 | 1h | Luokkakaavion suunnittelu
 27.01.2017 | 6h | Ohjelmoinnin aloitus
 31.01.2017 | 8h | Ohjelmointi, alusta aloittaminen
+01.02.2017 | 5h | Rakenteen suunnittelu, ohjelmointi, checkstyle korjaukset
 

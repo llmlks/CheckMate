@@ -157,6 +157,18 @@ public class SquareTest {
     }
 
     @Test
+    public void testEquals4() {
+        Square square2 = null;
+        assertFalse(square.equals(square2));
+    }
+
+    @Test
+    public void testEquals5() {
+        String s = "hi";
+        assertFalse(square.equals(s));
+    }
+
+    @Test
     public void testHashCode() {
         Square square2 = new Square(0, 0);
         assertEquals(square.hashCode(), square2.hashCode());
@@ -166,5 +178,11 @@ public class SquareTest {
     public void testHashCode2() {
         Square square2 = new Square(1, 2);
         assertFalse(square.hashCode() == square2.hashCode());
+    }
+
+    @Test
+    public void testSetSize() {
+        square.setSize(0);
+        assertEquals(square.getSize(), 0);
     }
 }

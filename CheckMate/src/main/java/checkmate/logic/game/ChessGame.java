@@ -1,5 +1,7 @@
 package checkmate.logic.game;
 
+import checkmate.logic.pieces.Piece;
+
 /**
  *
  * @author llmlks
@@ -15,6 +17,11 @@ public class ChessGame {
      * Private variable Player[].
      */
     private Player[] players;
+
+    /**
+     * Private variable for Validator.
+     */
+    private Validator validator;
 
     /**
      * Constructor generates new ChessBoard.
@@ -49,13 +56,35 @@ public class ChessGame {
     }
 
     /**
-     * Calls initSquares and initPieces on this.board Generates 2 players in
-     * this.players.
+     * Returns validator.
+     *
+     * @return Validator
+     */
+    public final Validator getValidator() {
+        return this.validator;
+    }
+
+    /**
+     * Calls initSquares and initPieces on this.board, generates 2 players in
+     * this.players, then starts the game.
      */
     public final void start() {
         this.board.initSquares();
         board.initPieces();
+        this.validator = new Validator(this.board);
+        validator.setOccupiedSquares();
 
-        players = new Player[]{new Player(), new Player()};
+        players = new Player[]{new Player("w"), new Player("b")};
+        for (Player player : players) {
+            for (Piece piece : board.getPieces()) {
+                if (piece.getColour().equals(player.getColour())) {
+                    player.addPiece(piece);
+                }
+            }
+        }
+//        while (validator.hasValidMoves(players[0])
+//                && validator.hasValidMoves(players[1])) {
+//
+//        }
     }
 }

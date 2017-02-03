@@ -71,12 +71,13 @@ public class ChessBoard {
     public final void initPieces() {
         initPawns();
         initPiecesExclPawns();
+        setPiecesToSquares();
     }
 
     /**
      * Initialises pawns.
      */
-    private void initPawns() {
+    public final void initPawns() {
         int[] rows = new int[]{2, size - 1};
         for (int row : rows) {
             String colour = "b";
@@ -92,27 +93,47 @@ public class ChessBoard {
     /**
      * Initialises pieces other than pawns.
      */
-    private void initPiecesExclPawns() {
+    public final void initPiecesExclPawns() {
         int[] rows = new int[]{1, size};
+        String[] initials = new String[]{"rook", "knight", "bishop", "queen",
+            "king", "bishop", "knight", "rook"};
         for (int row : rows) {
             String colour = "b";
             if (row == 1) {
                 colour = "w";
             }
-            for (int j = 1; j <= size; j++) {
-                if (j == 1 || j == 8) {
-                    pieces.add(new Rook(new Square(j, row), colour));
-                } else if (j == 2 || j == 7) {
-                    pieces.add(new Knight(new Square(j, row), colour));                    
-                } else if (j == 3 || j == 6) {
-                    pieces.add(new Bishop(new Square(j, row), colour));
-                } else if (j == 4) {
-                    pieces.add(new Queen(new Square(j, row), colour));
-                } else {
-                    pieces.add(new King(new Square(j, row), colour));
+            for (int j = 0; j < size; j++) {
+                switch (initials[j]) {
+                    case "rook":
+                        pieces.add(new Rook(new Square(j, row), colour));
+                        break;
+                    case "knight":
+                        pieces.add(new Knight(new Square(j, row), colour));
+                        break;
+                    case "bishop":
+                        pieces.add(new Bishop(new Square(j, row), colour));
+                        break;
+                    case "queen":
+                        pieces.add(new Queen(new Square(j, row), colour));
+                        break;
+                    default:
+                        pieces.add(new King(new Square(j, row), colour));
+                        break;
                 }
             }
         }
     }
-    
+
+    /**
+     * Sets created pieces to their matching squares.
+     */
+    public final void setPiecesToSquares() {
+        for (Piece p : this.pieces) {
+            for (Square s : this.squares) {
+                if (p.getSquare().equals(s)) {
+                    s.setPiece(p);
+                }
+            }
+        }
+    }
 }
