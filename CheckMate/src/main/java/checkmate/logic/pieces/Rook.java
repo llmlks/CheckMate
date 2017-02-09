@@ -23,6 +23,7 @@ public class Rook extends Piece {
     public Rook(final Square s, final String c) {
         super(s, c);
         this.initSquare = s;
+        this.setType("rook");
     }
 
     /**

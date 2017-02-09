@@ -17,6 +17,7 @@ public class Queen extends Piece {
      */
     public Queen(final Square s, final String c) {
         super(s, c);
+        this.setType("queen");
     }
 
     /**

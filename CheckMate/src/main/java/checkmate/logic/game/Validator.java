@@ -88,7 +88,7 @@ public class Validator {
      * @return boolean
      */
     public final boolean piecesBetween(final Square from, final Square to) {
-        if (from.isNextTo(to) || from.equals(to)) {
+        if (from.isNextTo(to)) {
             return false;
         }
         if (from.isDiagonal(to)) {
@@ -219,12 +219,26 @@ public class Validator {
      */
     public final boolean hasValidMoves(final Player player) {
         for (Piece piece : player.getPieces()) {
-            for (Square square : this.board.getSquares()) {
-                if (isValidMove(piece, square)) {
-                    return true;
-                }
+            if (!validMoves(piece).isEmpty()) {
+                return true;
             }
         }
         return false;
+    }
+
+    /**
+     * Returns an ArrayList of Squares that Piece p can move to.
+     *
+     * @param p Piece
+     * @return ArrayList, type Squares
+     */
+    public final ArrayList<Square> validMoves(final Piece p) {
+        ArrayList<Square> moves = new ArrayList<>();
+        for (Square s : this.board.getSquares()) {
+            if (isValidMove(p, s)) {
+                moves.add(s);
+            }
+        }
+        return moves;
     }
 }

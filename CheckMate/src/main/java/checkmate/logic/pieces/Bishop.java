@@ -17,6 +17,7 @@ public class Bishop extends Piece {
      */
     public Bishop(final Square s, final String c) {
         super(s, c);
+        this.setType("bishop");
     }
 
     /**
