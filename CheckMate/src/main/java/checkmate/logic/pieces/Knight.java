@@ -4,6 +4,7 @@ import checkmate.logic.game.Square;
 import java.util.ArrayList;
 
 /**
+ * Class for Knight objects.
  *
  * @author llmlks
  */

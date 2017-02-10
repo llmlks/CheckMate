@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 /**
  * Class for the chessboard.
+ *
  * @author llmlks
  */
 public class ChessBoard {

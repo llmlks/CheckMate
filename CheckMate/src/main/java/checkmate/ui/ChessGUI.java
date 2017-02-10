@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 /**
+ * Graphical interface class.
  *
  * @author llmlks
  */

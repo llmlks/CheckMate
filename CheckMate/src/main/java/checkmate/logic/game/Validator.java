@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 /**
  * Class for validating moves and situations in the game.
+ *
  * @author llmlks
  */
 public class Validator {

@@ -3,7 +3,7 @@ package checkmate.logic.game;
 import checkmate.logic.pieces.Piece;
 
 /**
- *
+ * Main class for game logic.
  * @author llmlks
  */
 public class ChessGame {

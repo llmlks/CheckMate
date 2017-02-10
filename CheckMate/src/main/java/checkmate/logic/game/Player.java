@@ -4,6 +4,7 @@ import checkmate.logic.pieces.Piece;
 import java.util.ArrayList;
 
 /**
+ * Player object for the chess game.
  *
  * @author llmlks
  */

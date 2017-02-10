@@ -4,6 +4,7 @@ import checkmate.logic.game.Square;
 import java.util.ArrayList;
 
 /**
+ * Abstract class for chess pieces to inherit.
  *
  * @author llmlks
  */
