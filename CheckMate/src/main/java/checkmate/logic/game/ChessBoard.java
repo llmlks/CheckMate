@@ -10,7 +10,7 @@ import checkmate.logic.pieces.Rook;
 import java.util.ArrayList;
 
 /**
- *
+ * Class for the chessboard.
  * @author llmlks
  */
 public class ChessBoard {

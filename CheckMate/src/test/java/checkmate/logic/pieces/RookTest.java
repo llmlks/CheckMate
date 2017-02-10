@@ -40,7 +40,7 @@ public class RookTest {
 
     @Test
     public void constructorSetsType() {
-        assertEquals(piece.getType(), "");
+        assertEquals(piece.getType(), "rook");
     }
 
     @Test

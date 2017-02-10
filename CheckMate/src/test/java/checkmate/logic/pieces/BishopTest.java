@@ -40,7 +40,7 @@ public class BishopTest {
 
     @Test
     public void constructorSetsType() {
-        assertEquals(piece.getType(), "");
+        assertEquals(piece.getType(), "bishop");
     }
 
     @Test

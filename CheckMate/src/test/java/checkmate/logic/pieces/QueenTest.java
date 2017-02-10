@@ -40,7 +40,7 @@ public class QueenTest {
 
     @Test
     public void constructorSetsType() {
-        assertEquals(piece.getType(), "");
+        assertEquals(piece.getType(), "queen");
     }
 
     @Test

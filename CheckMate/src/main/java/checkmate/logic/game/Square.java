@@ -3,7 +3,7 @@ package checkmate.logic.game;
 import checkmate.logic.pieces.Piece;
 
 /**
- *
+ * Class for squares on the chessboard.
  * @author llmlks
  */
 public class Square {

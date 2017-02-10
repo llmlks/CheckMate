@@ -72,13 +72,12 @@ public class ChessGUI implements Runnable {
             if ((i + j) % 2 == 0) {
                 squarePanels[i][j].setBackground(new Color(230, 204, 179));
             }
-            gridPanel.add(squarePanels[i][j]);
             if (square.isOccupied()) {
                 JLabel label = new JLabel();
                 label.setIcon(new ImageIcon(pieces.get(square.getPiece())));
-                gridPanel.add(label);
+                squarePanels[i][j].add(label);
             }
-
+            gridPanel.add(squarePanels[i][j]);
         }
 
         container.add(gridPanel, BorderLayout.CENTER);
