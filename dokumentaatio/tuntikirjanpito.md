@@ -8,3 +8,4 @@ Päivä | Tunnit | Kuvaus
 31.01.2017 | 8h | Ohjelmointi, alusta aloittaminen
 01.02.2017 | 5h | Rakenteen suunnittelu, ohjelmointi, checkstyle korjaukset
 03.02.2017 | 4.5h | Testien kirjoittaminen, luokkakaavion päivitys
+09.02.2017 | 7h | Graafisen käyttöliittymän suunnittelu ja ohjelmoinnin aloitus
