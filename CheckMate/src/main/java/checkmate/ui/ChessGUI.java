@@ -29,7 +29,7 @@ public class ChessGUI implements Runnable {
     private final JPanel[][] squarePanels;
     private JPanel gridPanel;
     private final ArrayList<Square> squares;
-    private HashMap<Piece, String> pieces;
+    private final HashMap<Piece, String> pieces;
 
     public ChessGUI() {
         this.chess = new ChessGame();
@@ -93,4 +93,33 @@ public class ChessGUI implements Runnable {
         }
         return pieceIcons;
     }
+
+    public ChessGame getChess() {
+        return chess;
+    }
+
+    public JFrame getFrame() {
+        return frame;
+    }
+
+    public Dimension getSize() {
+        return size;
+    }
+
+    public JPanel[][] getSquarePanels() {
+        return squarePanels;
+    }
+
+    public JPanel getGridPanel() {
+        return gridPanel;
+    }
+
+    public ArrayList<Square> getSquares() {
+        return squares;
+    }
+
+    public HashMap<Piece, String> getPieces() {
+        return pieces;
+    }
+
 }
