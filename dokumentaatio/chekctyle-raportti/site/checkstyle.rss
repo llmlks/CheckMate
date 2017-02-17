@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2017</copyright>
     <item>
-      <title>File: 15,
-             Errors: 40,
+      <title>File: 17,
+             Errors: 0,
              Warnings: 0,
              Infos: 0
       </title>
@@ -55,7 +55,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  40
+                  0
                 </td>
               </tr>
                           <tr>
@@ -214,6 +214,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#checkmate.ui.BoardPanel.java">checkmate/ui/BoardPanel.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#checkmate.logic.pieces.Piece.java">checkmate/logic/pieces/Piece.java</a>
                 </td>
                 <td>
@@ -229,6 +243,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#checkmate.logic.pieces.Knight.java">checkmate/logic/pieces/Knight.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#checkmate.logic.game.PiecesBetween.java">checkmate/logic/game/PiecesBetween.java</a>
                 </td>
                 <td>
                   0

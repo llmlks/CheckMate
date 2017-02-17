@@ -25,7 +25,6 @@ public class ValidatorTest {
     @Before
     public void setUp() {
         game = new ChessGame();
-        game.start();
         val = game.getValidator();
     }
     
@@ -54,12 +53,12 @@ public class ValidatorTest {
     
     @Test
     public void testSetOccupiedSquares() {
-        assertTrue(val.getOccupiedSquares().size() == 32);
+        assertEquals(val.getOccupiedSquares().size(), 32);
     }
 
     @Test
     public void testIsValidMove() {
-        assertTrue(val.isValidMove(new Pawn(new Square(2, 2), "b"), new Square(2, 4)));
+        assertTrue(val.isValidMove(new Pawn(new Square(5, 2), "b"), new Square(5, 3)));
     }
 
     @Test
@@ -115,5 +114,9 @@ public class ValidatorTest {
     public void testHasValidMoves2() {
         assertTrue(val.hasValidMoves(game.getPlayers()[1]));
     }
-
+    
+    @Test
+    public void testGameNotEnded() {
+        assertTrue(val.gameNotEnded(game.getPlayers()));
+    }
 }

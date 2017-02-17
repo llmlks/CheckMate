@@ -11,4 +11,8 @@
 * nappulan siirto
   * onnistuu, jos valittu siirto sääntöjen mukainen
 
-![luokkakaavio](/dokumentaatio/checkmate_luokat.png)
+![luokkakaavio](/dokumentaatio/cm_classes.png)
+
+![sekvenssikaavio, shakkipelin luonti](/dokumentaatio/cm_sequential1.png)
+
+![sekvenssikaavio, siirron validointi](/dokumentaatio/cm_sequential2.png)

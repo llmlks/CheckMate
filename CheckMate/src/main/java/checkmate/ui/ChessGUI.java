@@ -1,16 +1,13 @@
 package checkmate.ui;
 
 import checkmate.logic.game.ChessGame;
-import checkmate.logic.game.Square;
-import checkmate.logic.pieces.Piece;
 import java.awt.BorderLayout;
-import java.awt.Container;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.util.ArrayList;
-import java.util.HashMap;
-import javax.swing.ImageIcon;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,106 +18,76 @@ import javax.swing.WindowConstants;
  *
  * @author llmlks
  */
-public class ChessGUI implements Runnable {
+public class ChessGUI extends JPanel {
 
-    private final ChessGame chess;
-    private JFrame frame;
-    private final Dimension size;
-    private static final int BOARD = 8;
-    private final JPanel[][] squarePanels;
-    private JPanel gridPanel;
-    private final ArrayList<Square> squares;
-    private final HashMap<Piece, String> pieces;
+    private final BoardPanel board;
+    private ChessGame chess;
 
     public ChessGUI() {
         this.chess = new ChessGame();
-        chess.start();
-        this.squares = chess.getBoard().getSquares();
-        this.size = new Dimension(600, 600);
-        this.pieces = initPieces();
-        squarePanels = new JPanel[8][8];
+        
+        JButton newGame = new JButton("Start a new Game");
+        newGame.addActionListener(new NewGame());
+        
+        this.board = new BoardPanel(this.chess);
+        this.board.setSize(600, 600);
+        this.board.setLayout(new GridLayout(8, 8));
+        this.board.createComponents();
+        this.board.addMouseListener(board);
+        
+        JPanel menuPanel = new JPanel();
+        menuPanel.setLayout(new BorderLayout());
+        menuPanel.setPreferredSize(new Dimension(200, 650));
+        menuPanel.setBackground(Color.white);
+        menuPanel.add(newGame, BorderLayout.NORTH);
+
+        JPanel topPanel = new JPanel();
+        topPanel.setLayout(new GridLayout(1, 11));
+        topPanel.setPreferredSize(new Dimension(600, 50));
+        topPanel.setBounds(50, 0, 50, 650);
+        topPanel.setBackground(Color.white);
+        String abc = "ABCDEFGH";
+        for (int i = 0; i < 11; i++) {
+            JLabel file = new JLabel();
+            if (i >= 1 && i < 9) {
+                file.setText("" + abc.charAt(i - 1));
+            }
+            topPanel.add(file);
+        }
+
+        JPanel westPanel = new JPanel();
+        westPanel.setLayout(new GridLayout(8, 1));
+        westPanel.setPreferredSize(new Dimension(50, 600));
+        westPanel.setBackground(Color.white);
+        for (int i = 1; i <= 8; i++) {
+            JLabel file = new JLabel();
+            file.setText("    " + i);
+            westPanel.add(file);
+        }        
+        
+        this.setPreferredSize(new Dimension(850, 650));
+        this.setLayout(new BorderLayout());
+        this.add(this.board, BorderLayout.CENTER);
+        this.add(menuPanel, BorderLayout.EAST);
+        this.add(topPanel, BorderLayout.NORTH);
+        this.add(westPanel, BorderLayout.WEST);
+        
     }
 
     public static void main(String[] args) {
-        javax.swing.SwingUtilities.invokeLater(new ChessGUI());
-    }
-
-    @Override
-    public void run() {
-
-        frame = new JFrame("CheckMate");
+        JFrame frame = new JFrame("CheckMate");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-        frame.setPreferredSize(size);
-
-        createComponents(frame.getContentPane());
-    }
-
-    private void createComponents(Container container) {
-
-        container.setLayout(new BorderLayout());
-
-        gridPanel = new JPanel();
-        GridLayout board = new GridLayout(BOARD, BOARD);
-
-        gridPanel.setLayout(board);
-
-        for (Square square : this.chess.getBoard().getSquares()) {
-            int i = square.getX() - 1;
-            int j = square.getY() - 1;
-            squarePanels[i][j] = new JPanel();
-            squarePanels[i][j].setBackground(new Color(115, 77, 38));
-            if ((i + j) % 2 == 0) {
-                squarePanels[i][j].setBackground(new Color(230, 204, 179));
-            }
-            if (square.isOccupied()) {
-                JLabel label = new JLabel();
-                label.setIcon(new ImageIcon(pieces.get(square.getPiece())));
-                squarePanels[i][j].add(label);
-            }
-            gridPanel.add(squarePanels[i][j]);
-        }
-
-        container.add(gridPanel, BorderLayout.CENTER);
+        frame.setContentPane(new ChessGUI());
         frame.pack();
         frame.setVisible(true);
+        frame.setResizable(false);
     }
+    
+    public class NewGame implements ActionListener  {
 
-    private HashMap<Piece, String> initPieces() {
-        HashMap<Piece, String> pieceIcons = new HashMap<>();
-        for (Piece piece : this.chess.getBoard().getPieces()) {
-            String icon = "icons/" + piece.getType() + "_" + piece.getColour();
-            pieceIcons.put(piece, icon);
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            chess.initGame();
         }
-        return pieceIcons;
     }
-
-    public ChessGame getChess() {
-        return chess;
-    }
-
-    public JFrame getFrame() {
-        return frame;
-    }
-
-    public Dimension getSize() {
-        return size;
-    }
-
-    public JPanel[][] getSquarePanels() {
-        return squarePanels;
-    }
-
-    public JPanel getGridPanel() {
-        return gridPanel;
-    }
-
-    public ArrayList<Square> getSquares() {
-        return squares;
-    }
-
-    public HashMap<Piece, String> getPieces() {
-        return pieces;
-    }
-
 }

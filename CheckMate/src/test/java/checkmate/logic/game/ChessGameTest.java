@@ -26,11 +26,6 @@ public class ChessGameTest {
     }
 
     @Test
-    public void constructorDoesntGeneratePlayers() {
-        assertTrue(game.getPlayers() == null);
-    }
-
-    @Test
     public void setBoardWorks() {
         ChessBoard board = new ChessBoard();
         game.setBoard(board);
@@ -39,37 +34,32 @@ public class ChessGameTest {
 
     @Test
     public void startGeneratesPlayers() {
-        game.start();
+        game.initGame();
         assertTrue(game.getPlayers().length == 2);
     }
 
     @Test
     public void startCallsInitSquares() {
-        game.start();
         assertTrue(game.getBoard().getSquares().size() == 64);
     }
 
     @Test
     public void startCallsInitPieces() {
-        game.start();
         assertTrue(game.getBoard().getPieces().size() == 32);
     }
     
     @Test
     public void startCallsSetOccupiedSquares() {
-        game.start();
         assertEquals(game.getValidator().getOccupiedSquares().size(), 32);
     }
     
     @Test
     public void startAddsPiecesToPlayers() {
-        game.start();
         assertEquals(game.getPlayers()[0].getPieces().size(), 16);
     }
     
     @Test
     public void startAddsRightPiecesToRightPlayers() {
-        game.start();
         Player player = game.getPlayers()[0];
         String colour = player.getColour();
         assertTrue(player.getPieces().get(0).getColour().equals(colour));
@@ -77,7 +67,6 @@ public class ChessGameTest {
 
     @Test
     public void startAddsRightPiecesToRightPlayers2() {
-        game.start();
         Player player = game.getPlayers()[1];
         String colour = player.getColour();
         assertTrue(player.getPieces().get(0).getColour().equals(colour));

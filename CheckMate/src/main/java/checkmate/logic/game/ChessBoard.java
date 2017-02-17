@@ -38,6 +38,7 @@ public class ChessBoard {
     }
 
     /**
+     * Returns private variable squares.
      *
      * @return ArrayList for squares
      */
@@ -46,6 +47,7 @@ public class ChessBoard {
     }
 
     /**
+     * Returns private variable pieces.
      *
      * @return ArrayList pieces
      */
@@ -86,7 +88,7 @@ public class ChessBoard {
                 colour = "w";
             }
             for (int i = 1; i <= size; i++) {
-                pieces.add(new Pawn(new Square(i, row), colour));
+                pieces.add(new Pawn(new Square(row, i), colour));
             }
         }
     }
@@ -106,19 +108,19 @@ public class ChessBoard {
             for (int j = 0; j < size; j++) {
                 switch (initials[j]) {
                     case "rook":
-                        pieces.add(new Rook(new Square(j, row), colour));
+                        pieces.add(new Rook(new Square(row, j + 1), colour));
                         break;
                     case "knight":
-                        pieces.add(new Knight(new Square(j, row), colour));
+                        pieces.add(new Knight(new Square(row, j + 1), colour));
                         break;
                     case "bishop":
-                        pieces.add(new Bishop(new Square(j, row), colour));
+                        pieces.add(new Bishop(new Square(row, j + 1), colour));
                         break;
                     case "queen":
-                        pieces.add(new Queen(new Square(j, row), colour));
+                        pieces.add(new Queen(new Square(row, j + 1), colour));
                         break;
                     default:
-                        pieces.add(new King(new Square(j, row), colour));
+                        pieces.add(new King(new Square(row, j + 1), colour));
                         break;
                 }
             }

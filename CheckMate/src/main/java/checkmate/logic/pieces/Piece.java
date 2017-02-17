@@ -68,6 +68,7 @@ public abstract class Piece {
     }
 
     /**
+     * Returns private variable square.
      *
      * @return this.square Square
      */
@@ -76,6 +77,7 @@ public abstract class Piece {
     }
 
     /**
+     * Returns private variable colour.
      *
      * @return this.colour String
      */
@@ -84,6 +86,7 @@ public abstract class Piece {
     }
 
     /**
+     * Returns private variable type.
      *
      * @return this.type String
      */
@@ -101,6 +104,8 @@ public abstract class Piece {
     }
 
     /**
+     * Returns private variable available.
+     *
      * @return boolean
      */
     public final boolean getAvailable() {

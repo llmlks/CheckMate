@@ -39,6 +39,8 @@ public class Pawn extends Piece {
     }
 
     /**
+     * Returns private variable direction.
+     *
      * @return this.direction int
      */
     public final int getDirection() {
@@ -46,6 +48,8 @@ public class Pawn extends Piece {
     }
 
     /**
+     * Returns private variable initSquare.
+     *
      * @return this.initSquare Square
      */
     public final Square getInitSquare() {

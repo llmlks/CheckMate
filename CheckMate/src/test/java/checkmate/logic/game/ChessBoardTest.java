@@ -68,7 +68,7 @@ public class ChessBoardTest {
     public void testInitPawns() {
         board.initPawns();
         Piece pawn = board.getPieces().get(0);
-        assertTrue((pawn.getColour().equals("w") && pawn.getSquare().getY() == 2) || (pawn.getColour().equals("b") && pawn.getSquare().getY() == 7));
+        assertTrue((pawn.getColour().equals("w") && pawn.getSquare().getX() == 2) || (pawn.getColour().equals("b") && pawn.getSquare().getY() == 7));
     }
     
     @Test

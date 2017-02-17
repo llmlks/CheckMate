@@ -48,6 +48,8 @@ public class Square {
     }
 
     /**
+     * Returns private variable size.
+     *
      * @return s int
      */
     public final int getSize() {
@@ -55,6 +57,8 @@ public class Square {
     }
 
     /**
+     * Returns private variable x.
+     *
      * @return this.x int
      */
     public final int getX() {
@@ -62,6 +66,8 @@ public class Square {
     }
 
     /**
+     * Returns private variable y.
+     *
      * @return this.y int
      */
     public final int getY() {
@@ -69,6 +75,8 @@ public class Square {
     }
 
     /**
+     * Returns private variable piece.
+     *
      * @return this.piece Piece
      */
     public final Piece getPiece() {

@@ -9,3 +9,6 @@ Päivä | Tunnit | Kuvaus
 01.02.2017 | 5h | Rakenteen suunnittelu, ohjelmointi, checkstyle korjaukset
 03.02.2017 | 4.5h | Testien kirjoittaminen, luokkakaavion päivitys
 09.02.2017 | 7h | Graafisen käyttöliittymän suunnittelu ja ohjelmoinnin aloitus
+15.02.2017 | 4h | Swingin opettelua, grafiikoiden etsintä
+16.02.2017 | 8h | Lisää opettelua, gui-luokat uusiksi
+17.02.2017 | 7h | Dokumentaation ajantasaistus, gui-suunnittelua, ohjelmointia
