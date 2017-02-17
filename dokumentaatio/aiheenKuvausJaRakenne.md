@@ -12,12 +12,15 @@
   * onnistuu, jos valittu siirto sääntöjen mukainen
 
 **Luokkakaavio:**
+
 ![luokkakaavio](/dokumentaatio/cm_classes.png)
+
 
 
 **Sekvenssikaavio, kuvaa pelin initialisoinnin:**
 
 ![sekvenssikaavio, shakkipelin luonti](/dokumentaatio/cm_sequential1.png)
+
 
 
 **Sekvenssikaavio, kuvaa valitun nappulan mahdollisten siirtojen etsimisen:**
