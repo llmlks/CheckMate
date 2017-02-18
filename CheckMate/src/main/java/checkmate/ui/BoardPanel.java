@@ -39,7 +39,6 @@ public class BoardPanel extends JPanel implements MouseListener {
     public BoardPanel(ChessGame game) {
         this.chess = game;
         this.pieces = initPieces();
-        possibleMoves.add(new Square(3, 2));
     }
 
     @Override
@@ -51,7 +50,6 @@ public class BoardPanel extends JPanel implements MouseListener {
             chosen.move(clicked);
             chosen = null;
             possibleMoves.removeAll(possibleMoves);
-            repaint();
         } else if (clicked.isOccupied()) {
             this.chosen = clicked.getPiece();
 

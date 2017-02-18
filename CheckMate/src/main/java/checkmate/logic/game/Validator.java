@@ -19,7 +19,7 @@ public class Validator {
     /**
      * Private variable to keep track of squares that are occupied.
      */
-    private final ArrayList<Square> occupiedSquares;
+    private ArrayList<Square> occupiedSquares;
 
     /**
      * Assigns ChessBoard to board and initialises occupiedSquares.
@@ -28,7 +28,7 @@ public class Validator {
      */
     public Validator(final ChessBoard chessboard) {
         this.board = chessboard;
-        occupiedSquares = new ArrayList<>();
+        occupiedSquares = this.setOccupiedSquares();
     }
 
     /**
@@ -52,10 +52,14 @@ public class Validator {
     /**
      * Adds all occupied squares to this.occupiedSquares.
      */
-    public final void setOccupiedSquares() {
-        for (Piece piece : this.board.getPieces()) {
-            occupiedSquares.add(piece.getSquare());
+    public final ArrayList<Square> setOccupiedSquares() {
+        ArrayList<Square> occupied = new ArrayList<>();
+        for (Square s : this.board.getSquares()) {
+            if (s.isOccupied()) {
+                occupied.add(s);
+            }
         }
+        return occupied;
     }
 
     /**
@@ -66,6 +70,7 @@ public class Validator {
      * @return boolean
      */
     public final boolean isValidMove(final Piece p, final Square to) {
+        this.occupiedSquares = this.setOccupiedSquares();
         if (!p.isValidMove(to) || p.getSquare().equals(to)) {
             return false;
         }

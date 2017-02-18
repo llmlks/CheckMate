@@ -70,8 +70,8 @@ public class Pawn extends Piece {
             s.getPiece().setAvailable(false);
             return true;
         }
-        return s.isSameFile(square) && (square.getY() - s.getY()
-                == direction * 1 || (square.equals(initSquare) && square.getY()
+        return s.isSameFile(square) && ((square.getY() - s.getY()
+                == direction * 1 && !s.isOccupied()) || (square.equals(initSquare) && square.getY()
                 - s.getY() == direction * 2));
     }
 

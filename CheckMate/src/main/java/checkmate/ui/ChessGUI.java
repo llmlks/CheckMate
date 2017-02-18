@@ -27,7 +27,7 @@ public class ChessGUI extends JPanel {
         this.chess = new ChessGame();
         
         JButton newGame = new JButton("Start a new Game");
-        newGame.addActionListener(new NewGame());
+//        newGame.addActionListener(new NewGame());
         
         this.board = new BoardPanel(this.chess);
         this.board.setSize(600, 600);

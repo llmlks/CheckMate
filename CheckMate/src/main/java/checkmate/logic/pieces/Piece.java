@@ -63,6 +63,7 @@ public abstract class Piece {
      * @param s Square
      */
     public final void move(final Square s) {
+        this.square.setPiece(null);
         s.setPiece(this);
         this.square = s;
     }
@@ -102,6 +103,16 @@ public abstract class Piece {
     public final void setType(final String t) {
         this.type = t;
     }
+    
+    /**
+     * Sets Square to s.
+     * 
+     * @param s Square
+     */
+    public final void setSquare(Square s) {
+        this.square = s;
+    }
+    
 
     /**
      * Returns private variable available.

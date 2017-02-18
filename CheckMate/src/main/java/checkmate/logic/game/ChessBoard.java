@@ -135,6 +135,7 @@ public class ChessBoard {
             for (Square s : this.squares) {
                 if (p.getSquare().equals(s)) {
                     s.setPiece(p);
+                    p.setSquare(s);
                 }
             }
         }
