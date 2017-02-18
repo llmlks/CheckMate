@@ -75,10 +75,13 @@ public class Validator {
         if (p.getType().equals("pawn")) {
             return true;
         }
-        if (occupiedSquares.contains(to)
-                && !to.getPiece().getColour().equals(p.getColour())) {
-            to.getPiece().setAvailable(false);
-            return true;
+        if (occupiedSquares.contains(to)) {
+            if (!to.getPiece().getColour().equals(p.getColour())) {
+                to.getPiece().setAvailable(false);
+                return true;
+            } else {
+                return false;
+            }
         }
         return true;
     }

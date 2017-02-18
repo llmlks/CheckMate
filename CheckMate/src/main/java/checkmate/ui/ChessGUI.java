@@ -32,7 +32,6 @@ public class ChessGUI extends JPanel {
         this.board = new BoardPanel(this.chess);
         this.board.setSize(600, 600);
         this.board.setLayout(new GridLayout(8, 8));
-        this.board.createComponents();
         this.board.addMouseListener(board);
         
         JPanel menuPanel = new JPanel();
@@ -46,11 +45,10 @@ public class ChessGUI extends JPanel {
         topPanel.setPreferredSize(new Dimension(600, 50));
         topPanel.setBounds(50, 0, 50, 650);
         topPanel.setBackground(Color.white);
-        String abc = "ABCDEFGH";
         for (int i = 0; i < 11; i++) {
             JLabel file = new JLabel();
             if (i >= 1 && i < 9) {
-                file.setText("" + abc.charAt(i - 1));
+                file.setText("" + i);
             }
             topPanel.add(file);
         }
@@ -59,9 +57,10 @@ public class ChessGUI extends JPanel {
         westPanel.setLayout(new GridLayout(8, 1));
         westPanel.setPreferredSize(new Dimension(50, 600));
         westPanel.setBackground(Color.white);
-        for (int i = 1; i <= 8; i++) {
+        String abc = "ABCDEFGH";
+        for (int i = 0; i < 8; i++) {
             JLabel file = new JLabel();
-            file.setText("    " + i);
+            file.setText("    " + abc.charAt(i));
             westPanel.add(file);
         }        
         
@@ -87,7 +86,9 @@ public class ChessGUI extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            chess = new ChessGame();
             chess.initGame();
+            board.repaint();
         }
     }
 }

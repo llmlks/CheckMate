@@ -83,12 +83,12 @@ public class ChessBoard {
     public final void initPawns() {
         int[] rows = new int[]{2, size - 1};
         for (int row : rows) {
-            String colour = "b";
+            String colour = "w";
             if (row == 2) {
-                colour = "w";
+                colour = "b";
             }
             for (int i = 1; i <= size; i++) {
-                pieces.add(new Pawn(new Square(row, i), colour));
+                pieces.add(new Pawn(new Square(i, row), colour));
             }
         }
     }
@@ -101,26 +101,26 @@ public class ChessBoard {
         String[] initials = new String[]{"rook", "knight", "bishop", "queen",
             "king", "bishop", "knight", "rook"};
         for (int row : rows) {
-            String colour = "b";
+            String colour = "w";
             if (row == 1) {
-                colour = "w";
+                colour = "b";
             }
             for (int j = 0; j < size; j++) {
                 switch (initials[j]) {
                     case "rook":
-                        pieces.add(new Rook(new Square(row, j + 1), colour));
+                        pieces.add(new Rook(new Square(j + 1, row), colour));
                         break;
                     case "knight":
-                        pieces.add(new Knight(new Square(row, j + 1), colour));
+                        pieces.add(new Knight(new Square(j + 1, row), colour));
                         break;
                     case "bishop":
-                        pieces.add(new Bishop(new Square(row, j + 1), colour));
+                        pieces.add(new Bishop(new Square(j + 1, row), colour));
                         break;
                     case "queen":
-                        pieces.add(new Queen(new Square(row, j + 1), colour));
+                        pieces.add(new Queen(new Square(j + 1, row), colour));
                         break;
                     default:
-                        pieces.add(new King(new Square(row, j + 1), colour));
+                        pieces.add(new King(new Square(j + 1, row), colour));
                         break;
                 }
             }
