@@ -85,6 +85,7 @@ public class BoardPanel extends JPanel implements MouseListener, ActionListener 
                 }
                 chosen = null;
                 possibleMoves.removeAll(possibleMoves);
+                ended = chess.getEnded();
             } else if (clicked.isOccupied()) {
                 this.chosen = clicked.getPiece();
 
@@ -179,8 +180,8 @@ public class BoardPanel extends JPanel implements MouseListener, ActionListener 
                 winner = "Black";
             }
             g2.drawString(winner + " player wins!", 160, 200);
-            g2.setFont(new Font("Ubuntu", Font.PLAIN, 20));
-            g2.drawString("Press 'Start a new game' to play again", 160, 275);
+            g2.setFont(new Font("Ubuntu", Font.PLAIN, 18));
+            g2.drawString("Press 'New game' to play again", 160, 275);
         }
         if (chosen != null) {
             g2.setColor(Color.red);

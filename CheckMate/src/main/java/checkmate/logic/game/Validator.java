@@ -51,7 +51,7 @@ public class Validator {
 
     /**
      * Checks which of the squares are occupied.
-     * 
+     *
      * @return ArrayList
      */
     public final ArrayList<Square> setOccupiedSquares() {
@@ -115,7 +115,7 @@ public class Validator {
         for (Piece piece : board.getPieces()) {
             if (piece.getAvailable()
                     && !piece.getColour().equals(p.getColour())) {
-                if (isValidMove(piece, p.getSquare())) {
+                if (piece.isValidMove(p.getSquare())) {
                     return true;
                 }
             }
@@ -184,12 +184,14 @@ public class Validator {
     }
 
     /**
-     * Checks whether both players have valid moves.
+     * Checks whether both players have valid moves and haven't lost 
+     * their kings.
      *
      * @param players Player[]
      * @return boolean
      */
     public final boolean gameEnded(Player[] players) {
-        return !(hasValidMoves(players[0]) && hasValidMoves(players[1]));
+        return !(hasValidMoves(players[0]) && hasValidMoves(players[1])
+                && players[0].hasKing() && players[1].hasKing());
     }
 }
