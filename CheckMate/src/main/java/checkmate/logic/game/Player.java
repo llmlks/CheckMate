@@ -57,4 +57,13 @@ public class Player {
     public final void addPiece(final Piece p) {
         this.pieces.add(p);
     }
+
+    /**
+     * Removes a piece from players ArrayList pieces.
+     *
+     * @param p Piece
+     */
+    public final void removePiece(final Piece p) {
+        this.pieces.remove(p);
+    }
 }

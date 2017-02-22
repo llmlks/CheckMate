@@ -68,13 +68,13 @@ public class ChessBoardTest {
     public void testInitPawns() {
         board.initPawns();
         Piece pawn = board.getPieces().get(0);
-        assertTrue((pawn.getColour().equals("w") && pawn.getSquare().getX() == 2) || (pawn.getColour().equals("b") && pawn.getSquare().getY() == 7));
+        assertTrue((pawn.getColour().equals("w") && pawn.getSquare().getY() == 7) || (pawn.getColour().equals("b") && pawn.getSquare().getY() == 2));
     }
     
     @Test
     public void testInitPiecesExclPawns() {
         board.initPiecesExclPawns();
         Piece piece = board.getPieces().get(0);
-        assertTrue((piece.getColour().equals("w") && piece.getSquare().getY() == 1) || (piece.getColour().equals("b") && piece.getSquare().getY() == 8));
+        assertTrue((piece.getColour().equals("w") && piece.getSquare().getY() == 8) || (piece.getColour().equals("b") && piece.getSquare().getY() == 1));
     }
 }

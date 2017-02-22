@@ -15,7 +15,7 @@ public class Pawn extends Piece {
      */
     private final Square initSquare;
     /**
-     * Private variable for integer direction (different for balcks and whites).
+     * Private variable for integer direction (different for blacks and whites).
      */
     private final int direction;
 
@@ -65,14 +65,15 @@ public class Pawn extends Piece {
     @Override
     public final boolean isValidMove(final Square s) {
         Square square = this.getSquare();
-        if (s.isOccupied() && s.isNextTo(square) && s.isDiagonal(square)
+        if (s.isOccupied() && s.isNextTo(square) && s.isDiagonal(square) 
+                && s.getY() == super.getSquare().getY() + direction * (-1)
                 && !s.getPiece().getColour().equals(this.getColour())) {
             s.getPiece().setAvailable(false);
             return true;
         }
         return s.isSameFile(square) && ((square.getY() - s.getY()
-                == direction * 1 && !s.isOccupied()) || (square.equals(initSquare) && square.getY()
-                - s.getY() == direction * 2));
+                == direction * 1) || (square.equals(initSquare) && square.getY()
+                - s.getY() == direction * 2))  && !s.isOccupied();
     }
 
     @Override

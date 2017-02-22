@@ -1,5 +1,6 @@
 package checkmate.logic.game;
 
+import checkmate.logic.pieces.Pawn;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -71,4 +72,30 @@ public class ChessGameTest {
         String colour = player.getColour();
         assertTrue(player.getPieces().get(0).getColour().equals(colour));
     }    
+    
+    @Test
+    public void testFindSquare() {
+        assertEquals(null, game.findSquareByCoordinates(13, 2));
+    }
+    
+    @Test
+    public void testFindSquare2() {
+        assertEquals(new Square(1, 2), game.findSquareByCoordinates(1, 2));
+    }
+    
+    @Test
+    public void testGetEnded() {
+        assertFalse(game.getEnded());
+    }
+    
+    @Test
+    public void testGetTurn() {
+        assertEquals(game.getTurn(), "w");
+    }
+    
+    @Test
+    public void testTurn() {
+        game.turn(new Pawn(new Square(1, 2), "w"), new Square(1, 3));
+        assertEquals(game.getTurn(), "b");
+    }
 }

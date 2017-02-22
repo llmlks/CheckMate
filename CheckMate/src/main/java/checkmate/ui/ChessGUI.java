@@ -5,8 +5,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -25,20 +23,20 @@ public class ChessGUI extends JPanel {
 
     public ChessGUI() {
         this.chess = new ChessGame();
-        
-        JButton newGame = new JButton("Start a new Game");
-//        newGame.addActionListener(new NewGame());
-        
+               
         this.board = new BoardPanel(this.chess);
         this.board.setSize(600, 600);
         this.board.setLayout(new GridLayout(8, 8));
         this.board.addMouseListener(board);
+       
+        JButton newGame = new JButton("New Game");
+        newGame.addActionListener(this.board);    
+        newGame.setSize(new Dimension(150, 100));
         
         JPanel menuPanel = new JPanel();
-        menuPanel.setLayout(new BorderLayout());
         menuPanel.setPreferredSize(new Dimension(200, 650));
         menuPanel.setBackground(Color.white);
-        menuPanel.add(newGame, BorderLayout.NORTH);
+        menuPanel.add(newGame);
 
         JPanel topPanel = new JPanel();
         topPanel.setLayout(new GridLayout(1, 11));
@@ -80,15 +78,5 @@ public class ChessGUI extends JPanel {
         frame.pack();
         frame.setVisible(true);
         frame.setResizable(false);
-    }
-    
-    public class NewGame implements ActionListener  {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            chess = new ChessGame();
-            chess.initGame();
-            board.repaint();
-        }
     }
 }

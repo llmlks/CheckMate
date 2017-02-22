@@ -133,11 +133,46 @@ public class ChessBoard {
     public final void setPiecesToSquares() {
         for (Piece p : this.pieces) {
             for (Square s : this.squares) {
-                if (p.getSquare().equals(s)) {
+                if (p.getSquare().equals(s) && p.getAvailable()) {
                     s.setPiece(p);
                     p.setSquare(s);
                 }
             }
         }
+    }
+
+    /**
+     * Promotes pawn to another piece of the player's choice.
+     *
+     * @param p Pawn to be promoted
+     * @param promo Piece to be promoted to
+     * @param player Player whose piece is promoted
+     */
+    public final void promote(Piece p, String promo, Player player) {
+        switch (promo) {
+            case "rook":
+                Rook r = new Rook(p.getSquare(), p.getColour());
+                player.addPiece(r);
+                this.pieces.add(r);
+                break;
+            case "knight":
+                Knight k = new Knight(p.getSquare(), p.getColour());
+                player.addPiece(k);
+                this.pieces.add(k);
+                break;
+            case "bishop":
+                Bishop b = new Bishop(p.getSquare(), p.getColour());
+                player.addPiece(b);
+                this.pieces.add(b);
+                break;
+            default:
+                Queen q = new Queen(p.getSquare(), p.getColour());
+                player.addPiece(q);
+                this.pieces.add(q);
+                break;
+        }
+        player.removePiece(p);
+        this.pieces.remove(p);
+        setPiecesToSquares();
     }
 }

@@ -50,7 +50,9 @@ public class Validator {
     }
 
     /**
-     * Adds all occupied squares to this.occupiedSquares.
+     * Checks which of the squares are occupied.
+     * 
+     * @return ArrayList
      */
     public final ArrayList<Square> setOccupiedSquares() {
         ArrayList<Square> occupied = new ArrayList<>();
@@ -111,7 +113,8 @@ public class Validator {
      */
     public final boolean canBeCaptured(final Piece p) {
         for (Piece piece : board.getPieces()) {
-            if (!piece.getColour().equals(p.getColour())) {
+            if (piece.getAvailable()
+                    && !piece.getColour().equals(p.getColour())) {
                 if (isValidMove(piece, p.getSquare())) {
                     return true;
                 }
@@ -157,7 +160,7 @@ public class Validator {
      */
     public final boolean hasValidMoves(final Player player) {
         for (Piece piece : player.getPieces()) {
-            if (!validMoves(piece).isEmpty()) {
+            if (!validMoves(piece).isEmpty() && piece.getAvailable()) {
                 return true;
             }
         }
@@ -186,7 +189,7 @@ public class Validator {
      * @param players Player[]
      * @return boolean
      */
-    public final boolean gameNotEnded(Player[] players) {
-        return hasValidMoves(players[0]) && hasValidMoves(players[1]);
+    public final boolean gameEnded(Player[] players) {
+        return !(hasValidMoves(players[0]) && hasValidMoves(players[1]));
     }
 }
