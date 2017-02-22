@@ -20,13 +20,17 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 /**
@@ -165,8 +169,13 @@ public class BoardPanel extends JPanel implements MouseListener, ActionListener 
                 }
                 if (s.isOccupied()) {
                     Piece p = s.getPiece();
-                    Image img = Toolkit.getDefaultToolkit().getImage("icons/" + p.getType() + "_" + p.getColour() + ".png");
-                    g2.drawImage(img, i * 75 + 5, j * 75 + 5, this);
+                    String icon = "/icons/" + p.getType() + "_" + p.getColour() + ".png";
+                    try {
+                        InputStream stream = getClass().getResourceAsStream(icon);
+                        BufferedImage img = ImageIO.read(stream);
+                        g2.drawImage(img, i * 75 + 5, j * 75 + 5, this);
+                    } catch (IOException ex) {
+                    }
                 }
             }
         }
@@ -194,8 +203,13 @@ public class BoardPanel extends JPanel implements MouseListener, ActionListener 
             g2.fillRect(150, 150, 300, 150);
             String[] types = new String[]{"rook", "knight", "bishop", "queen"};
             for (int i = 0; i < 4; i++) {
-                Image img = Toolkit.getDefaultToolkit().getImage("icons/" + types[i] + "_" + promotion.getColour() + ".png");
-                g2.drawImage(img, i * 75 + 155, 230, this);
+                try {
+                    String icon = "/icons/" + types[i] + "_" + promotion.getColour() + ".png";
+                    BufferedImage img = ImageIO.read(getClass().getResourceAsStream(icon));
+                    g2.drawImage(img, i * 75 + 155, 230, this);
+                } catch (IOException ex) {
+                    Logger.getLogger(BoardPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
     }

@@ -67,11 +67,6 @@ public class ValidatorTest {
     }
 
     @Test
-    public void testCanBeCaptured() {
-        assertFalse(val.canBeCaptured(new Pawn(new Square(5, 2), "b")));
-    }
-
-    @Test
     public void testPiecesBetween() {
         assertTrue(val.piecesBetween(new Square(1, 1), new Square(1, 5)));
     }
@@ -119,21 +114,6 @@ public class ValidatorTest {
     @Test
     public void testPiecesBetweenDiagonally3() {
         assertFalse(val.piecesBetween(new Square(3, 3), new Square(5, 5)));
-    }
-    
-    @Test
-    public void testCanBeCaptured2() {
-        assertFalse(val.canBeCaptured(game.getPlayers()[0].getPieces().get(0)));
-    }
-
-    @Test
-    public void testIsChecked() {
-        assertFalse(val.isChecked("b"));
-    }
-
-    @Test
-    public void testIsChecked2() {
-        assertFalse(val.isChecked("w"));
     }
 
     @Test

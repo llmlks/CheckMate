@@ -106,40 +106,6 @@ public class Validator {
     }
 
     /**
-     * Checks whether piece given can be captured by any of opponent's pieces.
-     *
-     * @param p Piece
-     * @return boolean
-     */
-    public final boolean canBeCaptured(final Piece p) {
-        for (Piece piece : board.getPieces()) {
-            if (piece.getAvailable()
-                    && !piece.getColour().equals(p.getColour())) {
-                if (piece.isValidMove(p.getSquare())) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Checks whether player's king is in check.
-     *
-     * @param colour String
-     * @return boolean
-     */
-    public final boolean isChecked(final String colour) {
-        for (Piece piece : board.getPieces()) {
-            if (piece.getColour().equals(colour)
-                    && piece.getType().equals("king")) {
-                return canBeCaptured(piece);
-            }
-        }
-        return false;
-    }
-
-    /**
      * Checks whether player can castle using a chosen rook.
      *
      * @param king King
