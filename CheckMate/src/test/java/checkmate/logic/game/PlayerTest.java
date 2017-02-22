@@ -5,6 +5,9 @@
  */
 package checkmate.logic.game;
 
+import checkmate.logic.pieces.King;
+import checkmate.logic.pieces.Pawn;
+import checkmate.logic.pieces.Piece;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -44,5 +47,39 @@ public class PlayerTest {
     public void testGetColour2() {
         Player player2 = new Player("b");
         assertTrue(player2.getColour().equals("b"));
+    }
+
+    @Test
+    public void testHasKing() {
+        assertFalse(player.hasKing());
+    }
+
+    @Test
+    public void testHasKing2() {
+        Piece p = new King(new Square(1, 1), "w");
+        player.addPiece(p);
+        assertTrue(player.hasKing());
+    }
+    
+    @Test
+    public void testHasKing3() {
+        Piece p = new Pawn(new Square(1, 1), "w");
+        player.addPiece(p);
+        assertFalse(player.hasKing());        
+    }
+
+    @Test
+    public void testAddPiece() {
+        Piece p = new King(new Square(1, 1), "w");
+        player.addPiece(p);
+        assertEquals(player.getPieces().size(), 1);
+    }
+
+    @Test
+    public void testRemovePiece() {
+        Piece p = new King(new Square(1, 1), "w");
+        player.addPiece(p);
+        player.removePiece(p);
+        assertEquals(player.getPieces().size(), 0);
     }
 }

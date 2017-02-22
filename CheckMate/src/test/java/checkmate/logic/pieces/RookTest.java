@@ -49,6 +49,13 @@ public class RookTest {
         piece.move(square2);
         assertEquals(square2, piece.getSquare());
     }
+    
+    @Test
+    public void testMove2() {
+        Square s = new Square(1, 2);
+        piece.move(s);
+        assertTrue(square.getPiece() == null);
+    }
 
     @Test
     public void testIsValidMove() {

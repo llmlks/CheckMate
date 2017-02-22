@@ -98,4 +98,11 @@ public class ChessGameTest {
         game.turn(new Pawn(new Square(1, 2), "w"), new Square(1, 3));
         assertEquals(game.getTurn(), "b");
     }
+    
+    @Test
+    public void testTurn2() {
+        Pawn p = new Pawn(new Square(1, 2), "w");
+        game.turn(p, new Square(1, 3));
+        assertEquals(p.getSquare(), new Square(1, 3));        
+    }
 }

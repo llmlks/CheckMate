@@ -5,7 +5,9 @@
  */
 package checkmate.logic.game;
 
+import checkmate.logic.pieces.King;
 import checkmate.logic.pieces.Pawn;
+import checkmate.logic.pieces.Rook;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -65,7 +67,26 @@ public class ValidatorTest {
     public void testIsValidMove2() {
         assertFalse(val.isValidMove(new Pawn(new Square(5, 2), "w"), new Square(5, 3)));
     }
-
+    
+    @Test
+    public void testIsValidMove3() {
+        Pawn p = new Pawn(new Square(1, 1), "w");
+        Pawn p2 = new Pawn(new Square(1, 2), "b");
+        assertFalse(val.isValidMove(p, p2.getSquare()));
+    }
+    
+    @Test
+    public void testIsValidMove4() {
+        Rook r = new Rook(new Square(3, 3), "w");
+        assertTrue(val.isValidMove(r, new Square(6, 3)));
+    }
+    
+    @Test
+    public void testIsValidMove5() {
+        Rook r = new Rook(new Square(3, 3), "w");
+        assertTrue(val.isValidMove(r, new Square(3, 5)));
+    }
+    
     @Test
     public void testPiecesBetween() {
         assertTrue(val.piecesBetween(new Square(1, 1), new Square(1, 5)));
@@ -118,8 +139,16 @@ public class ValidatorTest {
 
     @Test
     public void testCanCastle() {
+        assertTrue(val.canCastle(new King(new Square(1, 2), "w"), new Rook(new Square(3, 5), "w")));
     }
 
+    @Test
+    public void testCanCastle2() {
+        King k = new King(new Square(1, 2), "w");
+        k.move(new Square(2, 4));
+        assertFalse(val.canCastle(k, new Rook(new Square(3, 5), "w")));
+    }
+    
     @Test
     public void testHasValidMoves() {
         assertTrue(val.hasValidMoves(game.getPlayers()[0]));
@@ -128,6 +157,13 @@ public class ValidatorTest {
     @Test
     public void testHasValidMoves2() {
         assertTrue(val.hasValidMoves(game.getPlayers()[1]));
+    }
+    
+    @Test
+    public void testHasValidMoves3() {
+        Validator v = new Validator(new ChessBoard());
+        Player p = new Player("w");
+        assertFalse(v.hasValidMoves(p));
     }
 
     @Test

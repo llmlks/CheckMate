@@ -5,6 +5,7 @@
  */
 package checkmate.logic.game;
 
+import checkmate.logic.pieces.Pawn;
 import checkmate.logic.pieces.Piece;
 import org.junit.Before;
 import org.junit.Test;
@@ -70,11 +71,72 @@ public class ChessBoardTest {
         Piece pawn = board.getPieces().get(0);
         assertTrue((pawn.getColour().equals("w") && pawn.getSquare().getY() == 7) || (pawn.getColour().equals("b") && pawn.getSquare().getY() == 2));
     }
-    
+
     @Test
     public void testInitPiecesExclPawns() {
         board.initPiecesExclPawns();
         Piece piece = board.getPieces().get(0);
         assertTrue((piece.getColour().equals("w") && piece.getSquare().getY() == 8) || (piece.getColour().equals("b") && piece.getSquare().getY() == 1));
+    }
+
+    @Test
+    public void testSetPiecesToSquares() {
+        board.initPawns();
+        assertEquals(board.getPieces().get(0).getSquare(), new Square(1, 2));
+    }
+
+    @Test
+    public void testPromote() {
+        Pawn p = new Pawn(new Square(1, 1), "w");
+        Player pl = new Player("w");
+        pl.addPiece(p);
+        board.promote(p, "rook", pl);
+        assertFalse(pl.getPieces().contains(p));
+    }
+
+    @Test
+    public void testPromote2() {
+        Pawn p = new Pawn(new Square(1, 1), "w");
+        Player pl = new Player("w");
+        pl.addPiece(p);
+        board.promote(p, "rook", pl);
+        assertTrue(pl.getPieces().get(0).getType().equals("rook"));
+    }
+
+    @Test
+    public void testPromote3() {
+        Pawn p = new Pawn(new Square(1, 1), "w");
+        Player pl = new Player("w");
+        pl.addPiece(p);
+        board.promote(p, "rook", pl);
+        assertFalse(board.getPieces().contains(p));
+    }    
+
+    @Test
+    public void testPromote4() {
+        Pawn p = new Pawn(new Square(1, 1), "w");
+        Player pl = new Player("w");
+        pl.addPiece(p);
+        board.promote(p, "knight", pl);
+        assertTrue(pl.getPieces().get(0).getType().equals("knight"));
+    }
+
+    @Test
+    public void testPromote5() {
+        Pawn p = new Pawn(new Square(1, 1), "w");
+        Player pl = new Player("w");
+        pl.addPiece(p);
+        board.promote(p, "bishop", pl);
+        assertTrue(pl.getPieces().get(0).getType().equals("bishop"));
+    }
+
+
+    @Test
+    public void testPromote6() {
+        Pawn p = new Pawn(new Square(1, 1), "w");
+        Player pl = new Player("w");
+        pl.addPiece(p);
+        board.promote(p, "anything", pl);
+        assertTrue(pl.getPieces().get(0).getType().equals("queen"));
     }
 }
