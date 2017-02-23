@@ -11,11 +11,6 @@ import java.util.ArrayList;
 public class Rook extends Piece {
 
     /**
-     * Private variable to hold the initial square.
-     */
-    private final Square initSquare;
-
-    /**
      * Calls constructor of parent class Piece.
      *
      * @param s Square
@@ -23,7 +18,6 @@ public class Rook extends Piece {
      */
     public Rook(final Square s, final String c) {
         super(s, c);
-        this.initSquare = s;
         this.setType("rook");
     }
 
@@ -38,14 +32,4 @@ public class Rook extends Piece {
         Square square = this.getSquare();
         return s.isSameFile(square) || s.isSameRank(square);
     }
-
-    /**
-     * Returns initial square.
-     *
-     * @return Square
-     */
-    public final Square getInitSquare() {
-        return this.initSquare;
-    }
-
 }

@@ -73,7 +73,7 @@ public class Validator {
      */
     public final boolean isValidMove(final Piece p, final Square to) {
         this.occupiedSquares = this.setOccupiedSquares();
-        if (p.getType().equals("pawn") && to.getEnPassant() != null 
+        if (p.getType().equals("pawn") && to.getEnPassant() != null
                 && to.isNextTo(p.getSquare()) && to.isDiagonal(p.getSquare())) {
             return true;
         }
@@ -109,16 +109,37 @@ public class Validator {
     }
 
     /**
-     * Checks whether player can castle using a chosen rook.
+     * Returns a list of squares the player can castle their king.
      *
-     * @param king King
-     * @param rook Rook
-     * @return boolean
+     * @param king Piece
+     * @return ArrayList of Squares
      */
-    public final boolean canCastle(final King king, final Rook rook) {
-        return king.getInitSquare().equals(king.getSquare())
-                && rook.getInitSquare().equals(rook.getSquare())
-                && !piecesBetween(king.getSquare(), rook.getSquare());
+    public final ArrayList<Square> possibleCastlingSquares(final Piece king) {
+        ArrayList<Square> castling = new ArrayList<>();
+        ArrayList<Piece> rooks = new ArrayList<>();
+        Square kingS = king.getSquare();
+        for (Piece p : this.board.getPieces()) {
+            if (p.getColour().equals(king.getColour()) && p.getAvailable()
+                    && p.getType().equals("rook")) {
+                rooks.add(p);
+            }
+        }
+        if (!kingS.equals(king.getInitSquare()) || rooks.isEmpty()) {
+            return castling;
+        }
+        for (Piece r : rooks) {
+            if (r.getInitSquare().equals(r.getSquare())
+                    && !piecesBetween(kingS, r.getSquare())) {
+                int help = 2;
+                int help2 = Math.max(kingS.getX(), r.getSquare().getX());
+                if (help2 == kingS.getX()) {
+                    help = -2;
+                }
+                castling.add(this.board.findSquareByCoordinates(kingS.getX()
+                        + help, kingS.getY()));
+            }
+        }
+        return castling;
     }
 
     /**
@@ -149,12 +170,15 @@ public class Validator {
                 moves.add(s);
             }
         }
+        if (p.getType().equals("king")) {
+            moves.addAll(possibleCastlingSquares(p));
+        }
         return moves;
     }
 
     /**
-     * Checks whether both players have valid moves and haven't lost 
-     * their kings.
+     * Checks whether both players have valid moves and haven't lost their
+     * kings.
      *
      * @param players Player[]
      * @return boolean

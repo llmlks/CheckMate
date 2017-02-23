@@ -175,4 +175,20 @@ public class ChessBoard {
         this.pieces.remove(p);
         setPiecesToSquares();
     }
+
+    /**
+     * Finds square at coordinates x and y.
+     *
+     * @param x int
+     * @param y int
+     * @return Square
+     */
+    public final Square findSquareByCoordinates(int x, int y) {
+        for (Square s : this.getSquares()) {
+            if (s.getX() == x && s.getY() == y) {
+                return s;
+            }
+        }
+        return null;
+    }    
 }

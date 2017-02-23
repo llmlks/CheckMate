@@ -10,10 +10,6 @@ import checkmate.logic.game.Square;
 public class Pawn extends Piece {
 
     /**
-     * Private variable to hold inital Square.
-     */
-    private final Square initSquare;
-    /**
      * Private variable for integer direction (different for blacks and whites).
      */
     private final int direction;
@@ -28,7 +24,6 @@ public class Pawn extends Piece {
      */
     public Pawn(final Square s, final String c) {
         super(s, c);
-        initSquare = s;
         if (c.equals("w")) {
             direction = 1;
         } else {
@@ -47,15 +42,6 @@ public class Pawn extends Piece {
     }
 
     /**
-     * Returns private variable initSquare.
-     *
-     * @return this.initSquare Square
-     */
-    public final Square getInitSquare() {
-        return this.initSquare;
-    }
-
-    /**
      * Checks whether the move to square s from this.square is valid for pawn.
      *
      * @param s Square
@@ -67,12 +53,12 @@ public class Pawn extends Piece {
         if (s.isNextTo(square) && s.isDiagonal(square) && s.isOccupied()
                 && s.getY() == super.getSquare().getY() + direction * (-1)
                 && !s.getPiece().getColour().equals(this.getColour())) {
-            s.getPiece().setAvailable(false);
             return true;
         }
         return s.isSameFile(square) && ((square.getY() - s.getY()
-                == direction * 1) || (square.equals(initSquare) && square.getY()
-                - s.getY() == direction * 2)) && !s.isOccupied();
+                == direction * 1) || (square.equals(this.getInitSquare()) 
+                && square.getY() - s.getY() == direction * 2)) 
+                && !s.isOccupied();
     }
 
 }

@@ -124,24 +124,54 @@ public class ChessGame {
      */
     public final void turn(Piece p, Square s) {
         if (!ended) {
+            Square from = p.getSquare();
+            p.move(s);
             for (Square square : this.board.getSquares()) {
                 square.setEnPassant(null);
             }
             if (p.getType().equals("pawn")
-                    && Math.abs(s.getY() - p.getSquare().getY()) == 2) {
-                int help = Math.max(s.getY(), p.getSquare().getY());
-                if (help == s.getY()) {
-                    findSquareByCoordinates(s.getX(), p.getSquare().getY()
-                            + 1).setEnPassant(p);
-                } else {
-                    findSquareByCoordinates(s.getX(), p.getSquare().getY()
-                            - 1).setEnPassant(p);
-                }
+                    && Math.abs(s.getY() - from.getY()) == 2) {
+                enPassant(p, s, from);
             }
-            p.move(s);
+            if (p.getType().equals("king")
+                    && Math.abs(s.getX() - from.getX()) == 2) {
+                castle(p, s);
+            }
             turn = (turn + 1) % 2;
             ended = validator.gameEnded(players);
         }
+    }
+
+    /**
+     * Helper function to determine when en passant is possible.
+     * 
+     * @param pawn
+     * @param to
+     */
+    public final void enPassant(Piece pawn, Square to, Square from) {
+        int help = Math.max(to.getY(), from.getY());
+        if (help == to.getY()) {
+            findSquareByCoordinates(to.getX(), from.getY()
+                    + 1).setEnPassant(pawn);
+        } else {
+            findSquareByCoordinates(to.getX(), from.getY()
+                    - 1).setEnPassant(pawn);
+        }
+    }
+
+    /**
+     * Handles castling when king is moved two squares to square s.
+     *
+     * @param king
+     * @param s
+     */
+    public final void castle(final Piece king, final Square s) {
+        int rookX = s.getX() == 3 ? 1 : 8;
+        int newRookX = rookX == 1 ? 4 : 6;
+        int y = s.getY();
+        Square rookSquare = findSquareByCoordinates(rookX, y);
+        Square newRookSquare = findSquareByCoordinates(newRookX, y);
+        rookSquare.getPiece().move(newRookSquare);
     }
 
     /**

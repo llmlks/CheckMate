@@ -139,14 +139,9 @@ public class ValidatorTest {
 
     @Test
     public void testCanCastle() {
-        assertTrue(val.canCastle(new King(new Square(1, 2), "w"), new Rook(new Square(3, 5), "w")));
-    }
-
-    @Test
-    public void testCanCastle2() {
         King k = new King(new Square(1, 2), "w");
         k.move(new Square(2, 4));
-        assertFalse(val.canCastle(k, new Rook(new Square(3, 5), "w")));
+        assertTrue(val.possibleCastlingSquares(k).isEmpty());
     }
     
     @Test

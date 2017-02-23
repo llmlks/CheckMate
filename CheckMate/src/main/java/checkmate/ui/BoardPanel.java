@@ -201,6 +201,9 @@ public class BoardPanel extends JPanel implements MouseListener, ActionListener 
         if (promotion != null) {
             g2.setColor(new Color(218, 166, 113));
             g2.fillRect(150, 150, 300, 150);
+            g2.setColor(Color.BLACK);
+            g2.setFont(new Font("Ubuntu", Font.BOLD, 18));
+            g2.drawString("Choose a piece for promotion:", 155, 185);
             String[] types = new String[]{"rook", "knight", "bishop", "queen"};
             for (int i = 0; i < 4; i++) {
                 try {

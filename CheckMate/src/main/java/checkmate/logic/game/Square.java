@@ -175,7 +175,7 @@ public class Square {
     /**
      * Sets this.enPassant to p.
      * 
-     * @param p
+     * @param p Piece
      */
     public final void setEnPassant(Piece p) {
         this.enPassant = p;

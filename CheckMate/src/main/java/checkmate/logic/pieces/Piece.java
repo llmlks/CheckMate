@@ -26,6 +26,11 @@ public abstract class Piece {
      * available, aka not captured.
      */
     private boolean available;
+    /**
+     * Private variable to hold inital Square.
+     */
+    private Square initSquare;
+    
 
     /**
      * Constructor sets this.square to s, this.colour to c, this.type to "" and
@@ -39,6 +44,7 @@ public abstract class Piece {
         this.colour = c;
         this.type = "";
         this.available = true;
+        this.initSquare = s;
     }
 
     /**
@@ -55,6 +61,7 @@ public abstract class Piece {
      * @param s Square
      */
     public final void move(final Square s) {
+        this.initSquare = null;
         this.square.setPiece(null);
         if (s.isOccupied()) {
             s.getPiece().setAvailable(false);
@@ -128,5 +135,14 @@ public abstract class Piece {
      */
     public final void setAvailable(final boolean b) {
         this.available = b;
+    }
+
+    /**
+     * Returns private variable initSquare.
+     *
+     * @return this.initSquare Square
+     */
+    public final Square getInitSquare() {
+        return this.initSquare;
     }
 }
