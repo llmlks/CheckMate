@@ -25,6 +25,11 @@ public class Square {
      * Private variable int to hold the size of the chessboard.
      */
     private int size;
+    /**
+     * Private variable Piece to hold the information on piece that can be
+     * captured enpassant.
+     */
+    private Piece enPassant;
 
     /**
      * Assigns parameter values x and y to variables x and y respectively, and
@@ -165,5 +170,23 @@ public class Square {
     public final int hashCode() {
         int hash = this.x + (this.y - 1) * size;
         return hash;
+    }
+    
+    /**
+     * Sets this.enPassant to p.
+     * 
+     * @param p
+     */
+    public final void setEnPassant(Piece p) {
+        this.enPassant = p;
+    }
+    
+    /**
+     * Returns this enPassant.
+     * 
+     * @return Piece
+     */
+    public final Piece getEnPassant() {
+        return this.enPassant;
     }
 }

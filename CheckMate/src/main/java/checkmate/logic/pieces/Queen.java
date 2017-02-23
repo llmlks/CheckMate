@@ -34,9 +34,4 @@ public class Queen extends Piece {
                 || s.isSameRank(square);
     }
 
-    @Override
-    public final ArrayList<Square> possibleMoves() {
-        ArrayList<Square> possible = new ArrayList<>();
-        return possible;
-    }
 }

@@ -38,9 +38,4 @@ public class Knight extends Piece {
                 - square.getY()) == 2;
     }
 
-    @Override
-    public final ArrayList<Square> possibleMoves() {
-        ArrayList<Square> possible = new ArrayList<>();
-        return possible;
-    }
 }

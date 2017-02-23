@@ -48,9 +48,4 @@ public class King extends Piece {
         return this.initSquare;
     }
 
-    @Override
-    public final ArrayList<Square> possibleMoves() {
-        ArrayList<Square> possible = new ArrayList<>();
-        return possible;
-    }
 }

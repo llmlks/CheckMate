@@ -73,6 +73,10 @@ public class Validator {
      */
     public final boolean isValidMove(final Piece p, final Square to) {
         this.occupiedSquares = this.setOccupiedSquares();
+        if (p.getType().equals("pawn") && to.getEnPassant() != null 
+                && to.isNextTo(p.getSquare()) && to.isDiagonal(p.getSquare())) {
+            return true;
+        }
         if (!p.isValidMove(to) || p.getSquare().equals(to)) {
             return false;
         }
@@ -84,7 +88,6 @@ public class Validator {
         }
         if (occupiedSquares.contains(to)) {
             if (!to.getPiece().getColour().equals(p.getColour())) {
-                to.getPiece().setAvailable(false);
                 return true;
             } else {
                 return false;

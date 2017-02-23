@@ -82,16 +82,6 @@ public class RookTest {
     }
 
     @Test
-    public void testPossibleMoves() {
-        assertFalse(piece.possibleMoves() == null);
-    }
-    
-    @Test
-    public void testPossibleMoves2() {
-        assertTrue(piece.possibleMoves().isEmpty());
-    }
-
-    @Test
     public void constructorSetsInitSquare() {
         assertEquals(piece.getInitSquare(), square);
     }

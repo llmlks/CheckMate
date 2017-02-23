@@ -199,7 +199,7 @@ public class BoardPanel extends JPanel implements MouseListener, ActionListener 
         }
 
         if (promotion != null) {
-            g2.setColor(new Color(255, 206, 158));
+            g2.setColor(new Color(218, 166, 113));
             g2.fillRect(150, 150, 300, 150);
             String[] types = new String[]{"rook", "knight", "bishop", "queen"};
             for (int i = 0; i < 4; i++) {
@@ -219,6 +219,9 @@ public class BoardPanel extends JPanel implements MouseListener, ActionListener 
         chess = new ChessGame();
         chess.initGame();
         ended = false;
+        chosen = null;
+        possibleMoves.removeAll(possibleMoves);
+        promotion = null;
         repaint();
     }
 }

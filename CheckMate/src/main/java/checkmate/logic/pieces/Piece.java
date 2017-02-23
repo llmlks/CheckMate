@@ -1,7 +1,6 @@
 package checkmate.logic.pieces;
 
 import checkmate.logic.game.Square;
-import java.util.ArrayList;
 
 /**
  * Abstract class for chess pieces to inherit.
@@ -51,19 +50,19 @@ public abstract class Piece {
     public abstract boolean isValidMove(final Square s);
 
     /**
-     * Returns a list of possible moves.
-     *
-     * @return ArrayList
-     */
-    public abstract ArrayList<Square> possibleMoves();
-
-    /**
      * Calls setPiece(this) for s, and sets this.square to s.
      *
      * @param s Square
      */
     public final void move(final Square s) {
         this.square.setPiece(null);
+        if (s.isOccupied()) {
+            s.getPiece().setAvailable(false);
+        }
+        if (s.getEnPassant() != null) {
+            s.getEnPassant().setAvailable(false);
+            s.getEnPassant().getSquare().setPiece(null);
+        }
         s.setPiece(this);
         this.square = s;
     }
@@ -103,16 +102,15 @@ public abstract class Piece {
     public final void setType(final String t) {
         this.type = t;
     }
-    
+
     /**
      * Sets Square to s.
-     * 
+     *
      * @param s Square
      */
     public final void setSquare(Square s) {
         this.square = s;
     }
-    
 
     /**
      * Returns private variable available.

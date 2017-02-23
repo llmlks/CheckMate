@@ -84,14 +84,4 @@ public class KingTest {
     public void testGetInitSquare() {
         assertEquals(square, piece.getInitSquare());
     }
-    
-    @Test
-    public void testPossibleMoves() {
-        assertFalse(piece.possibleMoves() == null);
-    }
-    
-    @Test
-    public void testPossibleMoves2() {
-        assertTrue(piece.possibleMoves().isEmpty());
-    }
 }

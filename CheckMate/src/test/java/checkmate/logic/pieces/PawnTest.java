@@ -139,16 +139,6 @@ public class PawnTest {
         Square square2 = new Square(5, 5);
         assertFalse(black.isValidMove(square2));
     }
-
-    @Test
-    public void testPossibleMoves() {
-        assertFalse(white.possibleMoves() == null);
-    }
-    
-    @Test
-    public void testPossibleMoves2() {
-        assertTrue(black.possibleMoves().isEmpty());
-    }
     
     @Test
     public void constructorSetsAvailable() {

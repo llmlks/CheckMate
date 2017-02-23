@@ -1,11 +1,6 @@
 package checkmate.logic.game;
 
-import checkmate.logic.pieces.Bishop;
-import checkmate.logic.pieces.Knight;
-import checkmate.logic.pieces.Pawn;
 import checkmate.logic.pieces.Piece;
-import checkmate.logic.pieces.Queen;
-import checkmate.logic.pieces.Rook;
 
 /**
  * Main class for game logic.
@@ -129,6 +124,20 @@ public class ChessGame {
      */
     public final void turn(Piece p, Square s) {
         if (!ended) {
+            for (Square square : this.board.getSquares()) {
+                square.setEnPassant(null);
+            }
+            if (p.getType().equals("pawn")
+                    && Math.abs(s.getY() - p.getSquare().getY()) == 2) {
+                int help = Math.max(s.getY(), p.getSquare().getY());
+                if (help == s.getY()) {
+                    findSquareByCoordinates(s.getX(), p.getSquare().getY()
+                            + 1).setEnPassant(p);
+                } else {
+                    findSquareByCoordinates(s.getX(), p.getSquare().getY()
+                            - 1).setEnPassant(p);
+                }
+            }
             p.move(s);
             turn = (turn + 1) % 2;
             ended = validator.gameEnded(players);

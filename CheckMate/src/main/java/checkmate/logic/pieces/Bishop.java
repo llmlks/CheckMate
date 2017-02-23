@@ -33,9 +33,4 @@ public class Bishop extends Piece {
         return square.isDiagonal(s);
     }
 
-    @Override
-    public final ArrayList<Square> possibleMoves() {
-        ArrayList<Square> possible = new ArrayList<>();
-        return possible;
-    }
 }
