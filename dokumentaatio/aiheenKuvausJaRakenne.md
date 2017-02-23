@@ -17,6 +17,12 @@
 
 
 
+**Rakennekuvaus:**
+
+Sovelluksen pääluokkana toimii ChessGUI, jonka main-metodissa luodaan uusi ChessGUI-olio. Sen konstruktorissa luodaan uusi ChessGame, joka taas kutsuu omaa init-metodiaan. Siellä luodaan ChessBoard, sekä kutsutaan sen metodeja initSquares ja initPieces, joissa luodaan 64 ruutua ja 32 nappulaa, vastaavasti. InitPieces yhdistää nappulat ruutuihin. ChessGame myös luo Validator-olion antaen sille parametrina viitteen ChessBoard-olioonsa sekä 2 pelaajaa, ja lisää oikean väriset nappulat oikean värisille pelaajille. Validator luo PiecesBetween-olion avuksi tarkistamaan onko kahden ruudun välissä nappuloita. Se saa parametrinaan Validatorin luoman listan ruuduista, joilla sijaitsee nappula.
+
+
+
 **Sekvenssikaavio, kuvaa pelin initialisoinnin:**
 
 ![sekvenssikaavio, shakkipelin luonti](/dokumentaatio/cm_sequential1.png)
@@ -26,3 +32,10 @@
 **Sekvenssikaavio, kuvaa valitun nappulan mahdollisten siirtojen etsimisen:**
 
 ![sekvenssikaavio, siirron validointi](/dokumentaatio/cm_sequential2.png)
+
+
+
+
+**Käyttöohjeet:**
+
+Peli käynnistyy heti, kun sovellus avataan. Peli toimii shakin perussääntöjen mukaan, eli valkoinen aloittaa. Nappulan voi valita klikkaamalla sitä, jolloin sen ympärille tulee punainen neliö ja mahdolliset ruudut, joihin sitä voi liikuttaa korostuu vihreällä. Valittuaan nappulan käyttäjä voi liikuttaa sitä valitsemalla jonkin vihreinä näkyvistä ruuduista klikkaamalla sitä. Jos käyttäjä ei halua liikuttaa valitsemaansa nappulaa, hän voi joko klikata jotakin toista omista nappuloistaan, jolloin se tulee valituksi, tai klikata mitä tahansa muuta aluetta ikkunassa, jolloin valinta poistuu kokonaan. Kun pelaajan sotilas etenee vastakkaiselle puolelle päätyyn, se ylennetään. Tällöin ruudulle ilmestyy vaihtoehdot, joista käyttäjä valitsee haluamansa nappulatyypin. Nappulatyyppi valitaan klikkaamalla haluttua kuvaketta. Valintaruutu säilyy kunnes käyttäjä on klikannut jotakin kuvakkeista. Siirtoaan ei voi koskaan perua. Jos tornitus on sääntöjen mukaista, se onnistuu siirtämällä kuningasta kaksi ruutua vasemmalle tai oikealle. Myös tällöin ruutu näkyy vihreänä, mutta silloin siirron yhteydessä myös asianmukainen torni siirtyy. Kun jommalla kummalla pelaajista ei enää ole laillisia siirtoja, peli loppuu ja uuden pelin voi aloittaa painalla nappia "New Game". Uuden pelin voi aloittaa koska tahansa, vaikka peli ei olisi loppunut. 

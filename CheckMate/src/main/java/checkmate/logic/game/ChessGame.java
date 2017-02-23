@@ -145,10 +145,11 @@ public class ChessGame {
     /**
      * Helper function to determine when en passant is possible.
      * 
-     * @param pawn
-     * @param to
+     * @param pawn Piece
+     * @param to Square
+     * @param from Square
      */
-    public final void enPassant(Piece pawn, Square to, Square from) {
+    public final void enPassant(final Piece pawn, final Square to, final Square from) {
         int help = Math.max(to.getY(), from.getY());
         if (help == to.getY()) {
             findSquareByCoordinates(to.getX(), from.getY()
@@ -162,8 +163,8 @@ public class ChessGame {
     /**
      * Handles castling when king is moved two squares to square s.
      *
-     * @param king
-     * @param s
+     * @param king Piece
+     * @param s Square
      */
     public final void castle(final Piece king, final Square s) {
         int rookX = s.getX() == 3 ? 1 : 8;
