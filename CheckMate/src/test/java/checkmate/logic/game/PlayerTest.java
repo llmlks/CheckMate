@@ -82,4 +82,9 @@ public class PlayerTest {
         player.removePiece(p);
         assertEquals(player.getPieces().size(), 0);
     }
+    
+    @Test
+    public void testGetKing() {
+        assertTrue(player.getKing() == null);
+    }
 }

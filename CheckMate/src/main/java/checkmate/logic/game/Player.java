@@ -80,4 +80,18 @@ public class Player {
         }
         return false;
     }
+    
+    /**
+     * Return this player's king, or null if there isn't one.
+     * 
+     * @return Piece
+     */
+    public final Piece getKing() {
+        for (Piece p : this.pieces) {
+            if (p.getType().equals("king") && p.getAvailable()) {
+                return p;
+            }
+        }        
+        return null;
+    }
 }

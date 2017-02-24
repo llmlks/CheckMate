@@ -12,3 +12,8 @@ Päivä | Tunnit | Kuvaus
 15.02.2017 | 4h | Swingin opettelua, grafiikoiden etsintä
 16.02.2017 | 8h | Lisää opettelua, gui-luokat uusiksi
 17.02.2017 | 7h | Dokumentaation ajantasaistus, gui-suunnittelua, ohjelmointia
+18.02.2017 | 3h | guin hiomista 
+20.02.2017 | 3.5h | guin ja logiikan yhdistämistä
+22.02.2017 | 2h | testien kirjoitusta
+23.02.2017 | 5h | logiikan päivitystä
+24.02.2017 | 3h | logiikan hiomista, testien päivitystä, dokumentointia

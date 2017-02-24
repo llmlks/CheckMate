@@ -32,19 +32,22 @@ public class ValidatorTest {
 
     @Test
     public void constructorSetsBoard() {
-        val = new Validator(new ChessBoard());
+        Player[] players = new Player[]{new Player("w")};
+        val = new Validator(new ChessBoard(), players);
         assertTrue(val.getBoard() != null);
     }
 
     @Test
     public void constructorCreatesOccupiedSquaresList() {
-        val = new Validator(new ChessBoard());
+        Player[] players = new Player[]{new Player("w")};        
+        val = new Validator(new ChessBoard(), players);
         assertTrue(val.getOccupiedSquares() != null);
     }
 
     @Test
     public void occupiedSquaresEmptyInitially() {
-        val = new Validator(new ChessBoard());
+        Player[] players = new Player[]{new Player("w")};
+        val = new Validator(new ChessBoard(), players);
         assertTrue(val.getOccupiedSquares().isEmpty());
     }
 
@@ -136,13 +139,6 @@ public class ValidatorTest {
     public void testPiecesBetweenDiagonally3() {
         assertFalse(val.piecesBetween(new Square(3, 3), new Square(5, 5)));
     }
-
-    @Test
-    public void testCanCastle() {
-        King k = new King(new Square(1, 2), "w");
-        k.move(new Square(2, 4));
-        assertTrue(val.possibleCastlingSquares(k).isEmpty());
-    }
     
     @Test
     public void testHasValidMoves() {
@@ -156,13 +152,13 @@ public class ValidatorTest {
     
     @Test
     public void testHasValidMoves3() {
-        Validator v = new Validator(new ChessBoard());
-        Player p = new Player("w");
-        assertFalse(v.hasValidMoves(p));
+        Player[] players = new Player[]{new Player("w")};
+        Validator v = new Validator(new ChessBoard(), players);
+        assertFalse(v.hasValidMoves(players[0]));
     }
 
     @Test
     public void testGameEnded() {
-        assertFalse(val.gameEnded(game.getPlayers()));
+        assertFalse(val.gameEnded());
     }
 }

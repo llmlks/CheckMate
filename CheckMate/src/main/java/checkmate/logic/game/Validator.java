@@ -1,8 +1,6 @@
 package checkmate.logic.game;
 
-import checkmate.logic.pieces.King;
 import checkmate.logic.pieces.Piece;
-import checkmate.logic.pieces.Rook;
 import java.util.ArrayList;
 
 /**
@@ -20,15 +18,26 @@ public class Validator {
      * Private variable to keep track of squares that are occupied.
      */
     private ArrayList<Square> occupiedSquares;
+    /**
+     * Private variable to hold players.
+     */
+    private final Player[] players;
+    /**
+     * Private variable to hold checker for Castling and Check validations.
+     */
+    private final CastlingAndCheck checker;
 
     /**
      * Assigns ChessBoard to board and initialises occupiedSquares.
      *
      * @param chessboard ChessBoard
+     * @param playerArray Players
      */
-    public Validator(final ChessBoard chessboard) {
+    public Validator(final ChessBoard chessboard, final Player[] playerArray) {
         this.board = chessboard;
         occupiedSquares = this.setOccupiedSquares();
+        players = playerArray;
+        this.checker = new CastlingAndCheck(playerArray, chessboard, this);
     }
 
     /**
@@ -109,40 +118,6 @@ public class Validator {
     }
 
     /**
-     * Returns a list of squares the player can castle their king.
-     *
-     * @param king Piece
-     * @return ArrayList of Squares
-     */
-    public final ArrayList<Square> possibleCastlingSquares(final Piece king) {
-        ArrayList<Square> castling = new ArrayList<>();
-        ArrayList<Piece> rooks = new ArrayList<>();
-        Square kingS = king.getSquare();
-        for (Piece p : this.board.getPieces()) {
-            if (p.getColour().equals(king.getColour()) && p.getAvailable()
-                    && p.getType().equals("rook")) {
-                rooks.add(p);
-            }
-        }
-        if (!kingS.equals(king.getInitSquare()) || rooks.isEmpty()) {
-            return castling;
-        }
-        for (Piece r : rooks) {
-            if (r.getInitSquare().equals(r.getSquare())
-                    && !piecesBetween(kingS, r.getSquare())) {
-                int help = 2;
-                int help2 = Math.max(kingS.getX(), r.getSquare().getX());
-                if (help2 == kingS.getX()) {
-                    help = -2;
-                }
-                castling.add(this.board.findSquareByCoordinates(kingS.getX()
-                        + help, kingS.getY()));
-            }
-        }
-        return castling;
-    }
-
-    /**
      * Checks whether player has any valid moves left.
      *
      * @param player Player
@@ -171,8 +146,9 @@ public class Validator {
             }
         }
         if (p.getType().equals("king")) {
-            moves.addAll(possibleCastlingSquares(p));
+            moves.addAll(checker.possibleCastlingSquares(p));
         }
+        moves.removeAll(checker.movesCausingCheck(moves, p));
         return moves;
     }
 
@@ -180,11 +156,9 @@ public class Validator {
      * Checks whether both players have valid moves and haven't lost their
      * kings.
      *
-     * @param players Player[]
      * @return boolean
      */
-    public final boolean gameEnded(Player[] players) {
-        return !(hasValidMoves(players[0]) && hasValidMoves(players[1])
-                && players[0].hasKing() && players[1].hasKing());
+    public final boolean gameEnded() {
+        return !(hasValidMoves(players[0]) && hasValidMoves(players[1]));
     }
 }

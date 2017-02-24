@@ -101,8 +101,6 @@ public class ChessGame {
         this.board = new ChessBoard();
         this.board.initSquares();
         board.initPieces();
-        this.validator = new Validator(this.board);
-        validator.setOccupiedSquares();
 
         players = new Player[]{new Player("w"), new Player("b")};
         for (Player player : players) {
@@ -112,6 +110,8 @@ public class ChessGame {
                 }
             }
         }
+        this.validator = new Validator(this.board, players);
+        validator.setOccupiedSquares();
         this.turn = 0;
     }
 
@@ -135,10 +135,10 @@ public class ChessGame {
             }
             if (p.getType().equals("king")
                     && Math.abs(s.getX() - from.getX()) == 2) {
-                castle(p, s);
+                castle(s);
             }
             turn = (turn + 1) % 2;
-            ended = validator.gameEnded(players);
+            ended = validator.gameEnded();
         }
     }
 
@@ -163,10 +163,9 @@ public class ChessGame {
     /**
      * Handles castling when king is moved two squares to square s.
      *
-     * @param king Piece
      * @param s Square
      */
-    public final void castle(final Piece king, final Square s) {
+    public final void castle(final Square s) {
         int rookX = s.getX() == 3 ? 1 : 8;
         int newRookX = rookX == 1 ? 4 : 6;
         int y = s.getY();

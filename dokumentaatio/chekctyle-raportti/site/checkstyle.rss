@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2017</copyright>
     <item>
-      <title>File: 17,
+      <title>File: 18,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -257,6 +257,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#checkmate.logic.game.PiecesBetween.java">checkmate/logic/game/PiecesBetween.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#checkmate.logic.game.CastlingAndCheck.java">checkmate/logic/game/CastlingAndCheck.java</a>
                 </td>
                 <td>
                   0
