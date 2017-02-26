@@ -70,11 +70,11 @@ public class CastlingAndCheck {
         p.setSquare(s);
         from.setPiece(null);
         s.setPiece(p);
-        boolean moveSucceeds = isChecked(player);
+        boolean moveFails = isChecked(player);
         p.setSquare(from);
         s.setPiece(occupier);
         from.setPiece(p);
-        return !moveSucceeds;
+        return !moveFails;
     }
 
     /**
@@ -146,13 +146,9 @@ public class CastlingAndCheck {
             final Square kingS) {
         ArrayList<Square> castling = new ArrayList<>();
         for (Piece r : rooks) {
-            if (r.getInitSquare().equals(r.getSquare())
+            if (r.getSquare().equals(r.getInitSquare())
                     && !validator.piecesBetween(kingS, r.getSquare())) {
-                int help = 2;
-                int help2 = Math.max(kingS.getX(), r.getSquare().getX());
-                if (help2 == kingS.getX()) {
-                    help = -2;
-                }
+                int help = kingS.getX() > r.getSquare().getX() ? -2 : 2;
                 castling.add(this.board.findSquareByCoordinates(kingS.getX()
                         + help, kingS.getY()));
             }

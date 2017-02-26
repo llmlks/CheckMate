@@ -146,6 +146,7 @@ public class BoardPanel extends JPanel implements MouseListener, ActionListener 
 
     @Override
     public void paintComponent(Graphics g) {
+        super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
         for (int i = 0; i < 8; i++) {
@@ -170,11 +171,20 @@ public class BoardPanel extends JPanel implements MouseListener, ActionListener 
                 if (s.isOccupied()) {
                     Piece p = s.getPiece();
                     String icon = "/icons/" + p.getType() + "_" + p.getColour() + ".png";
-                    try {
-                        InputStream stream = getClass().getResourceAsStream(icon);
-                        BufferedImage img = ImageIO.read(stream);
-                        g2.drawImage(img, i * 75 + 5, j * 75 + 5, this);
-                    } catch (IOException ex) {
+                    InputStream stream = getClass().getResourceAsStream(icon);
+                    if (stream != null) {
+                        BufferedImage img;
+                        try {
+                            img = ImageIO.read(stream);
+                            g2.drawImage(img, i * 75 + 5, j * 75 + 5, this);
+                        } catch (IOException ex) {
+                            Logger.getLogger(BoardPanel.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } else {
+                        Color colour = p.getColour().equals("w") ? Color.white : Color.black;
+                        g2.setColor(colour);
+                        g2.setFont(new Font("Ubuntu", Font.BOLD, 18));
+                        g2.drawString(p.getType(), i * 75 + 10, j * 75 + 35);
                     }
                 }
             }

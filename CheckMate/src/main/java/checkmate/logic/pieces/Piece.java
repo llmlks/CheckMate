@@ -65,7 +65,7 @@ public abstract class Piece {
         this.square.setPiece(null);
         if (s.isOccupied()) {
             s.getPiece().setAvailable(false);
-        }
+        } 
         if (s.getEnPassant() != null) {
             s.getEnPassant().setAvailable(false);
             s.getEnPassant().getSquare().setPiece(null);

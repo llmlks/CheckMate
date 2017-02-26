@@ -81,6 +81,9 @@ public class Validator {
      * @return boolean
      */
     public final boolean isValidMove(final Piece p, final Square to) {
+        if (!p.getAvailable()) {
+            return false;
+        }
         this.occupiedSquares = this.setOccupiedSquares();
         if (p.getType().equals("pawn") && to.getEnPassant() != null
                 && to.isNextTo(p.getSquare()) && to.isDiagonal(p.getSquare())) {
@@ -125,7 +128,7 @@ public class Validator {
      */
     public final boolean hasValidMoves(final Player player) {
         for (Piece piece : player.getPieces()) {
-            if (!validMoves(piece).isEmpty() && piece.getAvailable()) {
+            if (piece.getAvailable() && !validMoves(piece).isEmpty()) {
                 return true;
             }
         }

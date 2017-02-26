@@ -125,6 +125,7 @@ public class ChessGame {
     public final void turn(Piece p, Square s) {
         if (!ended) {
             Square from = p.getSquare();
+            players[p.getColour().equals("w") ? 1 : 0].removePiece(s.getPiece());
             p.move(s);
             for (Square square : this.board.getSquares()) {
                 square.setEnPassant(null);
@@ -144,7 +145,7 @@ public class ChessGame {
 
     /**
      * Helper function to determine when en passant is possible.
-     * 
+     *
      * @param pawn Piece
      * @param to Square
      * @param from Square

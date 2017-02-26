@@ -66,20 +66,6 @@ public class Player {
     public final void removePiece(final Piece p) {
         this.pieces.remove(p);
     }
-
-    /**
-     * Checks whether player's king has been captured.
-     *
-     * @return boolean
-     */
-    public final boolean hasKing() {
-        for (Piece p : this.pieces) {
-            if (p.getType().equals("king") && p.getAvailable()) {
-                return true;
-            }
-        }
-        return false;
-    }
     
     /**
      * Return this player's king, or null if there isn't one.

@@ -50,25 +50,6 @@ public class PlayerTest {
     }
 
     @Test
-    public void testHasKing() {
-        assertFalse(player.hasKing());
-    }
-
-    @Test
-    public void testHasKing2() {
-        Piece p = new King(new Square(1, 1), "w");
-        player.addPiece(p);
-        assertTrue(player.hasKing());
-    }
-    
-    @Test
-    public void testHasKing3() {
-        Piece p = new Pawn(new Square(1, 1), "w");
-        player.addPiece(p);
-        assertFalse(player.hasKing());        
-    }
-
-    @Test
     public void testAddPiece() {
         Piece p = new King(new Square(1, 1), "w");
         player.addPiece(p);

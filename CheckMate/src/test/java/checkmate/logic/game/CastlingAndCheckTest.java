@@ -6,6 +6,8 @@
 package checkmate.logic.game;
 
 import checkmate.logic.pieces.Piece;
+import checkmate.logic.pieces.Rook;
+import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -48,6 +50,15 @@ public class CastlingAndCheckTest {
         game.turn(b, bs);
         game.turn(wq, wqs);        
         assertFalse(check.tryMove(b, bps));
+    }
+    
+    @Test
+    public void castlingSquares() {
+        ArrayList<Piece> rooks = new ArrayList<>();
+        rooks.add(new Rook(game.findSquareByCoordinates(1, 3), "w"));
+        Piece king = game.findSquareByCoordinates(5, 1).getPiece();
+        king.move(game.findSquareByCoordinates(5, 3));
+        assertEquals(check.castlingSquares(rooks, king.getSquare()).size(), 1);
     }
 
     @Test

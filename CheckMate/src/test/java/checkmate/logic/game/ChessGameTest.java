@@ -1,6 +1,7 @@
 package checkmate.logic.game;
 
 import checkmate.logic.pieces.Pawn;
+import checkmate.logic.pieces.Piece;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -35,7 +36,6 @@ public class ChessGameTest {
 
     @Test
     public void startGeneratesPlayers() {
-        game.initGame();
         assertTrue(game.getPlayers().length == 2);
     }
 
@@ -104,5 +104,44 @@ public class ChessGameTest {
         Pawn p = new Pawn(new Square(1, 2), "w");
         game.turn(p, new Square(1, 3));
         assertEquals(p.getSquare(), new Square(1, 3));        
+    }
+    
+    @Test
+    public void testTurn3() {
+        Piece p = game.findSquareByCoordinates(1, 2).getPiece();
+        Piece b = game.findSquareByCoordinates(2, 2).getPiece();
+        game.turn(p, b.getSquare());
+        assertFalse(game.getPlayers()[0].getPieces().contains(b));
+    }
+    
+    @Test
+    public void testTurn4() {
+        Piece p = game.findSquareByCoordinates(1, 2).getPiece();
+        Piece b = game.findSquareByCoordinates(2, 2).getPiece();
+        game.turn(p, b.getSquare());
+        for (Square s : game.getBoard().getSquares()) {
+            assertTrue(s.getEnPassant() == null);
+        }
+    }
+    
+    @Test
+    public void testTurn5() {
+        Piece p = game.findSquareByCoordinates(1, 2).getPiece();
+        game.turn(p, game.findSquareByCoordinates(1, 4));
+        assertEquals(game.findSquareByCoordinates(1, 3).getEnPassant(), p);
+    }
+    
+    @Test
+    public void testEnPassant() {
+        Piece p = game.findSquareByCoordinates(1, 7).getPiece();
+        game.turn(p, game.findSquareByCoordinates(1, 5));
+        assertEquals(game.findSquareByCoordinates(1, 6).getEnPassant(), p);        
+    }
+    
+    @Test
+    public void testCastle() {
+        Piece p = game.findSquareByCoordinates(5, 1).getPiece();
+        game.turn(p, game.findSquareByCoordinates(3, 1));
+        assertTrue(game.findSquareByCoordinates(4, 1).getPiece().getType().equals("rook"));
     }
 }
