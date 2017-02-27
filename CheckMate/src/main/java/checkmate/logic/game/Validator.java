@@ -96,11 +96,7 @@ public class Validator {
             return false;
         }
         if (occupiedSquares.contains(to)) {
-            if (!to.getPiece().getColour().equals(p.getColour())) {
-                return true;
-            } else {
-                return false;
-            }
+            return !to.getPiece().getColour().equals(p.getColour());
         }
         return true;
     }
