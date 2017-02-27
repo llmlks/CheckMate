@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 /**
  * Class for checking castling and check.
- * 
+ *
  * @author llmlks
  */
 public class CastlingAndCheck {
@@ -40,9 +40,9 @@ public class CastlingAndCheck {
      * Checks the list given as parameter, if any of the moves would cause
      * check.
      *
-     * @param moves ArrayList of type Square
-     * @param p Piece
-     * @return ArrayList of type Square
+     * @param moves List of possible moves
+     * @param p Piece to be moved
+     * @return List of moves that would cause for the player to become checked
      */
     public final ArrayList<Square> movesCausingCheck(
             final ArrayList<Square> moves, final Piece p) {
@@ -56,12 +56,12 @@ public class CastlingAndCheck {
     }
 
     /**
-     * Checks whether moving a piece to a square causes that player to become
-     * checked.
+     * Checks whether moving a player's piece to a square would cause that
+     * player to become checked.
      *
-     * @param p Piece
-     * @param s Square
-     * @return boolean
+     * @param p Piece which will be temporarily moved
+     * @param s Square to which the move is tried
+     * @return true if move doesn't cause check, false otherwise
      */
     public final boolean tryMove(final Piece p, final Square s) {
         Player player = p.getColour().equals("w") ? players[0] : players[1];
@@ -78,10 +78,12 @@ public class CastlingAndCheck {
     }
 
     /**
-     * Checks whether piece can be captured.
+     * Goes through all the pieces on the board, and if the piece under
+     * inspection is of different colour than the one given as a parameter,
+     * checks whether it can move to parameter pieces square legally.
      *
      * @param p Piece
-     * @return boolean
+     * @return true if piece can be captured, false otherwise
      */
     public final boolean canBeCaptured(final Piece p) {
         for (Piece piece : this.board.getPieces()) {
@@ -96,18 +98,20 @@ public class CastlingAndCheck {
     /**
      * Checks whether player's king is in check.
      *
-     * @param player Player
-     * @return boolean
+     * @param player Player whose check situation is to be looked at
+     * @return true if the player is in check, false otherwise
      */
     public final boolean isChecked(final Player player) {
         return canBeCaptured(player.getKing());
     }
 
     /**
-     * Returns a list of squares the player can castle their king.
+     * Checks whether player has available rooks on the board and if player's
+     * king is in its initial position, then returns a list of squares the
+     * player can castle their king.
      *
-     * @param king Piece
-     * @return ArrayList of Squares
+     * @param king Players king
+     * @return List of squares where king can move to for castling
      */
     public final ArrayList<Square> possibleCastlingSquares(final Piece king) {
         ArrayList<Piece> rooks = findPlayersRooks(king.getColour());
@@ -121,8 +125,8 @@ public class CastlingAndCheck {
     /**
      * Returns a list of rooks of specified colour.
      *
-     * @param colour String
-     * @return ArrayList of type Piece
+     * @param colour String for colour, w for white or b for black
+     * @return List of rooks of type Piece of the colour specified
      */
     public final ArrayList<Piece> findPlayersRooks(final String colour) {
         ArrayList<Piece> rooks = new ArrayList<>();
@@ -138,9 +142,9 @@ public class CastlingAndCheck {
     /**
      * Returns squares to which player can castle.
      *
-     * @param rooks ArrayList of type Piece
-     * @param kingS Square
-     * @return ArrayList of type Square
+     * @param rooks List of players rooks that are still available
+     * @param kingS Square where player's king is positioned
+     * @return List of squares where king can move to for castling
      */
     public final ArrayList<Square> castlingSquares(final ArrayList<Piece> rooks,
             final Square kingS) {

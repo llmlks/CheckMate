@@ -7,6 +7,7 @@ package checkmate.logic.game;
 
 import checkmate.logic.pieces.King;
 import checkmate.logic.pieces.Pawn;
+import checkmate.logic.pieces.Piece;
 import checkmate.logic.pieces.Rook;
 import org.junit.Before;
 import org.junit.Test;
@@ -88,6 +89,29 @@ public class ValidatorTest {
     public void testIsValidMove5() {
         Rook r = new Rook(new Square(3, 3), "w");
         assertTrue(val.isValidMove(r, new Square(3, 5)));
+    }
+    
+    @Test
+    public void testIsValidMove6() {
+        Piece p = game.findSquareByCoordinates(2, 2).getPiece();
+        Piece enpassant = game.findSquareByCoordinates(3, 7).getPiece();
+        game.turn(p, game.findSquareByCoordinates(2, 5));
+        game.turn(enpassant, game.findSquareByCoordinates(3, 5));
+        assertTrue(val.isValidMove(p, game.findSquareByCoordinates(3, 6)));
+    }
+    
+    @Test
+    public void testIsValidMove7() {
+        Piece p = game.findSquareByCoordinates(3, 1).getPiece();
+        Square to = game.findSquareByCoordinates(2, 2);
+        assertFalse(val.isValidMove(p, to));
+    }
+    
+    @Test
+    public void testIsValidMove8() {
+        Piece p = game.findSquareByCoordinates(2, 2).getPiece();
+        p.setAvailable(false);
+        assertFalse(val.isValidMove(p, game.findSquareByCoordinates(2, 3)));
     }
     
     @Test

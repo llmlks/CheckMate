@@ -36,8 +36,8 @@ public abstract class Piece {
      * Constructor sets this.square to s, this.colour to c, this.type to "" and
      * this.available to boolean.
      *
-     * @param s Square
-     * @param c String
+     * @param s Square where Piece is positioned
+     * @param c String for colour, w for white or b for black
      */
     public Piece(final Square s, final String c) {
         this.square = s;
@@ -50,15 +50,15 @@ public abstract class Piece {
     /**
      * Abstract method to check whether move to Square s is valid.
      *
-     * @param s Square
-     * @return boolean
+     * @param s Square where piece would be moved
+     * @return true if move would be valid, false otherwise
      */
     public abstract boolean isValidMove(final Square s);
 
     /**
      * Calls setPiece(this) for s, and sets this.square to s.
      *
-     * @param s Square
+     * @param s Square where piece is moved to
      */
     public final void move(final Square s) {
         this.initSquare = null;
@@ -77,7 +77,7 @@ public abstract class Piece {
     /**
      * Returns private variable square.
      *
-     * @return this.square Square
+     * @return Square where Piece is positioned
      */
     public final Square getSquare() {
         return this.square;
@@ -86,7 +86,7 @@ public abstract class Piece {
     /**
      * Returns private variable colour.
      *
-     * @return this.colour String
+     * @return String for piece's colour, w for white or b for black
      */
     public final String getColour() {
         return this.colour;
@@ -95,7 +95,7 @@ public abstract class Piece {
     /**
      * Returns private variable type.
      *
-     * @return this.type String
+     * @return String for piece's type
      */
     public final String getType() {
         return this.type;
@@ -104,7 +104,7 @@ public abstract class Piece {
     /**
      * Sets this.type to t.
      *
-     * @param t String
+     * @param t String defining a type of piece
      */
     public final void setType(final String t) {
         this.type = t;
@@ -113,7 +113,7 @@ public abstract class Piece {
     /**
      * Sets Square to s.
      *
-     * @param s Square
+     * @param s Square for piece's position
      */
     public final void setSquare(Square s) {
         this.square = s;
@@ -122,7 +122,7 @@ public abstract class Piece {
     /**
      * Returns private variable available.
      *
-     * @return boolean
+     * @return true if piece is available, false otherwise
      */
     public final boolean getAvailable() {
         return this.available;
@@ -131,7 +131,7 @@ public abstract class Piece {
     /**
      * Sets variable available to b.
      *
-     * @param b boolean
+     * @param b boolean for whether piece is available
      */
     public final void setAvailable(final boolean b) {
         this.available = b;
@@ -140,7 +140,7 @@ public abstract class Piece {
     /**
      * Returns private variable initSquare.
      *
-     * @return this.initSquare Square
+     * @return This pieces initial position as Square
      */
     public final Square getInitSquare() {
         return this.initSquare;

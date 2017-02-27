@@ -1,0 +1,1329 @@
+<html>
+<head>
+<style type='text/css'>
+html, body, div, span, p, blockquote, pre {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+body{
+	line-height: 1;
+	color: black;
+	background: white;
+	margin-left: 20px;
+}
+
+.src { 
+	border: 1px solid #dddddd;
+	padding-top: 10px;
+	padding-right: 5px;
+	padding-left: 5px;
+	font-family: Consolas, Courier, monospace;
+}
+
+
+.covered {background-color: #ddffdd}
+.uncovered {background-color: #ffdddd}
+.killed {background-color: #aaffaa}
+.survived {background-color: #ffaaaa}
+.uncertain {background-color: #dde7ef}
+.run_error {background-color: #dde7ef}
+.na {background-color: #eeeeee}
+.timed_out {background-color: #dde7ef}
+.non_viable {background-color: #aaffaa}
+.memory_error {background-color: #dde7ef}
+.not_started {background-color: #dde7ef; color : red}
+.no_coverage {background-color: #ffaaaa}
+
+
+.pop {outline:none; }
+.pop strong {line-height:30px;}
+.pop {text-decoration:none;}
+.pop span { z-index:10;display:none; padding:14px 20px; margin-top:-30px; margin-left:28px; width:800px; line-height:16px; word-wrap:break-word; }
+.pop:hover span{ display:inline; position:absolute; color:#111; border:1px solid #DCA; background:#fffAF0;}
+
+.pop span { border-radius:4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; -moz-box-shadow: 5px 5px 8px #CCC; -webkit-box-shadow: 5px 5px 8px #CCC; box-shadow: 5px 5px 8px #CCC; }
+</style>
+
+</head>
+<body>
+
+
+<h1>Player.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_1'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package checkmate.logic.game;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_2'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_3'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import checkmate.logic.pieces.Piece;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_4'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.ArrayList;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_5'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_6'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_7'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Player object for the chess game.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_8'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_9'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * @author llmlks</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_10'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_11'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public class Player {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_12'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_13'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_14'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Private variable ArrayList to hold pieces.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_15'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_16'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private final ArrayList&#60;Piece&#62; pieces;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_17'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_18'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_19'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Private variable String colour.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_20'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_21'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private final String colour;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_22'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_23'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_24'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Constructor generates empty ArrayList for pieces and assigns value c to</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_25'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * colour.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_26'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_27'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param c String for colour, w for white and b for black</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_28'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_29'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    public Player(final String c) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_30'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.colour = c;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_31'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.pieces = new ArrayList&#60;&#62;();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_32'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_33'/>
+33
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_33'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_34'/>
+34
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_34'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_35'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Returns players pieces as an ArrayList.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_36'/>
+36
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_36'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_37'/>
+37
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_37'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return List of player&#39;s pieces</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_38'/>
+38
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_38'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_39'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public final ArrayList&#60;Piece&#62; getPieces() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_40'/>
+40
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_40'>1</a>
+<span>
+1. getPieces : mutated return of Object value for checkmate/logic/game/Player::getPieces to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return this.pieces;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_41'/>
+41
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_41'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_42'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_43'/>
+43
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_43'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_44'/>
+44
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_44'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Returns players colour as a String.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_45'/>
+45
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_45'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_46'/>
+46
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_46'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return Players colour as a String</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_47'/>
+47
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_47'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_48'/>
+48
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_48'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public final String getColour() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_49'/>
+49
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_49'>1</a>
+<span>
+1. getColour : mutated return of Object value for checkmate/logic/game/Player::getColour to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return this.colour;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_50'/>
+50
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_50'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_51'/>
+51
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_51'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_52'/>
+52
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_52'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_53'/>
+53
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_53'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Adds a piece to players ArrayList pieces.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_54'/>
+54
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_54'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_55'/>
+55
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_55'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param p Piece to be added to player&#39;s listof pieces</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_56'/>
+56
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_56'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_57'/>
+57
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_57'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public final void addPiece(final Piece p) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_58'/>
+58
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_58'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.pieces.add(p);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_59'/>
+59
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_59'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_60'/>
+60
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_60'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_61'/>
+61
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_61'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_62'/>
+62
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_62'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Removes a piece from players ArrayList pieces.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_63'/>
+63
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_63'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_64'/>
+64
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_64'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param p Piece to be removed from player&#39;s list of pieces</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_65'/>
+65
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_65'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_66'/>
+66
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_66'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public final void removePiece(final Piece p) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_67'/>
+67
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_67'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.pieces.remove(p);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_68'/>
+68
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_68'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_69'/>
+69
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_69'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_70'/>
+70
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_70'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_71'/>
+71
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_71'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Return this player&#39;s king, or null if there isn&#39;t one.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_72'/>
+72
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_72'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_73'/>
+73
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_73'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return Player&#39;s Piece of type king</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_74'/>
+74
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_74'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_75'/>
+75
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_75'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public final Piece getKing() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_76'/>
+76
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_76'>1</a>
+<span>
+1. getKing : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        for (Piece p : this.pieces) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_77'/>
+77
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_77'>2</a>
+<span>
+1. getKing : negated conditional &rarr; KILLED<br/>
+2. getKing : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            if (p.getType().equals(&#34;king&#34;) &#38;&#38; p.getAvailable()) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_78'/>
+78
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_78'>1</a>
+<span>
+1. getKing : mutated return of Object value for checkmate/logic/game/Player::getKing to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                return p;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_79'/>
+79
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_79'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_80'/>
+80
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_80'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        }        </span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_81'/>
+81
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_81'>1</a>
+<span>
+1. getKing : mutated return of Object value for checkmate/logic/game/Player::getKing to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return null;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_82'/>
+82
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_82'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@451e2fa9_83'/>
+83
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_83'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@451e2fa9_40'>40</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_40'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getPieces<br/><b>Killed by : </b>checkmate.logic.game.PlayerTest.constructorCreatesArrayList(checkmate.logic.game.PlayerTest)</span></span> mutated return of Object value for checkmate/logic/game/Player::getPieces to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@451e2fa9_49'>49</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_49'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getColour<br/><b>Killed by : </b>checkmate.logic.game.PlayerTest.testGetColour(checkmate.logic.game.PlayerTest)</span></span> mutated return of Object value for checkmate/logic/game/Player::getColour to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@451e2fa9_76'>76</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_76'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getKing<br/><b>Killed by : </b>checkmate.logic.game.PlayerTest.testGetKing(checkmate.logic.game.PlayerTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@451e2fa9_77'>77</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_77'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getKing<br/><b>Killed by : </b>checkmate.logic.game.CastlingAndCheckTest.testPossibleCastlingSquares(checkmate.logic.game.CastlingAndCheckTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getKing<br/><b>Killed by : </b>checkmate.logic.game.CastlingAndCheckTest.testIsChecked(checkmate.logic.game.CastlingAndCheckTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@451e2fa9_78'>78</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_78'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getKing<br/><b>Killed by : </b>checkmate.logic.game.CastlingAndCheckTest.testIsChecked(checkmate.logic.game.CastlingAndCheckTest)</span></span> mutated return of Object value for checkmate/logic/game/Player::getKing to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@451e2fa9_81'>81</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@451e2fa9_81'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getKing<br/><b>Killed by : </b>checkmate.logic.game.PlayerTest.testGetKing(checkmate.logic.game.PlayerTest)</span></span> mutated return of Object value for checkmate/logic/game/Player::getKing to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+<li class='mutator'>RETURN_VALS_MUTATOR</li>
+<li class='mutator'>MATH_MUTATOR</li>
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>checkmate.logic.game.ValidatorTest.testIsValidMove6(checkmate.logic.game.ValidatorTest) (2 ms)</li><li>checkmate.logic.game.ChessGameTest.testTurn5(checkmate.logic.game.ChessGameTest) (2 ms)</li><li>checkmate.logic.game.PlayerTest.constructorCreatesArrayList(checkmate.logic.game.PlayerTest) (1 ms)</li><li>checkmate.logic.game.ValidatorTest.testPiecesBetweenDiagonally2(checkmate.logic.game.ValidatorTest) (1 ms)</li><li>checkmate.logic.game.CastlingAndCheckTest.testIsChecked(checkmate.logic.game.CastlingAndCheckTest) (1 ms)</li><li>checkmate.logic.game.ChessGameTest.constructorCreatesBoard(checkmate.logic.game.ChessGameTest) (2 ms)</li><li>checkmate.logic.game.ChessGameTest.startCallsSetOccupiedSquares(checkmate.logic.game.ChessGameTest) (1 ms)</li><li>checkmate.logic.game.PlayerTest.testRemovePiece(checkmate.logic.game.PlayerTest) (0 ms)</li><li>checkmate.logic.game.ChessGameTest.startAddsRightPiecesToRightPlayers(checkmate.logic.game.ChessGameTest) (2 ms)</li><li>checkmate.logic.game.CastlingAndCheckTest.testPossibleCastlingSquares(checkmate.logic.game.CastlingAndCheckTest) (2 ms)</li><li>checkmate.logic.game.CastlingAndCheckTest.testFindPlayersRooks2(checkmate.logic.game.CastlingAndCheckTest) (2 ms)</li><li>checkmate.logic.game.ValidatorTest.testIsValidMove3(checkmate.logic.game.ValidatorTest) (1 ms)</li><li>checkmate.logic.game.ValidatorTest.testGameEnded(checkmate.logic.game.ValidatorTest) (2 ms)</li><li>checkmate.logic.game.ChessGameTest.startAddsRightPiecesToRightPlayers2(checkmate.logic.game.ChessGameTest) (1 ms)</li><li>checkmate.logic.game.ChessBoardTest.testPromote5(checkmate.logic.game.ChessBoardTest) (0 ms)</li><li>checkmate.logic.game.CastlingAndCheckTest.testCanBeCaptured2(checkmate.logic.game.CastlingAndCheckTest) (17 ms)</li><li>checkmate.logic.game.PlayerTest.testGetKing(checkmate.logic.game.PlayerTest) (0 ms)</li><li>checkmate.logic.game.ValidatorTest.testGameStart(checkmate.logic.game.ValidatorTest) (2 ms)</li><li>checkmate.logic.game.PlayerTest.testGetColour(checkmate.logic.game.PlayerTest) (1 ms)</li><li>checkmate.logic.game.ValidatorTest.testPiecesBetweenHorizontally(checkmate.logic.game.ValidatorTest) (0 ms)</li><li>checkmate.logic.game.ValidatorTest.occupiedSquaresEmptyInitially(checkmate.logic.game.ValidatorTest) (1 ms)</li><li>checkmate.logic.game.PlayerTest.testGetColour2(checkmate.logic.game.PlayerTest) (1 ms)</li><li>checkmate.logic.game.CastlingAndCheckTest.testTryMove(checkmate.logic.game.CastlingAndCheckTest) (2 ms)</li><li>checkmate.logic.game.ValidatorTest.testPiecesBetweenDiagonally(checkmate.logic.game.ValidatorTest) (1 ms)</li><li>checkmate.logic.game.ChessGameTest.startGeneratesPlayers(checkmate.logic.game.ChessGameTest) (6 ms)</li><li>checkmate.logic.game.ValidatorTest.testPiecesBetweenVertically2(checkmate.logic.game.ValidatorTest) (1 ms)</li><li>checkmate.logic.game.ChessGameTest.testEnPassant(checkmate.logic.game.ChessGameTest) (2 ms)</li><li>checkmate.logic.game.ValidatorTest.testPiecesBetweenHorizontally2(checkmate.logic.game.ValidatorTest) (1 ms)</li><li>checkmate.logic.game.ValidatorTest.testPiecesBetweenDiagonally3(checkmate.logic.game.ValidatorTest) (0 ms)</li><li>checkmate.logic.game.ValidatorTest.testIsValidMove4(checkmate.logic.game.ValidatorTest) (1 ms)</li><li>checkmate.logic.game.CastlingAndCheckTest.castlingSquares(checkmate.logic.game.CastlingAndCheckTest) (26 ms)</li><li>checkmate.logic.game.ChessGameTest.testGetEnded(checkmate.logic.game.ChessGameTest) (9 ms)</li><li>checkmate.logic.game.CastlingAndCheckTest.testIsChecked2(checkmate.logic.game.CastlingAndCheckTest) (8 ms)</li><li>checkmate.logic.game.ChessGameTest.testGetTurn(checkmate.logic.game.ChessGameTest) (8 ms)</li><li>checkmate.logic.game.ValidatorTest.testPiecesBetween2(checkmate.logic.game.ValidatorTest) (1 ms)</li><li>checkmate.logic.game.ValidatorTest.testIsValidMove7(checkmate.logic.game.ValidatorTest) (1 ms)</li><li>checkmate.logic.game.ChessBoardTest.testPromote4(checkmate.logic.game.ChessBoardTest) (1 ms)</li><li>checkmate.logic.game.PlayerTest.testAddPiece(checkmate.logic.game.PlayerTest) (1 ms)</li><li>checkmate.logic.game.ValidatorTest.testPiecesBetweenVertically(checkmate.logic.game.ValidatorTest) (1 ms)</li><li>checkmate.logic.game.ChessGameTest.testTurn3(checkmate.logic.game.ChessGameTest) (2 ms)</li><li>checkmate.logic.game.ChessGameTest.testFindSquare2(checkmate.logic.game.ChessGameTest) (1 ms)</li><li>checkmate.logic.game.ChessGameTest.testCastle(checkmate.logic.game.ChessGameTest) (2 ms)</li><li>checkmate.logic.game.CastlingAndCheckTest.testCanBeCaptured(checkmate.logic.game.CastlingAndCheckTest) (3 ms)</li><li>checkmate.logic.game.ChessGameTest.startCallsInitPieces(checkmate.logic.game.ChessGameTest) (1 ms)</li><li>checkmate.logic.game.ChessGameTest.testTurn(checkmate.logic.game.ChessGameTest) (12 ms)</li><li>checkmate.logic.game.ValidatorTest.testIsValidMove8(checkmate.logic.game.ValidatorTest) (1 ms)</li><li>checkmate.logic.game.ValidatorTest.constructorCreatesOccupiedSquaresList(checkmate.logic.game.ValidatorTest) (3 ms)</li><li>checkmate.logic.game.ChessBoardTest.testPromote(checkmate.logic.game.ChessBoardTest) (1 ms)</li><li>checkmate.logic.game.ValidatorTest.testHasValidMoves3(checkmate.logic.game.ValidatorTest) (1 ms)</li><li>checkmate.logic.game.ChessBoardTest.testPromote6(checkmate.logic.game.ChessBoardTest) (1 ms)</li><li>checkmate.logic.game.ValidatorTest.constructorSetsBoard(checkmate.logic.game.ValidatorTest) (1 ms)</li><li>checkmate.logic.game.CastlingAndCheckTest.testCastlingSquares(checkmate.logic.game.CastlingAndCheckTest) (2 ms)</li><li>checkmate.logic.game.CastlingAndCheckTest.testPossibleCastlingSquares2(checkmate.logic.game.CastlingAndCheckTest) (6 ms)</li><li>checkmate.logic.game.ChessGameTest.testTurn4(checkmate.logic.game.ChessGameTest) (2 ms)</li><li>checkmate.logic.game.ValidatorTest.testHasValidMoves2(checkmate.logic.game.ValidatorTest) (1 ms)</li><li>checkmate.logic.game.ValidatorTest.testPiecesBetween3(checkmate.logic.game.ValidatorTest) (1 ms)</li><li>checkmate.logic.game.PlayerTest.testGetPieces(checkmate.logic.game.PlayerTest) (1 ms)</li><li>checkmate.logic.game.ChessBoardTest.testPromote2(checkmate.logic.game.ChessBoardTest) (1 ms)</li><li>checkmate.logic.game.ChessGameTest.startCallsInitSquares(checkmate.logic.game.ChessGameTest) (2 ms)</li><li>checkmate.logic.game.ValidatorTest.testIsValidMove2(checkmate.logic.game.ValidatorTest) (1 ms)</li><li>checkmate.logic.game.ValidatorTest.testIsValidMove5(checkmate.logic.game.ValidatorTest) (1 ms)</li><li>checkmate.logic.game.ChessGameTest.testTurn2(checkmate.logic.game.ChessGameTest) (9 ms)</li><li>checkmate.logic.game.ValidatorTest.testHasValidMoves(checkmate.logic.game.ValidatorTest) (2 ms)</li><li>checkmate.logic.game.CastlingAndCheckTest.testTryMove2(checkmate.logic.game.CastlingAndCheckTest) (7 ms)</li><li>checkmate.logic.game.ChessGameTest.testFindSquare(checkmate.logic.game.ChessGameTest) (11 ms)</li><li>checkmate.logic.game.ValidatorTest.testIsValidMove(checkmate.logic.game.ValidatorTest) (1 ms)</li><li>checkmate.logic.game.CastlingAndCheckTest.testFindPlayersRooks(checkmate.logic.game.CastlingAndCheckTest) (2 ms)</li><li>checkmate.logic.game.ChessGameTest.startAddsPiecesToPlayers(checkmate.logic.game.ChessGameTest) (2 ms)</li><li>checkmate.logic.game.ValidatorTest.testSetOccupiedSquares(checkmate.logic.game.ValidatorTest) (1 ms)</li><li>checkmate.logic.game.ValidatorTest.testPiecesBetween(checkmate.logic.game.ValidatorTest) (1 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.1.8
+
+</body>
+</html>

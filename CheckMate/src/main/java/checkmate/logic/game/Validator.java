@@ -43,7 +43,7 @@ public class Validator {
     /**
      * Returns private variable board.
      *
-     * @return this.board
+     * @return ChessBoard
      */
     public final ChessBoard getBoard() {
         return board;
@@ -52,7 +52,7 @@ public class Validator {
     /**
      * Returns private variable occupiedSquares.
      *
-     * @return this.occupiedSquares
+     * @return List of squares that are occupied
      */
     public final ArrayList<Square> getOccupiedSquares() {
         return occupiedSquares;
@@ -61,7 +61,7 @@ public class Validator {
     /**
      * Checks which of the squares are occupied.
      *
-     * @return ArrayList
+     * @return List of squares that are occupied
      */
     public final ArrayList<Square> setOccupiedSquares() {
         ArrayList<Square> occupied = new ArrayList<>();
@@ -76,9 +76,9 @@ public class Validator {
     /**
      * Checks whether the move of piece p to square to is valid.
      *
-     * @param p Piece
-     * @param to Square
-     * @return boolean
+     * @param p Piece under inspection
+     * @param to Square where piece would be moved to
+     * @return true if move is valid, false otherwise
      */
     public final boolean isValidMove(final Piece p, final Square to) {
         if (!p.getAvailable()) {
@@ -95,9 +95,6 @@ public class Validator {
         if (piecesBetween(p.getSquare(), to) && !p.getType().equals("knight")) {
             return false;
         }
-        if (p.getType().equals("pawn")) {
-            return true;
-        }
         if (occupiedSquares.contains(to)) {
             if (!to.getPiece().getColour().equals(p.getColour())) {
                 return true;
@@ -113,7 +110,7 @@ public class Validator {
      *
      * @param from Square
      * @param to Square
-     * @return boolean
+     * @return true if there are pieces between squares to and from
      */
     public final boolean piecesBetween(final Square from, final Square to) {
         PiecesBetween check = new PiecesBetween(this.occupiedSquares);
@@ -121,10 +118,10 @@ public class Validator {
     }
 
     /**
-     * Checks whether player has any valid moves left.
+     * Checks through all player's pieces if any have valid moves left.
      *
-     * @param player Player
-     * @return boolean
+     * @param player Player to be inspected
+     * @return true if any of player's pieces has at least one valid move
      */
     public final boolean hasValidMoves(final Player player) {
         for (Piece piece : player.getPieces()) {
@@ -136,10 +133,11 @@ public class Validator {
     }
 
     /**
-     * Returns an ArrayList of Squares that Piece p can move to.
+     * Checks every square on board whether p can be moved to it according to
+     * chess rules.
      *
-     * @param p Piece
-     * @return ArrayList, type Squares
+     * @param p Piece for which valid moves are searched for
+     * @return List of squares where piece p can move to
      */
     public final ArrayList<Square> validMoves(final Piece p) {
         ArrayList<Square> moves = new ArrayList<>();
@@ -159,7 +157,7 @@ public class Validator {
      * Checks whether both players have valid moves and haven't lost their
      * kings.
      *
-     * @return boolean
+     * @return true if either of the players is out of valid moves
      */
     public final boolean gameEnded() {
         return !(hasValidMoves(players[0]) && hasValidMoves(players[1]));

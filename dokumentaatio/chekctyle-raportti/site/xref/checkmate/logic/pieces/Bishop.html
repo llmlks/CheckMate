@@ -9,39 +9,38 @@
 <a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">package</strong> checkmate.logic.pieces;
 <a class="jxr_linenumber" name="L2" href="#L2">2</a>   
 <a class="jxr_linenumber" name="L3" href="#L3">3</a>   <strong class="jxr_keyword">import</strong> checkmate.logic.game.Square;
-<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <strong class="jxr_keyword">import</strong> java.util.ArrayList;
-<a class="jxr_linenumber" name="L5" href="#L5">5</a>   
-<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_javadoccomment"> * Class for Bishop objects.</em>
-<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_javadoccomment"> *</em>
-<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_javadoccomment"> * @author llmlks</em>
-<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../checkmate/logic/pieces/Bishop.html">Bishop</a> <strong class="jxr_keyword">extends</strong> <a href="../../../checkmate/logic/pieces/Piece.html">Piece</a> {
-<a class="jxr_linenumber" name="L12" href="#L12">12</a>  
-<a class="jxr_linenumber" name="L13" href="#L13">13</a>      <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_javadoccomment">     * Calls constructor of parent class Piece.</em>
-<a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_javadoccomment">     *</em>
-<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <em class="jxr_javadoccomment">     * @param s Square</em>
-<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <em class="jxr_javadoccomment">     * @param c String</em>
-<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L19" href="#L19">19</a>      <strong class="jxr_keyword">public</strong> <a href="../../../checkmate/logic/pieces/Bishop.html">Bishop</a>(<strong class="jxr_keyword">final</strong> <a href="../../../checkmate/logic/game/Square.html">Square</a> s, <strong class="jxr_keyword">final</strong> String c) {
-<a class="jxr_linenumber" name="L20" href="#L20">20</a>          <strong class="jxr_keyword">super</strong>(s, c);
-<a class="jxr_linenumber" name="L21" href="#L21">21</a>          <strong class="jxr_keyword">this</strong>.setType(<span class="jxr_string">"bishop"</span>);
-<a class="jxr_linenumber" name="L22" href="#L22">22</a>      }
-<a class="jxr_linenumber" name="L23" href="#L23">23</a>  
-<a class="jxr_linenumber" name="L24" href="#L24">24</a>      <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <em class="jxr_javadoccomment">     * Checks whether the move to square s from this.square is valid for bishop.</em>
-<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <em class="jxr_javadoccomment">     *</em>
-<a class="jxr_linenumber" name="L27" href="#L27">27</a>  <em class="jxr_javadoccomment">     * @param s Square</em>
-<a class="jxr_linenumber" name="L28" href="#L28">28</a>  <em class="jxr_javadoccomment">     * @return boolean</em>
-<a class="jxr_linenumber" name="L29" href="#L29">29</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L30" href="#L30">30</a>      @Override
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">boolean</strong> isValidMove(<strong class="jxr_keyword">final</strong> <a href="../../../checkmate/logic/game/Square.html">Square</a> s) {
-<a class="jxr_linenumber" name="L32" href="#L32">32</a>          <a href="../../../checkmate/logic/game/Square.html">Square</a> square = <strong class="jxr_keyword">this</strong>.getSquare();
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>          <strong class="jxr_keyword">return</strong> square.isDiagonal(s);
-<a class="jxr_linenumber" name="L34" href="#L34">34</a>      }
-<a class="jxr_linenumber" name="L35" href="#L35">35</a>  
-<a class="jxr_linenumber" name="L36" href="#L36">36</a>  }
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <em class="jxr_javadoccomment"> * Class for Bishop objects.</em>
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_javadoccomment"> *</em>
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_javadoccomment"> * @author llmlks</em>
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../checkmate/logic/pieces/Bishop.html">Bishop</a> <strong class="jxr_keyword">extends</strong> <a href="../../../checkmate/logic/pieces/Piece.html">Piece</a> {
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_javadoccomment">     * Calls constructor of parent class Piece.</em>
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_javadoccomment">     * @param s Square where bishop is positioned</em>
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <em class="jxr_javadoccomment">     * @param c Colour as a String, either w for white or b for black</em>
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>      <strong class="jxr_keyword">public</strong> <a href="../../../checkmate/logic/pieces/Bishop.html">Bishop</a>(<strong class="jxr_keyword">final</strong> <a href="../../../checkmate/logic/game/Square.html">Square</a> s, <strong class="jxr_keyword">final</strong> String c) {
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>          <strong class="jxr_keyword">super</strong>(s, c);
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>          <strong class="jxr_keyword">this</strong>.setType(<span class="jxr_string">"bishop"</span>);
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>      }
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <em class="jxr_javadoccomment">     * Checks whether the move to square s from this.square is valid for bishop.</em>
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <em class="jxr_javadoccomment">     * @param s Square to which bishop would move</em>
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  <em class="jxr_javadoccomment">     * @return true if move would be legal, false otherwise</em>
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>      @Override
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">boolean</strong> isValidMove(<strong class="jxr_keyword">final</strong> <a href="../../../checkmate/logic/game/Square.html">Square</a> s) {
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>          <a href="../../../checkmate/logic/game/Square.html">Square</a> square = <strong class="jxr_keyword">this</strong>.getSquare();
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>          <strong class="jxr_keyword">return</strong> square.isDiagonal(s);
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>      }
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>  
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>  }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2017. All rights reserved.</div>

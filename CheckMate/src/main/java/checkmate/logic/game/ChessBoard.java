@@ -40,7 +40,7 @@ public class ChessBoard {
     /**
      * Returns private variable squares.
      *
-     * @return ArrayList for squares
+     * @return List of squares on the board
      */
     public final ArrayList<Square> getSquares() {
         return this.squares;
@@ -49,14 +49,15 @@ public class ChessBoard {
     /**
      * Returns private variable pieces.
      *
-     * @return ArrayList pieces
+     * @return List of pieces on the board
      */
     public final ArrayList<Piece> getPieces() {
         return this.pieces;
     }
 
     /**
-     * Initialises squares; creates 64 squares and adds them to squares.
+     * Initialises squares; creates 64 squares and adds them to this board's
+     * list of squares.
      */
     public final void initSquares() {
         for (int i = 1; i <= size; i++) {
@@ -69,7 +70,8 @@ public class ChessBoard {
     }
 
     /**
-     * Calls appropriate methods to initialise pieces.
+     * Calls appropriate methods to initialise pieces, i.e. initPawns(),
+     * initPiecesExclPawns() and setPiecesToSquares().
      */
     public final void initPieces() {
         initPawns();
@@ -78,7 +80,8 @@ public class ChessBoard {
     }
 
     /**
-     * Initialises pawns.
+     * Initialises pawns; creates 12 of both colours with appropriate initial
+     * squares and adds them to pieces list.
      */
     public final void initPawns() {
         int[] rows = new int[]{2, size - 1};
@@ -94,7 +97,8 @@ public class ChessBoard {
     }
 
     /**
-     * Initialises pieces other than pawns.
+     * Initialises pieces other than pawns, creating 12 of each colour with
+     * appropriate initial squares, and adding them to pieces list.
      */
     public final void initPiecesExclPawns() {
         int[] rows = new int[]{1, size};
@@ -128,7 +132,7 @@ public class ChessBoard {
     }
 
     /**
-     * Sets created pieces to their matching squares.
+     * Matches all the pieces on board to appropriate squares and vice versa.
      */
     public final void setPiecesToSquares() {
         for (Piece p : this.pieces) {
@@ -179,9 +183,9 @@ public class ChessBoard {
     /**
      * Finds square at coordinates x and y.
      *
-     * @param x int
-     * @param y int
-     * @return Square
+     * @param x integer x coordinate
+     * @param y integer y coordinate
+     * @return Square at coordinates x and y, or null if none is found
      */
     public final Square findSquareByCoordinates(int x, int y) {
         for (Square s : this.getSquares()) {
@@ -190,5 +194,5 @@ public class ChessBoard {
             }
         }
         return null;
-    }    
+    }
 }

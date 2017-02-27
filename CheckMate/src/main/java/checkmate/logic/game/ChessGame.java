@@ -35,19 +35,10 @@ public class ChessGame {
     private boolean ended;
 
     /**
-     * Constructor generates new ChessBoard.
+     * Constructor calls own method initGame().
      */
     public ChessGame() {
         this.initGame();
-    }
-
-    /**
-     * Sets this.board to b.
-     *
-     * @param b ChessBoard
-     */
-    public final void setBoard(final ChessBoard b) {
-        this.board = b;
     }
 
     /**
@@ -62,7 +53,7 @@ public class ChessGame {
     /**
      * Returns list of players.
      *
-     * @return this.players Player[]
+     * @return array of players
      */
     public final Player[] getPlayers() {
         return this.players;
@@ -71,9 +62,9 @@ public class ChessGame {
     /**
      * Finds square at coordinates x and y.
      *
-     * @param x int
-     * @param y int
-     * @return Square
+     * @param x integer x coordinate
+     * @param y integer y coordinate
+     * @return Square at coordinates x and y, or null if none is found
      */
     public final Square findSquareByCoordinates(int x, int y) {
         for (Square s : this.board.getSquares()) {
@@ -94,8 +85,9 @@ public class ChessGame {
     }
 
     /**
-     * Calls initSquares and initPieces on this.board, generates 2 players in
-     * this.players, then starts the game.
+     * Creates a new ChessBoard, and calls appropriate methods to generate 64
+     * squares and 32 pieces; generates 2 players, and matches created pieces by
+     * colour to players; creates a new Validator, sets variable turn to 0.
      */
     public final void initGame() {
         this.board = new ChessBoard();
@@ -119,8 +111,8 @@ public class ChessGame {
      * Checks whether the players still have valid moves, then executes the
      * player's move.
      *
-     * @param p Piece
-     * @param s Square
+     * @param p Piece to be moved this turn
+     * @param s Square for the piece to be moved to
      */
     public final void turn(Piece p, Square s) {
         if (!ended) {
@@ -146,9 +138,9 @@ public class ChessGame {
     /**
      * Helper function to determine when en passant is possible.
      *
-     * @param pawn Piece
-     * @param to Square
-     * @param from Square
+     * @param pawn Piece that can be captured en passant
+     * @param to Square piece pawn moved to
+     * @param from Square piece pawn moved from
      */
     public final void enPassant(final Piece pawn, final Square to, final Square from) {
         int help = Math.max(to.getY(), from.getY());
@@ -164,7 +156,7 @@ public class ChessGame {
     /**
      * Handles castling when king is moved two squares to square s.
      *
-     * @param s Square
+     * @param s Square where king moved to
      */
     public final void castle(final Square s) {
         int rookX = s.getX() == 3 ? 1 : 8;
@@ -178,7 +170,7 @@ public class ChessGame {
     /**
      * Returns boolean value for whether the game is finished.
      *
-     * @return boolean
+     * @return true if game has ended (neither player has valid moves left)
      */
     public final boolean getEnded() {
         return this.ended;
@@ -187,7 +179,7 @@ public class ChessGame {
     /**
      * Returns the String colour of the player whose turn it is.
      *
-     * @return String
+     * @return String for colour, w for white, b for black
      */
     public String getTurn() {
         String turns = "wb";

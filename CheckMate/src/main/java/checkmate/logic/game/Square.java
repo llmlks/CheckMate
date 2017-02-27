@@ -64,7 +64,7 @@ public class Square {
     /**
      * Returns private variable x.
      *
-     * @return this.x int
+     * @return integer x coordinate
      */
     public final int getX() {
         return this.x;
@@ -73,7 +73,7 @@ public class Square {
     /**
      * Returns private variable y.
      *
-     * @return this.y int
+     * @return integer y coordinate
      */
     public final int getY() {
         return this.y;
@@ -82,7 +82,7 @@ public class Square {
     /**
      * Returns private variable piece.
      *
-     * @return this.piece Piece
+     * @return Piece occupying this square, or null if there isn't any
      */
     public final Piece getPiece() {
         return piece;
@@ -91,17 +91,18 @@ public class Square {
     /**
      * Sets p to this.piece.
      *
-     * @param p Piece
+     * @param p Piece to occupy this square
      */
     public final void setPiece(final Piece p) {
         this.piece = p;
     }
 
     /**
-     * Checks whether square s is next to this.
+     * Checks whether square s is next to this horizontally, vertically or
+     * diagonally.
      *
-     * @param s Square
-     * @return boolean
+     * @param s Square this square is compared to
+     * @return true if squares are next to each other, false otherwise
      */
     public final boolean isNextTo(final Square s) {
         if (s.x == this.x && s.y == this.y) {
@@ -120,8 +121,8 @@ public class Square {
     /**
      * Checks if Square s is in the same rank (line horizontally) as this.
      *
-     * @param s Square
-     * @return boolean
+     * @param s Square this square is compared to
+     * @return true if squares are located in the same rank, false otherwise
      */
     public final boolean isSameRank(final Square s) {
         return s.y == this.y && !s.equals(this);
@@ -130,8 +131,8 @@ public class Square {
     /**
      * Checks whether Square s is in the same file (line vertically) as this.
      *
-     * @param s Square
-     * @return boolean
+     * @param s Square this square is compared to
+     * @return true if squares are located in the same file, false otherwise
      */
     public final boolean isSameFile(final Square s) {
         return s.x == this.x && !s.equals(this);
@@ -140,8 +141,8 @@ public class Square {
     /**
      * Checks if Square s is located diagonally from this.
      *
-     * @param s Square
-     * @return boolean
+     * @param s Square this square is compared to
+     * @return true if squares are located diagonally, false otherwise
      */
     public final boolean isDiagonal(final Square s) {
         return Math.abs(s.x - this.x) == Math.abs(s.y - this.y)
@@ -151,7 +152,7 @@ public class Square {
     /**
      * Checks if this is occupied, returns false if this.piece is null.
      *
-     * @return boolean
+     * @return true is piece is occupies, false otherwise
      */
     public final boolean isOccupied() {
         return this.piece != null;
@@ -171,20 +172,23 @@ public class Square {
         int hash = this.x + (this.y - 1) * size;
         return hash;
     }
-    
+
     /**
-     * Sets this.enPassant to p.
-     * 
-     * @param p Piece
+     * Sets this.enPassant the piece that can be captured en passant, or null if
+     * there isn't any.
+     *
+     * @param p Piece that can be captured en passant, or null if there isn't
+     * any
      */
     public final void setEnPassant(Piece p) {
         this.enPassant = p;
     }
-    
+
     /**
-     * Returns this enPassant.
-     * 
-     * @return Piece
+     * Returns the piece that can be captured en passant, or null if there isn't
+     * any.
+     *
+     * @return Piece that can be captured en passant, or null if there isn't any
      */
     public final Piece getEnPassant() {
         return this.enPassant;

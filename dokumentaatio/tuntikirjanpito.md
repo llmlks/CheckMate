@@ -17,3 +17,5 @@ Päivä | Tunnit | Kuvaus
 22.02.2017 | 2h | testien kirjoitusta
 23.02.2017 | 5h | logiikan päivitystä
 24.02.2017 | 3h | logiikan hiomista, testien päivitystä, dokumentointia
+26.02.2017 | 2h | bugien korjausta shakituksen ja enpassant:in kohdalta
+27.02.2017 | 3h | JavaDoc:in parantelua, testien kirjoitusta

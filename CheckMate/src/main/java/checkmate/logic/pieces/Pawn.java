@@ -19,8 +19,8 @@ public class Pawn extends Piece {
      * direction based on colour to 1 or -1, for whites and blacks,
      * respectively.
      *
-     * @param s Square
-     * @param c String
+     * @param s Square where pawn is positioned
+     * @param c String for colour, w for white or b for black
      */
     public Pawn(final Square s, final String c) {
         super(s, c);
@@ -33,9 +33,10 @@ public class Pawn extends Piece {
     }
 
     /**
-     * Returns private variable direction.
+     * Returns private variable direction; 1 for white pawns and
+     * -1 for blacks.
      *
-     * @return this.direction int
+     * @return Integer direction of this this piece
      */
     public final int getDirection() {
         return this.direction;
@@ -44,8 +45,8 @@ public class Pawn extends Piece {
     /**
      * Checks whether the move to square s from this.square is valid for pawn.
      *
-     * @param s Square
-     * @return boolean
+     * @param s Square to which pawn would move
+     * @return true if move would be valid, false otherwise
      */
     @Override
     public final boolean isValidMove(final Square s) {
@@ -56,8 +57,8 @@ public class Pawn extends Piece {
             return true;
         }
         return s.isSameFile(square) && ((square.getY() - s.getY()
-                == direction * 1) || (square.equals(this.getInitSquare()) 
-                && square.getY() - s.getY() == direction * 2)) 
+                == direction * 1) || (square.equals(this.getInitSquare())
+                && square.getY() - s.getY() == direction * 2))
                 && !s.isOccupied();
     }
 

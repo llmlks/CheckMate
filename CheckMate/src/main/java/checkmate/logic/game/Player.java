@@ -24,7 +24,7 @@ public class Player {
      * Constructor generates empty ArrayList for pieces and assigns value c to
      * colour.
      *
-     * @param c String
+     * @param c String for colour, w for white and b for black
      */
     public Player(final String c) {
         this.colour = c;
@@ -34,7 +34,7 @@ public class Player {
     /**
      * Returns players pieces as an ArrayList.
      *
-     * @return ArrayList
+     * @return List of player's pieces
      */
     public final ArrayList<Piece> getPieces() {
         return this.pieces;
@@ -43,7 +43,7 @@ public class Player {
     /**
      * Returns players colour as a String.
      *
-     * @return String
+     * @return Players colour as a String
      */
     public final String getColour() {
         return this.colour;
@@ -52,7 +52,7 @@ public class Player {
     /**
      * Adds a piece to players ArrayList pieces.
      *
-     * @param p Piece
+     * @param p Piece to be added to player's listof pieces
      */
     public final void addPiece(final Piece p) {
         this.pieces.add(p);
@@ -61,7 +61,7 @@ public class Player {
     /**
      * Removes a piece from players ArrayList pieces.
      *
-     * @param p Piece
+     * @param p Piece to be removed from player's list of pieces
      */
     public final void removePiece(final Piece p) {
         this.pieces.remove(p);
@@ -70,7 +70,7 @@ public class Player {
     /**
      * Return this player's king, or null if there isn't one.
      * 
-     * @return Piece
+     * @return Player's Piece of type king
      */
     public final Piece getKing() {
         for (Piece p : this.pieces) {

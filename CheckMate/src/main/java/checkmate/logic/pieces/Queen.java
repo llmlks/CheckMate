@@ -1,7 +1,6 @@
 package checkmate.logic.pieces;
 
 import checkmate.logic.game.Square;
-import java.util.ArrayList;
 
 /**
  * Class for Queen objects.
@@ -13,8 +12,8 @@ public class Queen extends Piece {
     /**
      * Calls constructor of parent class Piece.
      *
-     * @param s Square
-     * @param c String
+     * @param s Square where queen is positioned
+     * @param c String for colour, w for white or b for black
      */
     public Queen(final Square s, final String c) {
         super(s, c);
@@ -24,8 +23,8 @@ public class Queen extends Piece {
     /**
      * Checks if move to Square s is valid for queen.
      *
-     * @param s Square
-     * @return boolean
+     * @param s Square to which queen would move
+     * @return true if move would be legal, false otherwise
      */
     @Override
     public final boolean isValidMove(final Square s) {

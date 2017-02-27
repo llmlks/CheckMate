@@ -28,13 +28,6 @@ public class ChessGameTest {
     }
 
     @Test
-    public void setBoardWorks() {
-        ChessBoard board = new ChessBoard();
-        game.setBoard(board);
-        assertEquals(game.getBoard(), board);
-    }
-
-    @Test
     public void startGeneratesPlayers() {
         assertTrue(game.getPlayers().length == 2);
     }

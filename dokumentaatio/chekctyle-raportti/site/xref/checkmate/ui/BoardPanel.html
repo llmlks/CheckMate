@@ -154,88 +154,98 @@
 <a class="jxr_linenumber" name="L146" href="#L146">146</a> 
 <a class="jxr_linenumber" name="L147" href="#L147">147</a>     @Override
 <a class="jxr_linenumber" name="L148" href="#L148">148</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> paintComponent(Graphics g) {
-<a class="jxr_linenumber" name="L149" href="#L149">149</a>         Graphics2D g2 = (Graphics2D) g;
-<a class="jxr_linenumber" name="L150" href="#L150">150</a> 
-<a class="jxr_linenumber" name="L151" href="#L151">151</a>         <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; 8; i++) {
-<a class="jxr_linenumber" name="L152" href="#L152">152</a>             <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> j = 0; j &lt; 8; j++) {
-<a class="jxr_linenumber" name="L153" href="#L153">153</a>                 <a href="../../checkmate/logic/game/Square.html">Square</a> s = <strong class="jxr_keyword">this</strong>.chess.findSquareByCoordinates(i + 1, j + 1);
-<a class="jxr_linenumber" name="L154" href="#L154">154</a>                 g2.setColor(<strong class="jxr_keyword">new</strong> Color(209, 139, 71));
-<a class="jxr_linenumber" name="L155" href="#L155">155</a>                 <strong class="jxr_keyword">if</strong> (ended) {
-<a class="jxr_linenumber" name="L156" href="#L156">156</a>                     g2.setColor(<strong class="jxr_keyword">new</strong> Color(255, 230, 204));
-<a class="jxr_linenumber" name="L157" href="#L157">157</a>                 }
-<a class="jxr_linenumber" name="L158" href="#L158">158</a>                 <strong class="jxr_keyword">if</strong> ((i + j) % 2 == 0) {
-<a class="jxr_linenumber" name="L159" href="#L159">159</a>                     g2.setColor(<strong class="jxr_keyword">new</strong> Color(255, 206, 158));
-<a class="jxr_linenumber" name="L160" href="#L160">160</a>                     <strong class="jxr_keyword">if</strong> (ended) {
-<a class="jxr_linenumber" name="L161" href="#L161">161</a>                         g2.setColor(<strong class="jxr_keyword">new</strong> Color(218, 166, 113));
-<a class="jxr_linenumber" name="L162" href="#L162">162</a>                     }
-<a class="jxr_linenumber" name="L163" href="#L163">163</a>                 }
-<a class="jxr_linenumber" name="L164" href="#L164">164</a>                 g2.fillRect(i * 75, j * 75, 75, 75);
-<a class="jxr_linenumber" name="L165" href="#L165">165</a>                 <strong class="jxr_keyword">if</strong> (possibleMoves.contains(s)) {
-<a class="jxr_linenumber" name="L166" href="#L166">166</a>                     g2.setColor(Color.green);
-<a class="jxr_linenumber" name="L167" href="#L167">167</a>                     g2.setStroke(<strong class="jxr_keyword">new</strong> BasicStroke(4));
-<a class="jxr_linenumber" name="L168" href="#L168">168</a>                     g2.drawRect(i * 75 + 2, j * 75 + 2, 71, 71);
-<a class="jxr_linenumber" name="L169" href="#L169">169</a>                 }
-<a class="jxr_linenumber" name="L170" href="#L170">170</a>                 <strong class="jxr_keyword">if</strong> (s.isOccupied()) {
-<a class="jxr_linenumber" name="L171" href="#L171">171</a>                     <a href="../../checkmate/logic/pieces/Piece.html">Piece</a> p = s.getPiece();
-<a class="jxr_linenumber" name="L172" href="#L172">172</a>                     String icon = <span class="jxr_string">"/icons/"</span> + p.getType() + <span class="jxr_string">"_"</span> + p.getColour() + <span class="jxr_string">".png"</span>;
-<a class="jxr_linenumber" name="L173" href="#L173">173</a>                     <strong class="jxr_keyword">try</strong> {
-<a class="jxr_linenumber" name="L174" href="#L174">174</a>                         InputStream stream = getClass().getResourceAsStream(icon);
-<a class="jxr_linenumber" name="L175" href="#L175">175</a>                         BufferedImage img = ImageIO.read(stream);
-<a class="jxr_linenumber" name="L176" href="#L176">176</a>                         g2.drawImage(img, i * 75 + 5, j * 75 + 5, <strong class="jxr_keyword">this</strong>);
-<a class="jxr_linenumber" name="L177" href="#L177">177</a>                     } <strong class="jxr_keyword">catch</strong> (IOException ex) {
-<a class="jxr_linenumber" name="L178" href="#L178">178</a>                     }
-<a class="jxr_linenumber" name="L179" href="#L179">179</a>                 }
-<a class="jxr_linenumber" name="L180" href="#L180">180</a>             }
-<a class="jxr_linenumber" name="L181" href="#L181">181</a>         }
-<a class="jxr_linenumber" name="L182" href="#L182">182</a>         <strong class="jxr_keyword">if</strong> (ended) {
-<a class="jxr_linenumber" name="L183" href="#L183">183</a>             g2.setColor(<strong class="jxr_keyword">new</strong> Color(255, 206, 158));
-<a class="jxr_linenumber" name="L184" href="#L184">184</a>             g2.fillRect(155, 155, 290, 215);
-<a class="jxr_linenumber" name="L185" href="#L185">185</a>             g2.setColor(Color.black);
-<a class="jxr_linenumber" name="L186" href="#L186">186</a>             g2.setFont(<strong class="jxr_keyword">new</strong> Font(<span class="jxr_string">"Ubuntu"</span>, Font.BOLD, 30));
-<a class="jxr_linenumber" name="L187" href="#L187">187</a>             String winner = <span class="jxr_string">"White"</span>;
-<a class="jxr_linenumber" name="L188" href="#L188">188</a>             <strong class="jxr_keyword">if</strong> (chess.getTurn().equals(<span class="jxr_string">"w"</span>)) {
-<a class="jxr_linenumber" name="L189" href="#L189">189</a>                 winner = <span class="jxr_string">"Black"</span>;
+<a class="jxr_linenumber" name="L149" href="#L149">149</a>         <strong class="jxr_keyword">super</strong>.paintComponent(g);
+<a class="jxr_linenumber" name="L150" href="#L150">150</a>         Graphics2D g2 = (Graphics2D) g;
+<a class="jxr_linenumber" name="L151" href="#L151">151</a> 
+<a class="jxr_linenumber" name="L152" href="#L152">152</a>         <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; 8; i++) {
+<a class="jxr_linenumber" name="L153" href="#L153">153</a>             <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> j = 0; j &lt; 8; j++) {
+<a class="jxr_linenumber" name="L154" href="#L154">154</a>                 <a href="../../checkmate/logic/game/Square.html">Square</a> s = <strong class="jxr_keyword">this</strong>.chess.findSquareByCoordinates(i + 1, j + 1);
+<a class="jxr_linenumber" name="L155" href="#L155">155</a>                 g2.setColor(<strong class="jxr_keyword">new</strong> Color(209, 139, 71));
+<a class="jxr_linenumber" name="L156" href="#L156">156</a>                 <strong class="jxr_keyword">if</strong> (ended) {
+<a class="jxr_linenumber" name="L157" href="#L157">157</a>                     g2.setColor(<strong class="jxr_keyword">new</strong> Color(255, 230, 204));
+<a class="jxr_linenumber" name="L158" href="#L158">158</a>                 }
+<a class="jxr_linenumber" name="L159" href="#L159">159</a>                 <strong class="jxr_keyword">if</strong> ((i + j) % 2 == 0) {
+<a class="jxr_linenumber" name="L160" href="#L160">160</a>                     g2.setColor(<strong class="jxr_keyword">new</strong> Color(255, 206, 158));
+<a class="jxr_linenumber" name="L161" href="#L161">161</a>                     <strong class="jxr_keyword">if</strong> (ended) {
+<a class="jxr_linenumber" name="L162" href="#L162">162</a>                         g2.setColor(<strong class="jxr_keyword">new</strong> Color(218, 166, 113));
+<a class="jxr_linenumber" name="L163" href="#L163">163</a>                     }
+<a class="jxr_linenumber" name="L164" href="#L164">164</a>                 }
+<a class="jxr_linenumber" name="L165" href="#L165">165</a>                 g2.fillRect(i * 75, j * 75, 75, 75);
+<a class="jxr_linenumber" name="L166" href="#L166">166</a>                 <strong class="jxr_keyword">if</strong> (possibleMoves.contains(s)) {
+<a class="jxr_linenumber" name="L167" href="#L167">167</a>                     g2.setColor(Color.green);
+<a class="jxr_linenumber" name="L168" href="#L168">168</a>                     g2.setStroke(<strong class="jxr_keyword">new</strong> BasicStroke(4));
+<a class="jxr_linenumber" name="L169" href="#L169">169</a>                     g2.drawRect(i * 75 + 2, j * 75 + 2, 71, 71);
+<a class="jxr_linenumber" name="L170" href="#L170">170</a>                 }
+<a class="jxr_linenumber" name="L171" href="#L171">171</a>                 <strong class="jxr_keyword">if</strong> (s.isOccupied()) {
+<a class="jxr_linenumber" name="L172" href="#L172">172</a>                     <a href="../../checkmate/logic/pieces/Piece.html">Piece</a> p = s.getPiece();
+<a class="jxr_linenumber" name="L173" href="#L173">173</a>                     String icon = <span class="jxr_string">"/icons/"</span> + p.getType() + <span class="jxr_string">"_"</span> + p.getColour() + <span class="jxr_string">".png"</span>;
+<a class="jxr_linenumber" name="L174" href="#L174">174</a>                     InputStream stream = getClass().getResourceAsStream(icon);
+<a class="jxr_linenumber" name="L175" href="#L175">175</a>                     <strong class="jxr_keyword">if</strong> (stream != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L176" href="#L176">176</a>                         BufferedImage img;
+<a class="jxr_linenumber" name="L177" href="#L177">177</a>                         <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L178" href="#L178">178</a>                             img = ImageIO.read(stream);
+<a class="jxr_linenumber" name="L179" href="#L179">179</a>                             g2.drawImage(img, i * 75 + 5, j * 75 + 5, <strong class="jxr_keyword">this</strong>);
+<a class="jxr_linenumber" name="L180" href="#L180">180</a>                         } <strong class="jxr_keyword">catch</strong> (IOException ex) {
+<a class="jxr_linenumber" name="L181" href="#L181">181</a>                             Logger.getLogger(BoardPanel.<strong class="jxr_keyword">class</strong>.getName()).log(Level.SEVERE, <strong class="jxr_keyword">null</strong>, ex);
+<a class="jxr_linenumber" name="L182" href="#L182">182</a>                         }
+<a class="jxr_linenumber" name="L183" href="#L183">183</a>                     } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="L184" href="#L184">184</a>                         Color colour = p.getColour().equals(<span class="jxr_string">"w"</span>) ? Color.white : Color.black;
+<a class="jxr_linenumber" name="L185" href="#L185">185</a>                         g2.setColor(colour);
+<a class="jxr_linenumber" name="L186" href="#L186">186</a>                         g2.setFont(<strong class="jxr_keyword">new</strong> Font(<span class="jxr_string">"Ubuntu"</span>, Font.BOLD, 18));
+<a class="jxr_linenumber" name="L187" href="#L187">187</a>                         g2.drawString(p.getType(), i * 75 + 10, j * 75 + 35);
+<a class="jxr_linenumber" name="L188" href="#L188">188</a>                     }
+<a class="jxr_linenumber" name="L189" href="#L189">189</a>                 }
 <a class="jxr_linenumber" name="L190" href="#L190">190</a>             }
-<a class="jxr_linenumber" name="L191" href="#L191">191</a>             g2.drawString(winner + <span class="jxr_string">" player wins!"</span>, 160, 200);
-<a class="jxr_linenumber" name="L192" href="#L192">192</a>             g2.setFont(<strong class="jxr_keyword">new</strong> Font(<span class="jxr_string">"Ubuntu"</span>, Font.PLAIN, 18));
-<a class="jxr_linenumber" name="L193" href="#L193">193</a>             g2.drawString(<span class="jxr_string">"Press 'New game' to play again"</span>, 160, 275);
-<a class="jxr_linenumber" name="L194" href="#L194">194</a>         }
-<a class="jxr_linenumber" name="L195" href="#L195">195</a>         <strong class="jxr_keyword">if</strong> (chosen != <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="L196" href="#L196">196</a>             g2.setColor(Color.red);
-<a class="jxr_linenumber" name="L197" href="#L197">197</a>             g2.setStroke(<strong class="jxr_keyword">new</strong> BasicStroke(4));
-<a class="jxr_linenumber" name="L198" href="#L198">198</a>             g2.drawRect((chosen.getSquare().getX() - 1) * 75 + 2, (chosen.getSquare().getY() - 1) * 75 + 2, 71, 71);
-<a class="jxr_linenumber" name="L199" href="#L199">199</a>         }
-<a class="jxr_linenumber" name="L200" href="#L200">200</a> 
-<a class="jxr_linenumber" name="L201" href="#L201">201</a>         <strong class="jxr_keyword">if</strong> (promotion != <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="L202" href="#L202">202</a>             g2.setColor(<strong class="jxr_keyword">new</strong> Color(218, 166, 113));
-<a class="jxr_linenumber" name="L203" href="#L203">203</a>             g2.fillRect(150, 150, 300, 150);
-<a class="jxr_linenumber" name="L204" href="#L204">204</a>             g2.setColor(Color.BLACK);
-<a class="jxr_linenumber" name="L205" href="#L205">205</a>             g2.setFont(<strong class="jxr_keyword">new</strong> Font(<span class="jxr_string">"Ubuntu"</span>, Font.BOLD, 18));
-<a class="jxr_linenumber" name="L206" href="#L206">206</a>             g2.drawString(<span class="jxr_string">"Choose a piece for promotion:"</span>, 155, 185);
-<a class="jxr_linenumber" name="L207" href="#L207">207</a>             String[] types = <strong class="jxr_keyword">new</strong> String[]{<span class="jxr_string">"rook"</span>, <span class="jxr_string">"knight"</span>, <span class="jxr_string">"bishop"</span>, <span class="jxr_string">"queen"</span>};
-<a class="jxr_linenumber" name="L208" href="#L208">208</a>             <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; 4; i++) {
-<a class="jxr_linenumber" name="L209" href="#L209">209</a>                 <strong class="jxr_keyword">try</strong> {
-<a class="jxr_linenumber" name="L210" href="#L210">210</a>                     String icon = <span class="jxr_string">"/icons/"</span> + types[i] + <span class="jxr_string">"_"</span> + promotion.getColour() + <span class="jxr_string">".png"</span>;
-<a class="jxr_linenumber" name="L211" href="#L211">211</a>                     BufferedImage img = ImageIO.read(getClass().getResourceAsStream(icon));
-<a class="jxr_linenumber" name="L212" href="#L212">212</a>                     g2.drawImage(img, i * 75 + 155, 230, <strong class="jxr_keyword">this</strong>);
-<a class="jxr_linenumber" name="L213" href="#L213">213</a>                 } <strong class="jxr_keyword">catch</strong> (IOException ex) {
-<a class="jxr_linenumber" name="L214" href="#L214">214</a>                     Logger.getLogger(BoardPanel.<strong class="jxr_keyword">class</strong>.getName()).log(Level.SEVERE, <strong class="jxr_keyword">null</strong>, ex);
-<a class="jxr_linenumber" name="L215" href="#L215">215</a>                 }
-<a class="jxr_linenumber" name="L216" href="#L216">216</a>             }
-<a class="jxr_linenumber" name="L217" href="#L217">217</a>         }
-<a class="jxr_linenumber" name="L218" href="#L218">218</a>     }
-<a class="jxr_linenumber" name="L219" href="#L219">219</a> 
-<a class="jxr_linenumber" name="L220" href="#L220">220</a>     @Override
-<a class="jxr_linenumber" name="L221" href="#L221">221</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> actionPerformed(ActionEvent e) {
-<a class="jxr_linenumber" name="L222" href="#L222">222</a>         chess = <strong class="jxr_keyword">new</strong> <a href="../../checkmate/logic/game/ChessGame.html">ChessGame</a>();
-<a class="jxr_linenumber" name="L223" href="#L223">223</a>         chess.initGame();
-<a class="jxr_linenumber" name="L224" href="#L224">224</a>         ended = false;
-<a class="jxr_linenumber" name="L225" href="#L225">225</a>         chosen = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L226" href="#L226">226</a>         possibleMoves.removeAll(possibleMoves);
-<a class="jxr_linenumber" name="L227" href="#L227">227</a>         promotion = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L228" href="#L228">228</a>         repaint();
-<a class="jxr_linenumber" name="L229" href="#L229">229</a>     }
-<a class="jxr_linenumber" name="L230" href="#L230">230</a> }
+<a class="jxr_linenumber" name="L191" href="#L191">191</a>         }
+<a class="jxr_linenumber" name="L192" href="#L192">192</a>         <strong class="jxr_keyword">if</strong> (ended) {
+<a class="jxr_linenumber" name="L193" href="#L193">193</a>             g2.setColor(<strong class="jxr_keyword">new</strong> Color(255, 206, 158));
+<a class="jxr_linenumber" name="L194" href="#L194">194</a>             g2.fillRect(155, 155, 290, 215);
+<a class="jxr_linenumber" name="L195" href="#L195">195</a>             g2.setColor(Color.black);
+<a class="jxr_linenumber" name="L196" href="#L196">196</a>             g2.setFont(<strong class="jxr_keyword">new</strong> Font(<span class="jxr_string">"Ubuntu"</span>, Font.BOLD, 30));
+<a class="jxr_linenumber" name="L197" href="#L197">197</a>             String winner = <span class="jxr_string">"White"</span>;
+<a class="jxr_linenumber" name="L198" href="#L198">198</a>             <strong class="jxr_keyword">if</strong> (chess.getTurn().equals(<span class="jxr_string">"w"</span>)) {
+<a class="jxr_linenumber" name="L199" href="#L199">199</a>                 winner = <span class="jxr_string">"Black"</span>;
+<a class="jxr_linenumber" name="L200" href="#L200">200</a>             }
+<a class="jxr_linenumber" name="L201" href="#L201">201</a>             g2.drawString(winner + <span class="jxr_string">" player wins!"</span>, 160, 200);
+<a class="jxr_linenumber" name="L202" href="#L202">202</a>             g2.setFont(<strong class="jxr_keyword">new</strong> Font(<span class="jxr_string">"Ubuntu"</span>, Font.PLAIN, 18));
+<a class="jxr_linenumber" name="L203" href="#L203">203</a>             g2.drawString(<span class="jxr_string">"Press 'New game' to play again"</span>, 160, 275);
+<a class="jxr_linenumber" name="L204" href="#L204">204</a>         }
+<a class="jxr_linenumber" name="L205" href="#L205">205</a>         <strong class="jxr_keyword">if</strong> (chosen != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L206" href="#L206">206</a>             g2.setColor(Color.red);
+<a class="jxr_linenumber" name="L207" href="#L207">207</a>             g2.setStroke(<strong class="jxr_keyword">new</strong> BasicStroke(4));
+<a class="jxr_linenumber" name="L208" href="#L208">208</a>             g2.drawRect((chosen.getSquare().getX() - 1) * 75 + 2, (chosen.getSquare().getY() - 1) * 75 + 2, 71, 71);
+<a class="jxr_linenumber" name="L209" href="#L209">209</a>         }
+<a class="jxr_linenumber" name="L210" href="#L210">210</a> 
+<a class="jxr_linenumber" name="L211" href="#L211">211</a>         <strong class="jxr_keyword">if</strong> (promotion != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L212" href="#L212">212</a>             g2.setColor(<strong class="jxr_keyword">new</strong> Color(218, 166, 113));
+<a class="jxr_linenumber" name="L213" href="#L213">213</a>             g2.fillRect(150, 150, 300, 150);
+<a class="jxr_linenumber" name="L214" href="#L214">214</a>             g2.setColor(Color.BLACK);
+<a class="jxr_linenumber" name="L215" href="#L215">215</a>             g2.setFont(<strong class="jxr_keyword">new</strong> Font(<span class="jxr_string">"Ubuntu"</span>, Font.BOLD, 18));
+<a class="jxr_linenumber" name="L216" href="#L216">216</a>             g2.drawString(<span class="jxr_string">"Choose a piece for promotion:"</span>, 155, 185);
+<a class="jxr_linenumber" name="L217" href="#L217">217</a>             String[] types = <strong class="jxr_keyword">new</strong> String[]{<span class="jxr_string">"rook"</span>, <span class="jxr_string">"knight"</span>, <span class="jxr_string">"bishop"</span>, <span class="jxr_string">"queen"</span>};
+<a class="jxr_linenumber" name="L218" href="#L218">218</a>             <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; 4; i++) {
+<a class="jxr_linenumber" name="L219" href="#L219">219</a>                 <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L220" href="#L220">220</a>                     String icon = <span class="jxr_string">"/icons/"</span> + types[i] + <span class="jxr_string">"_"</span> + promotion.getColour() + <span class="jxr_string">".png"</span>;
+<a class="jxr_linenumber" name="L221" href="#L221">221</a>                     BufferedImage img = ImageIO.read(getClass().getResourceAsStream(icon));
+<a class="jxr_linenumber" name="L222" href="#L222">222</a>                     g2.drawImage(img, i * 75 + 155, 230, <strong class="jxr_keyword">this</strong>);
+<a class="jxr_linenumber" name="L223" href="#L223">223</a>                 } <strong class="jxr_keyword">catch</strong> (IOException ex) {
+<a class="jxr_linenumber" name="L224" href="#L224">224</a>                     Logger.getLogger(BoardPanel.<strong class="jxr_keyword">class</strong>.getName()).log(Level.SEVERE, <strong class="jxr_keyword">null</strong>, ex);
+<a class="jxr_linenumber" name="L225" href="#L225">225</a>                 }
+<a class="jxr_linenumber" name="L226" href="#L226">226</a>             }
+<a class="jxr_linenumber" name="L227" href="#L227">227</a>         }
+<a class="jxr_linenumber" name="L228" href="#L228">228</a>     }
+<a class="jxr_linenumber" name="L229" href="#L229">229</a> 
+<a class="jxr_linenumber" name="L230" href="#L230">230</a>     @Override
+<a class="jxr_linenumber" name="L231" href="#L231">231</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> actionPerformed(ActionEvent e) {
+<a class="jxr_linenumber" name="L232" href="#L232">232</a>         chess = <strong class="jxr_keyword">new</strong> <a href="../../checkmate/logic/game/ChessGame.html">ChessGame</a>();
+<a class="jxr_linenumber" name="L233" href="#L233">233</a>         chess.initGame();
+<a class="jxr_linenumber" name="L234" href="#L234">234</a>         ended = false;
+<a class="jxr_linenumber" name="L235" href="#L235">235</a>         chosen = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L236" href="#L236">236</a>         possibleMoves.removeAll(possibleMoves);
+<a class="jxr_linenumber" name="L237" href="#L237">237</a>         promotion = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L238" href="#L238">238</a>         repaint();
+<a class="jxr_linenumber" name="L239" href="#L239">239</a>     }
+<a class="jxr_linenumber" name="L240" href="#L240">240</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2017. All rights reserved.</div>

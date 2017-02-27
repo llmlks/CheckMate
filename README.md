@@ -8,4 +8,4 @@
 * [aiheen kuvaus](dokumentaatio/aiheenKuvausJaRakenne.md)
 * [tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
 * [checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/llmlks/CheckMate/blob/master/dokumentaatio/chekctyle-raportti/site/checkstyle.html)
-* [pit-raportti](https://htmlpreview.github.io/?https://github.com/llmlks/CheckMate/blob/master/dokumentaatio/pit-raportti/201702241151/index.html)
+* [pit-raportti](https://htmlpreview.github.io/?https://github.com/llmlks/CheckMate/blob/master/dokumentaatio/pit-raportti/201702271331/index.html)

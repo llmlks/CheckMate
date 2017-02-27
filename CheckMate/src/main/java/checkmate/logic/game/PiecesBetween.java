@@ -4,31 +4,31 @@ import java.util.ArrayList;
 
 /**
  * Class to check whether there are pieces between squares.
- * 
+ *
  * @author llmlks
  */
 public class PiecesBetween {
-    
+
     /**
      * Private variable to keep track of squares that are occupied.
      */
     private final ArrayList<Square> occupiedSquares;
-    
+
     /**
      * Constructor assigns ArrayList to occupiedSquares.
-     * 
+     *
      * @param squares ArrayList
      */
     public PiecesBetween(ArrayList<Square> squares) {
         this.occupiedSquares = squares;
     }
-    
+
     /**
      * Checks whether there are any pieces between squares to and from.
      *
      * @param from Square
      * @param to Square
-     * @return boolean
+     * @return true if there are pieces between squares given as parameters
      */
     public final boolean piecesBetween(final Square from, final Square to) {
         if (from.isNextTo(to)) {
@@ -49,7 +49,8 @@ public class PiecesBetween {
      *
      * @param from Square
      * @param to Square
-     * @return boolean
+     * @return true if there are pieces between squares given as parameters
+     * horizontally
      */
     public final boolean piecesBetweenHorizontally(final Square from,
             final Square to) {
@@ -69,7 +70,8 @@ public class PiecesBetween {
      *
      * @param from Square
      * @param to Square
-     * @return boolean
+     * @return true if there are pieces between squares given as parameters
+     * vertically
      */
     public final boolean piecesBetweenVertically(final Square from,
             final Square to) {
@@ -89,7 +91,8 @@ public class PiecesBetween {
      *
      * @param from Square
      * @param to Square
-     * @return boolean
+     * @return true if there are pieces between squares given as parameters
+     * diagonally
      */
     public final boolean piecesBetweenDiagonally(final Square from,
             final Square to) {
