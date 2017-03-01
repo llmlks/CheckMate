@@ -68,10 +68,16 @@ public class CastlingAndCheck {
         Square from = p.getSquare();
         Piece occupier = s.getPiece();
         p.setSquare(s);
+        if (occupier != null) {
+            occupier.setAvailable(false);
+        }
         from.setPiece(null);
         s.setPiece(p);
         boolean moveFails = isChecked(player);
         p.setSquare(from);
+        if (occupier != null) {
+            occupier.setAvailable(true);
+        }
         s.setPiece(occupier);
         from.setPiece(p);
         return !moveFails;

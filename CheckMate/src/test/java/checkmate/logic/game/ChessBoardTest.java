@@ -139,4 +139,15 @@ public class ChessBoardTest {
         board.promote(p, "anything", pl);
         assertTrue(pl.getPieces().get(0).getType().equals("queen"));
     }
+        
+    @Test
+    public void testFindSquare() {
+        assertTrue(board.findSquareByCoordinates(0, 0) == null);
+    }
+    
+    @Test
+    public void testFindSquare2() {
+        ChessBoard cb = new ChessGame().getBoard();
+        assertTrue(cb.findSquareByCoordinates(1, 1).equals(new Square(1, 1)));
+    }
 }

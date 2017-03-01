@@ -139,15 +139,40 @@ public class PawnTest {
         Square square2 = new Square(5, 5);
         assertFalse(black.isValidMove(square2));
     }
-    
+
     @Test
     public void constructorSetsAvailable() {
         assertTrue(white.getAvailable());
     }
-    
+
     @Test
     public void testSetAvailable() {
         black.setAvailable(false);
         assertFalse(black.getAvailable());
+    }
+
+    @Test
+    public void testEnPassant() {
+        Square square2 = new Square(2, 2);
+        square2.setEnPassant(white);
+        black.move(square2);
+        assertFalse(white.getAvailable());
+    }
+
+    @Test
+    public void testEnPassant2() {
+        Square square2 = new Square(2, 2);
+        square2.setEnPassant(white);
+        black.move(square2);
+        assertTrue(square.getPiece() == null);
+    }
+    
+    @Test
+    public void testCapturing() {
+        Square square2 = new Square(2, 2);
+        Pawn second = new Pawn(square2, "w");
+        square2.setPiece(second);
+        black.move(square2);
+        assertFalse(second.getAvailable());
     }
 }
