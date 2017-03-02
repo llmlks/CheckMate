@@ -44,6 +44,7 @@ public class BoardPanel extends JPanel implements MouseListener, ActionListener 
     private ArrayList<Square> possibleMoves = new ArrayList<>();
     private boolean ended = false;
     private Pawn promotion = null;
+    private boolean checkmate = false;
 
     public BoardPanel(ChessGame game) {
         this.chess = game;
@@ -80,7 +81,7 @@ public class BoardPanel extends JPanel implements MouseListener, ActionListener 
                         break;
                 }
             }
-        } else if (!chess.getEnded()) {
+        } else {
             Square clicked = this.chess.findSquareByCoordinates(x + 1, y + 1);
             if (chosen != null && possibleMoves.contains(clicked)) {
                 chess.turn(chosen, clicked);
@@ -90,6 +91,7 @@ public class BoardPanel extends JPanel implements MouseListener, ActionListener 
                 chosen = null;
                 possibleMoves.removeAll(possibleMoves);
                 ended = chess.getEnded();
+                checkmate = chess.getValidator().playersInCheck();
             } else if (clicked.isOccupied()) {
                 this.chosen = clicked.getPiece();
 
@@ -120,10 +122,6 @@ public class BoardPanel extends JPanel implements MouseListener, ActionListener 
                 chosen = null;
                 possibleMoves.removeAll(possibleMoves);
             }
-        } else {
-            chosen = null;
-            possibleMoves.removeAll(possibleMoves);
-            ended = true;
         }
         repaint();
     }
@@ -194,11 +192,15 @@ public class BoardPanel extends JPanel implements MouseListener, ActionListener 
             g2.fillRect(155, 155, 290, 215);
             g2.setColor(Color.black);
             g2.setFont(new Font("Ubuntu", Font.BOLD, 30));
-            String winner = "White";
-            if (chess.getTurn().equals("w")) {
-                winner = "Black";
+            if (checkmate) {
+                String winner = "White";
+                if (chess.getTurn().equals("w")) {
+                    winner = "Black";
+                }
+                g2.drawString(winner + " player wins!", 160, 200);
+            } else {
+                g2.drawString("It\'s a stalemate!", 160, 200);
             }
-            g2.drawString(winner + " player wins!", 160, 200);
             g2.setFont(new Font("Ubuntu", Font.PLAIN, 18));
             g2.drawString("Press 'New game' to play again", 160, 275);
         }

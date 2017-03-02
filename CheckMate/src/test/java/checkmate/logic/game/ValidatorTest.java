@@ -185,4 +185,15 @@ public class ValidatorTest {
     public void testGameEnded() {
         assertFalse(val.gameEnded());
     }
+    
+    @Test
+    public void testCheckMate() {
+        assertFalse(val.playersInCheck());
+    }
+    
+    @Test
+    public void testCheckMate2() {
+        game.turn(game.findSquareByCoordinates(4, 1).getPiece(), game.findSquareByCoordinates(6, 7));
+        assertTrue(val.playersInCheck());
+    }
 }

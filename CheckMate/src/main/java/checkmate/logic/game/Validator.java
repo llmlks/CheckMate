@@ -158,4 +158,13 @@ public class Validator {
     public final boolean gameEnded() {
         return !(hasValidMoves(players[0]) && hasValidMoves(players[1]));
     }
+
+    /**
+     * Checks at the end of the game whether it is a checkmate or a stalemate.
+     *
+     * @return true if either player is checked.
+     */
+    public final boolean playersInCheck() {
+        return checker.isChecked(players[0]) || checker.isChecked(players[1]);
+    }
 }
