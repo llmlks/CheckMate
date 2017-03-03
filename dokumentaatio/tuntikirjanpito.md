@@ -20,4 +20,6 @@ Päivä | Tunnit | Kuvaus
 26.02.2017 | 2h | bugien korjausta shakituksen ja enpassant:in kohdalta
 27.02.2017 | 3h | JavaDoc:in parantelua, testien kirjoitusta
 01.03.2017 | 2h | Uuden bugin korjaus, dokumentaation paivitys
+02.03.2017 | 2h | Testailua, bugien korjailua
+03.03.2017 | 1.5h | Lisaa testailua
 
