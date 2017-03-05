@@ -22,4 +22,5 @@ Päivä | Tunnit | Kuvaus
 01.03.2017 | 2h | Uuden bugin korjaus, dokumentaation paivitys
 02.03.2017 | 2h | Testailua, bugien korjailua
 03.03.2017 | 1.5h | Lisaa testailua
+05.03.2017 | 2h | Varmistelua ja tarkistelua
 
